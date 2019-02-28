@@ -1,4 +1,4 @@
-program matco;
+program matco_p;
 
 uses
   Vcl.Forms,
