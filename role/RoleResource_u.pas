@@ -3,8 +3,7 @@ unit RoleResource_u;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DMMatco_u, Role_u;
+  DMMatco_u, Role_u;
 
 type
   TRoleResource = class

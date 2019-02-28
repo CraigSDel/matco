@@ -16,9 +16,6 @@ unit Role_u;
     // Role = class             is defining the Role as a class without a semi colon
 interface
 
-uses
-  DMMatco_u;
-
 type
   TRole = class
   private

@@ -3,15 +3,15 @@ unit RoleService_u;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Role_u, RoleResource_u;
+  Role_u, RoleResource_u;
 
 type
   TRoleService = class
   private
     { Private declarations }
-  roleResource:TRoleResource;
+    roleResource:TRoleResource;
   public
+    { Public declarations }
     constructor create;
     procedure save(role: TRole);
   end;
