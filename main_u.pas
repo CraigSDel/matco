@@ -1,4 +1,4 @@
-unit main_u;
+unit Main_u;
 
 interface
 
@@ -7,10 +7,10 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Role_u, RoleService_u;
 
 type
-  TForm1 = class(TForm)
+  TMatcoForm = class(TForm)
     create: TButton;
-    Label1: TLabel;
-    Edit1: TEdit;
+    Description: TLabel;
+    RoleEdit: TEdit;
     procedure createClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
@@ -21,22 +21,22 @@ type
   end;
 
 var
-  Form1: TForm1;
+  MatcoForm: TMatcoForm;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.createClick(Sender: TObject);
+procedure TMatcoForm.createClick(Sender: TObject);
 var
   role:TRole;
 begin
   role := TRole.create();
-  role.setDescription(Edit1.Text);
+  role.setDescription(RoleEdit.Text);
   roleService.save(role);
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TMatcoForm.FormCreate(Sender: TObject);
 begin
     roleService := TRoleService.Create;
 end;

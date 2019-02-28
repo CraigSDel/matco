@@ -1,4 +1,4 @@
-unit role_u;
+unit Role_u;
 
     //Interface is the defenition of the function and variables
     //Header files in c++ in the document file.
@@ -17,8 +17,7 @@ unit role_u;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DMMatco_u;
+  DMMatco_u;
 
 type
   TRole = class

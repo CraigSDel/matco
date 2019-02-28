@@ -1,7 +1,7 @@
-object Form1: TForm1
+object MatcoForm: TMatcoForm
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'MatcoForm'
   ClientHeight = 201
   ClientWidth = 447
   Color = clBtnFace
@@ -14,7 +14,7 @@ object Form1: TForm1
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
+  object Description: TLabel
     Left = 24
     Top = 16
     Width = 53
@@ -30,12 +30,12 @@ object Form1: TForm1
     TabOrder = 0
     OnClick = createClick
   end
-  object Edit1: TEdit
+  object RoleEdit: TEdit
     Left = 83
     Top = 13
     Width = 121
     Height = 21
     TabOrder = 1
-    Text = 'Edit1'
+    Text = 'RoleEdit'
   end
 end
