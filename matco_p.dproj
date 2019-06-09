@@ -107,7 +107,7 @@
             <Form>Matco</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="role\Role_u.pas"/>
+        <DCCReference Include="role\role_u.pas"/>
         <DCCReference Include="dmMatco_u.pas">
             <Form>DMMatco</Form>
             <FormType>dfm</FormType>
@@ -116,6 +116,8 @@
         <DCCReference Include="role\RoleService_u.pas"/>
         <DCCReference Include="role\RoleResource_u.pas"/>
         <DCCReference Include="ticket\Ticket_u.pas"/>
+        <DCCReference Include="ticket\TicketService_u.pas"/>
+        <DCCReference Include="ticket\TicketResource_u.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
