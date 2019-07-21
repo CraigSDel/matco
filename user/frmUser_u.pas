@@ -32,7 +32,7 @@ var
   user:TUser;
 begin
   user := TUser.create();
-  //user.setFullname(RoleEdit.Text);
+  user.setFullname(RoleEdit.Text);
   userService.save(user);
 end;
 

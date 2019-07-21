@@ -105,11 +105,12 @@
         </DelphiCompile>
         <DCCReference Include="frmMatco_u.pas">
             <Form>frmMatco</Form>
-            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="user\frmUser_u.pas">
+            <Form>frmUser</Form>
         </DCCReference>
         <DCCReference Include="dmMatco_u.pas">
             <Form>DMMatco</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="ticket\Ticket_u.pas"/>
@@ -117,7 +118,9 @@
         <DCCReference Include="ticket\TicketResource_u.pas"/>
         <DCCReference Include="user\UserResource_u.pas"/>
         <DCCReference Include="user\UserService_u.pas"/>
-        <DCCReference Include="user\User_u.pas"/>
+        <DCCReference Include="user\User_u.pas">
+            <Form>$R *.res</Form>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

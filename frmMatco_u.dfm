@@ -1,7 +1,7 @@
 object frmMatco: TfrmMatco
   Left = 0
   Top = 0
-  Caption = 'frmMatco'
+  Caption = 'Matco'
   ClientHeight = 201
   ClientWidth = 447
   Color = clBtnFace

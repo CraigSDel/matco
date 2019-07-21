@@ -1,7 +1,7 @@
-object UserForm: TUserForm
+object frmUser: TfrmUser
   Left = 0
   Top = 0
-  Caption = 'User Form'
+  Caption = 'User'
   ClientHeight = 279
   ClientWidth = 635
   Color = clBtnFace
