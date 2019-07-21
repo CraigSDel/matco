@@ -83,9 +83,9 @@ implementation
     end;
 
     // Assignee
-    function TTicket.getAssignee: string;
+    function TTicket.getAssignee: integer;
     begin
-      result := dateCreated;
+      result := assignee;
     end;
 
     procedure TTicket.setAssignee(pAssignee: integer);
@@ -96,7 +96,7 @@ implementation
     // Status
     function TTicket.getStatus: integer;
     begin
-      result := dateCreated;
+      result := status;
     end;
 
     procedure TTicket.setStatus(pStatus: integer);

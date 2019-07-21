@@ -1,4 +1,4 @@
-unit Role_u;
+unit user_u;
 
     //Interface is the defenition of the function and variables
     //Header files in c++ in the document file.
@@ -17,7 +17,7 @@ unit Role_u;
 interface
 
 type
-  TRole = class
+  TUser = class
   private
       id:integer;
       description:string;
@@ -25,8 +25,8 @@ type
   public
     function getId():integer;
     procedure setId(pid:integer);
-    function getDescription():string;
-    procedure setDescription(pdescription:string);
+    function getFullname():string;
+    procedure setFullname(pFullname:string);
     { Public declarations }
   end;
 
@@ -34,22 +34,22 @@ implementation
 
 { Role }
 
-function TRole.getDescription: string;
+function TUser.getFullname: string;
 begin
   result := description;
 end;
 
-function TRole.getId: integer;
+function TUser.getId: integer;
 begin
   result := id;
 end;
 
-procedure TRole.setDescription(pdescription: string);
+procedure TUser.setFullname(pFullname: string);
 begin
-  description := pdescription;
+  description := pFullname;
 end;
 
-procedure TRole.setId(pid:integer);
+procedure TUser.setId(pid:integer);
 begin
   id := pid;
 end;
