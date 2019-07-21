@@ -6,10 +6,11 @@ uses
   System.SysUtils, System.Classes, Data.DB, Data.Win.ADODB;
 
 type
-  TDMMatco = class(TDataModule)
+    TDMMatco = class(TDataModule)
     MatcoADOConnection: TADOConnection;
-    RoleTable: TADOTable;
     RoleDataSource: TDataSource;
+    TicketTable: TADOTable;
+    UserTable: TADOTable;
   private
     { Private declarations }
   public

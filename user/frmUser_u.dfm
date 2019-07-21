@@ -1,29 +1,29 @@
-object MatcoForm: TMatcoForm
+object UserForm: TUserForm
   Left = 0
   Top = 0
-  Caption = 'MatcoForm'
-  ClientHeight = 201
-  ClientWidth = 447
+  Caption = 'User Form'
+  ClientHeight = 279
+  ClientWidth = 635
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  Menu = MatcoMainMenu
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Description: TLabel
-    Left = 24
-    Top = 16
-    Width = 53
+    Left = 8
+    Top = 8
+    Width = 42
     Height = 13
-    Caption = 'Description'
+    Caption = 'Fullname'
   end
   object create: TButton
-    Left = 129
-    Top = 40
+    Left = 102
+    Top = 35
     Width = 75
     Height = 25
     Caption = 'Create'
@@ -31,11 +31,20 @@ object MatcoForm: TMatcoForm
     OnClick = createClick
   end
   object RoleEdit: TEdit
-    Left = 83
-    Top = 13
+    Left = 56
+    Top = 8
     Width = 121
     Height = 21
     TabOrder = 1
-    Text = 'RoleEdit'
+  end
+  object MatcoMainMenu: TMainMenu
+    Left = 600
+    Top = 240
+    object User1: TMenuItem
+      Caption = 'Ticket'
+    end
+    object User2: TMenuItem
+      Caption = 'User'
+    end
   end
 end
