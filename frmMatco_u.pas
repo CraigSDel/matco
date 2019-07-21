@@ -1,4 +1,4 @@
-unit Main_u;
+unit frmMatco_u;
 
 interface
 
@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, User_u, UserService_u;
 
 type
-    TMatcoForm = class(TForm)
+    TfrmMatco = class(TForm)
     create: TButton;
     Description: TLabel;
     RoleEdit: TEdit;
@@ -21,13 +21,13 @@ type
   end;
 
 var
-  MatcoForm: TMatcoForm;
+  frmMatco: TfrmMatco;
 
 implementation
 
 {$R *.dfm}
 
-procedure TMatcoForm.createClick(Sender: TObject);
+procedure TfrmMatco.createClick(Sender: TObject);
 var
   user: TUser;
 begin
@@ -36,7 +36,7 @@ begin
   userService.save(user);
 end;
 
-procedure TMatcoForm.FormCreate(Sender: TObject);
+procedure TfrmMatco.FormCreate(Sender: TObject);
 begin
     userService := TUserService.Create;
 end;
