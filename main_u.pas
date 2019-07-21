@@ -4,17 +4,17 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Role_u, RoleService_u;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Ticket_u, TicketService_u;
 
 type
-  TMatcoForm = class(TForm)
+    TMatcoForm = class(TForm)
     create: TButton;
     Description: TLabel;
     RoleEdit: TEdit;
     procedure createClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
-    roleService:TRoleService;
+    ticketService:TTicketService;
     { Private declarations }
   public
     { Public declarations }
@@ -29,16 +29,16 @@ implementation
 
 procedure TMatcoForm.createClick(Sender: TObject);
 var
-  role:TRole;
+  ticket:TTicket;
 begin
-  role := TRole.create();
-  role.setDescription(RoleEdit.Text);
-  roleService.save(role);
+  ticket := TTicket.create();
+  ticket.setDescription(RoleEdit.Text);
+  ticketService.save(ticket);
 end;
 
 procedure TMatcoForm.FormCreate(Sender: TObject);
 begin
-    roleService := TRoleService.Create;
+    ticketService := TTicketService.Create;
 end;
 
 end.
