@@ -42,9 +42,11 @@ object frmUser: TfrmUser
     Top = 240
     object User1: TMenuItem
       Caption = 'Ticket'
+      OnClick = User1Click
     end
     object User2: TMenuItem
       Caption = 'User'
+      OnClick = User2Click
     end
   end
 end
