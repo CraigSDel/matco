@@ -103,21 +103,21 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="main_u.pas">
-            <Form>Matco</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="role\role_u.pas"/>
         <DCCReference Include="dmMatco_u.pas">
             <Form>DMMatco</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="role\RoleService_u.pas"/>
-        <DCCReference Include="role\RoleResource_u.pas"/>
         <DCCReference Include="ticket\Ticket_u.pas"/>
         <DCCReference Include="ticket\TicketService_u.pas"/>
         <DCCReference Include="ticket\TicketResource_u.pas"/>
+        <DCCReference Include="frmMatco_u.pas">
+            <Form>frmMatco</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="user\user_u.pas"/>
+        <DCCReference Include="user\UserResource_u.pas"/>
+        <DCCReference Include="user\UserService_u.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -144,13 +144,13 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="Win32\Debug\matco_p.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="matco_p.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>matco_p.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="matco_p.exe" Configuration="Release" Class="ProjectOutput">
+                <DeployFile LocalName="Win32\Debug\matco_p.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>matco_p.exe</RemoteName>
                         <Overwrite>true</Overwrite>
