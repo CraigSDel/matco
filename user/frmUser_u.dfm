@@ -12,6 +12,7 @@ object frmUser: TfrmUser
   Font.Style = []
   Menu = MatcoMainMenu
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Description: TLabel

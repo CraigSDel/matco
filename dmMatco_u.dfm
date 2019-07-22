@@ -18,20 +18,29 @@ object DMMatco: TDMMatco
     Left = 120
     Top = 8
   end
-  object RoleDataSource: TDataSource
-    Left = 120
-    Top = 56
+  object UserDataSource: TDataSource
+    DataSet = tblUser
+    Left = 72
+    Top = 64
   end
-  object TicketTable: TADOTable
+  object tblTicket: TADOTable
     Connection = MatcoADOConnection
+    CursorType = ctStatic
     TableName = 'ticket'
-    Left = 64
-    Top = 104
+    Left = 176
+    Top = 112
   end
-  object UserTable: TADOTable
+  object tblUser: TADOTable
     Connection = MatcoADOConnection
+    CursorType = ctStatic
+    TableDirect = True
     TableName = 'users'
-    Left = 8
-    Top = 104
+    Left = 72
+    Top = 112
+  end
+  object TicketDataSource: TDataSource
+    DataSet = tblTicket
+    Left = 176
+    Top = 64
   end
 end

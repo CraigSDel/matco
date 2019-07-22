@@ -113,7 +113,6 @@
         <DCCReference Include="ticket\TicketResource_u.pas"/>
         <DCCReference Include="user\UserResource_u.pas"/>
         <DCCReference Include="user\UserService_u.pas"/>
-        <DCCReference Include="user\User_u.pas"/>
         <DCCReference Include="frmMatco_u.pas">
             <Form>frmMatco</Form>
             <FormType>dfm</FormType>
@@ -122,6 +121,7 @@
             <Form>frmUser</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="user\user_u.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

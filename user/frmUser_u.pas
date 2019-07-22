@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  User_u, UserService_u, Vcl.StdCtrls, Vcl.Menus;
+  Vcl.StdCtrls, Vcl.Menus, User_u, UserService_u;
 
 type
     TfrmUser = class(TForm)
@@ -16,9 +16,9 @@ type
     User1: TMenuItem;
     User2: TMenuItem;
     procedure createClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure User1Click(Sender: TObject);
     procedure User2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     userService: TUserService;
     { Private declarations }
@@ -32,7 +32,6 @@ var
 implementation
 
 {$R *.dfm}
-
 uses frmMatco_u;
 
 procedure TfrmUser.createClick(Sender: TObject);
