@@ -9,7 +9,7 @@ type
   TUserService = class
   private
     { Private declarations }
-    userResource: TUserResource;
+    userResource:TUserResource;
   public
     { Public declarations }
     constructor create;
@@ -17,14 +17,13 @@ type
   end;
 
 implementation
+  constructor TUserService.create;
+  begin
+      userResource := TUserResource.Create;
+  end;
 
-constructor TUserService.create;
-begin
-    userResource := TUserResource.Create;
-end;
-
-procedure TUserService.save(user: TUser);
-begin
+  procedure TUserService.save(user: TUser);
+  begin
     userResource.save(user);
-end;
+  end;
 end.

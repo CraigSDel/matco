@@ -1,7 +1,7 @@
 object frmMatco: TfrmMatco
   Left = 0
   Top = 0
-  Caption = 'frmMatco'
+  Caption = 'Matco'
   ClientHeight = 201
   ClientWidth = 447
   Color = clBtnFace
@@ -10,21 +10,18 @@ object frmMatco: TfrmMatco
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  Menu = MainMenu1
+  Menu = MatcoMainMenu
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object MainMenu1: TMainMenu
+  object MatcoMainMenu: TMainMenu
     Left = 8
-    Top = 168
-    object icket1: TMenuItem
-      Caption = 'Ticket'
-      OnClick = icket1Click
-    end
+    Top = 8
     object User1: TMenuItem
+      Caption = 'Ticket'
+    end
+    object User2: TMenuItem
       Caption = 'User'
-      OnClick = User1Click
     end
   end
 end

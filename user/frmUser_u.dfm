@@ -10,21 +10,20 @@ object frmUser: TfrmUser
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  Menu = MainMenu1
+  Menu = MatcoMainMenu
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Description: TLabel
     Left = 8
     Top = 8
-    Width = 53
+    Width = 42
     Height = 13
-    Caption = 'Description'
+    Caption = 'Fullname'
   end
   object create: TButton
-    Left = 121
-    Top = 32
+    Left = 102
+    Top = 35
     Width = 75
     Height = 25
     Caption = 'Create'
@@ -32,23 +31,20 @@ object frmUser: TfrmUser
     OnClick = createClick
   end
   object RoleEdit: TEdit
-    Left = 75
-    Top = 5
+    Left = 56
+    Top = 8
     Width = 121
     Height = 21
     TabOrder = 1
-    Text = 'RoleEdit'
   end
-  object MainMenu1: TMainMenu
-    Left = 16
-    Top = 232
+  object MatcoMainMenu: TMainMenu
+    Left = 600
+    Top = 240
     object User1: TMenuItem
-      Caption = 'User'
-      OnClick = User1Click
-    end
-    object icket1: TMenuItem
       Caption = 'Ticket'
-      OnClick = icket1Click
+    end
+    object User2: TMenuItem
+      Caption = 'User'
     end
   end
 end

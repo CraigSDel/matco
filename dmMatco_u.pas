@@ -8,10 +8,9 @@ uses
 type
     TDMMatco = class(TDataModule)
     MatcoADOConnection: TADOConnection;
-    tblTicket: TADOTable;
-    TicketDataSource: TDataSource;
-    tblUser: TADOTable;
-    UserDataSource: TDataSource;
+    RoleDataSource: TDataSource;
+    TicketTable: TADOTable;
+    UserTable: TADOTable;
   private
     { Private declarations }
   public

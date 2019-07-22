@@ -10,23 +10,23 @@ type
   private
     { Private declarations }
   public
+    { Public declarations }
     procedure save(user: TUser);
   end;
 
 implementation
 
-{ TRoleReource }
-
 procedure TUserResource.save(user: TUser);
 begin
- with DMMatco do
-   begin
-    tblUser.Open;
-    tblUser.Insert;
-    tblUser['full_name'] := user.getFullname;
-    tblUser.Post;
-    tblUser.Close;
-   end;
+  with DMMatco do
+  begin
+    UserTable.Open;
+    UserTable.Insert;
+    UserTable['id'] := user.getId;
+    UserTable['full_name'] := user.getFullname;
+    UserTable.Post;
+    UserTable.Close;
+  end;
 end;
 
 end.
