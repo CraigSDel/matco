@@ -9,8 +9,8 @@ uses
   UserResource_u in 'user\UserResource_u.pas',
   UserService_u in 'user\UserService_u.pas',
   User_u in 'user\User_u.pas',
-  frmUser_u in 'user\frmUser_u.pas' {frmUser},
-  frmMatco_u in 'frmMatco_u.pas' {frmMatco};
+  frmMatco_u in 'frmMatco_u.pas' {frmMatco},
+  frmUser_u in 'user\frmUser_u.pas' {frmUser};
 
 {$R *.res}
 

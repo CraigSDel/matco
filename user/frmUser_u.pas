@@ -5,11 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  frmMatco_u, User_u, UserService_u, Vcl.StdCtrls,
-  Vcl.Menus;
+  User_u, UserService_u, Vcl.StdCtrls, Vcl.Menus;
 
 type
-  TfrmUser = class(TForm)
+    TfrmUser = class(TForm)
     MatcoMainMenu: TMainMenu;
     Description: TLabel;
     create: TButton;
@@ -33,6 +32,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses frmMatco_u;
 
 procedure TfrmUser.createClick(Sender: TObject);
 var
