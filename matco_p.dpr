@@ -17,9 +17,9 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TfrmMatco, TfrmMatco);
+  Application.CreateForm(TfrmMatco, frmMatco);
   Application.CreateForm(TDMMatco, DMMatco);
-  Application.CreateForm(TfrmUser, TfrmUser);
+  Application.CreateForm(TfrmUser, frmUser);
   Application.Run;
 end.
 
