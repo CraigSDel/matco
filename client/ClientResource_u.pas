@@ -1,4 +1,4 @@
-unit UserResource_u;
+unit ClientResource_u;
 
 interface
 
@@ -31,8 +31,8 @@ begin
     begin
       if tblClient['id'] = id then
       begin
-        client.setId(tblUser['id']);
-        client.setFullname(tblUser['full_name']);
+        client.setId(tblClient['id']);
+        client.setClientName(tblClient['client_name']);
         result := client;
       end
       else
@@ -41,26 +41,32 @@ begin
   end;
 end;
 
-procedure TClientResource.save(user: TClient);
+procedure TClientResource.save(client: TClient);
 begin
   with DMMatco do
   begin
     tblClient.Open;
     tblClient.Insert;
-    tblClient['full_name'] := user.getFullname;
+    tblClient['client_name'] := client.getClientName;
+    tblClient['contact_person'] := client.getContactPerson;
+    tblClient['phone_number'] := client.getPhoneNumber;
+    tblClient['email'] := client.getEmail;
     tblClient.Post;
     tblClient.Close;
   end;
 end;
 
-procedure TClientResource.update(user: TClient);
+procedure TClientResource.update(client: TClient);
 begin
   with DMMatco do
   begin
     tblClient.Open;
     tblClient.UpdateRecord;
-    tblClient['id'] := user.getId;
-    tblClient['full_name'] := user.getFullname;
+    tblClient['id'] := client.getId;
+    tblClient['client_name'] := client.getClientName;
+    tblClient['contact_person'] := client.getContactPerson;
+    tblClient['phone_number'] := client.getPhoneNumber;
+    tblClient['email'] := client.getEmail;
     tblClient.Post;
     tblClient.Close;
   end;

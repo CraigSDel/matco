@@ -12,9 +12,11 @@ type
     MatcoMainMenu: TMainMenu;
     User1: TMenuItem;
     User2: TMenuItem;
+    Client1: TMenuItem;
     procedure User1Click(Sender: TObject);
     procedure User2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure Client1Click(Sender: TObject);
   private
     userService: TUserService;
     { Private declarations }
@@ -28,7 +30,14 @@ var
 implementation
 
 {$R *.dfm}
-uses frmUser_u;
+uses frmUser_u, frmClient_u;
+
+procedure TfrmMatco.Client1Click(Sender: TObject);
+begin
+  frmClient.Show;
+  frmMatco.Hide;
+  frmUser.Hide;
+end;
 
 procedure TfrmMatco.FormCreate(Sender: TObject);
 begin

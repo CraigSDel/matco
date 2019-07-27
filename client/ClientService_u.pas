@@ -13,8 +13,8 @@ type
   public
     { Public declarations }
     constructor create;
-    procedure save(user: TClient);
-    function findById(id: integer): TClient;
+    procedure save(pClient: TClient);
+    function findById(pId: integer): TClient;
   end;
 
 implementation
@@ -24,14 +24,14 @@ begin
   clientResource := TClientResource.create;
 end;
 
-function TClientService.findById(id: integer): TClient;
+function TClientService.findById(pId: integer): TClient;
 begin
-  result := clientResource.findById(id);
+  result := clientResource.findById(pId);
 end;
 
-procedure TClientService.save(client: TClient);
+procedure TClientService.save(pClient: TClient);
 begin
-  clientResource.save(client);
+  clientResource.save(pClient);
 end;
 
 end.

@@ -1,77 +1,77 @@
-unit frmUser_u;
+unit frmClient_u;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  Vcl.StdCtrls, Data.DB, Vcl.Menus, User_u, UserService_u, Vcl.Samples.Spin,
+  Vcl.StdCtrls, Data.DB, Vcl.Menus, Client_u, ClientService_u, Vcl.Samples.Spin,
   Vcl.Grids, Vcl.DBGrids, dmMatco_u;
 
 type
-    TfrmUser = class(TForm)
+    TfrmClient = class(TForm)
     MatcoMainMenu: TMainMenu;
     Description: TLabel;
     create: TButton;
     edtFullname: TEdit;
-    User1: TMenuItem;
-    User2: TMenuItem;
-    lblUser: TLabel;
-    btnFindUser: TButton;
-    spnEdtUserID: TSpinEdit;
-    DBGrid1: TDBGrid;
+    Client1: TMenuItem;
+    Client2: TMenuItem;
+    lblClient: TLabel;
+    btnFindClient: TButton;
+    spnEdtClientID: TSpinEdit;
+    dbgClient: TDBGrid;
     procedure createClick(Sender: TObject);
-    procedure User1Click(Sender: TObject);
-    procedure User2Click(Sender: TObject);
+    procedure Client1Click(Sender: TObject);
+    procedure Client2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure btnFindUserClick(Sender: TObject);
+    procedure btnFindClientClick(Sender: TObject);
   private
-    userService: TUserService;
+    ClientService: TClientService;
     { Private declarations }
   public
     { Public declarations }
   end;
 
 var
-  frmUser: TfrmUser;
+  frmClient: TfrmClient;
 
 implementation
 
 {$R *.dfm}
 uses frmMatco_u;
 
-procedure TfrmUser.btnFindUserClick(Sender: TObject);
+procedure TfrmClient.btnFindClientClick(Sender: TObject);
 var
-  user: TUser;
+  Client: TClient;
 begin
-  user := userService.findById(spnEdtUserID.Value);
+  Client := ClientService.findById(spnEdtClientID.Value);
 end;
 
-procedure TfrmUser.createClick(Sender: TObject);
+procedure TfrmClient.createClick(Sender: TObject);
 var
-  user: TUser;
+  Client: TClient;
 begin
-  user := TUser.create;
-  user.setFullname(edtFullname.Text);
-  userService.save(user);
+  Client := TClient.create;
+  Client.setClientName(edtFullname.Text);
+  ClientService.save(Client);
 end;
 
-procedure TfrmUser.FormCreate(Sender: TObject);
+procedure TfrmClient.FormCreate(Sender: TObject);
 begin
 
-  userService := TUserService.create;
+  ClientService := TClientService.create;
 end;
 
-procedure TfrmUser.User1Click(Sender: TObject);
+procedure TfrmClient.Client1Click(Sender: TObject);
 begin
   frmMatco.Show;
-  frmUser.Hide;
+  frmClient.Hide;
 end;
 
-procedure TfrmUser.User2Click(Sender: TObject);
+procedure TfrmClient.Client2Click(Sender: TObject);
 begin
   frmMatco.Hide;
-  frmUser.Show;
+  frmClient.Show;
 end;
 
 end.

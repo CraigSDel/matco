@@ -20,11 +20,13 @@ type
     btnFindUser: TButton;
     spnEdtUserID: TSpinEdit;
     DBGrid1: TDBGrid;
+    Client1: TMenuItem;
     procedure createClick(Sender: TObject);
     procedure User1Click(Sender: TObject);
     procedure User2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnFindUserClick(Sender: TObject);
+    procedure Client1Click(Sender: TObject);
   private
     userService: TUserService;
     { Private declarations }
@@ -38,7 +40,7 @@ var
 implementation
 
 {$R *.dfm}
-uses frmMatco_u;
+uses frmMatco_u,frmClient_u;
 
 procedure TfrmUser.btnFindUserClick(Sender: TObject);
 var
@@ -58,7 +60,6 @@ end;
 
 procedure TfrmUser.FormCreate(Sender: TObject);
 begin
-
   userService := TUserService.create;
 end;
 
@@ -70,8 +71,15 @@ end;
 
 procedure TfrmUser.User2Click(Sender: TObject);
 begin
+  frmClient.Show;
   frmMatco.Hide;
   frmUser.Show;
 end;
 
+procedure TfrmUser.Client1Click(Sender: TObject);
+begin
+  frmClient.Show;
+  frmMatco.Hide;
+  frmUser.Hide;
+end;
 end.
