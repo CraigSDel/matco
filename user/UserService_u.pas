@@ -9,21 +9,29 @@ type
   TUserService = class
   private
     { Private declarations }
-    userResource:TUserResource;
+    userResource: TUserResource;
   public
     { Public declarations }
     constructor create;
     procedure save(user: TUser);
+    function findById(id: integer): TUser;
   end;
 
 implementation
-  constructor TUserService.create;
-  begin
-      userResource := TUserResource.Create;
-  end;
 
-  procedure TUserService.save(user: TUser);
-  begin
-    userResource.save(user);
-  end;
+constructor TUserService.create;
+begin
+  userResource := TUserResource.create;
+end;
+
+function TUserService.findById(id: integer): TUser;
+begin
+  result := userResource.findById(id);
+end;
+
+procedure TUserService.save(user: TUser);
+begin
+  userResource.save(user);
+end;
+
 end.

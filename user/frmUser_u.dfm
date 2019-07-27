@@ -22,6 +22,13 @@ object frmUser: TfrmUser
     Height = 13
     Caption = 'Fullname'
   end
+  object lblUser: TLabel
+    Left = 8
+    Top = 72
+    Width = 36
+    Height = 13
+    Caption = 'User ID'
+  end
   object create: TButton
     Left = 102
     Top = 35
@@ -31,12 +38,43 @@ object frmUser: TfrmUser
     TabOrder = 0
     OnClick = createClick
   end
-  object RoleEdit: TEdit
+  object edtFullname: TEdit
     Left = 56
     Top = 8
     Width = 121
     Height = 21
     TabOrder = 1
+  end
+  object btnFindUser: TButton
+    Left = 102
+    Top = 96
+    Width = 75
+    Height = 25
+    Caption = 'Find'
+    TabOrder = 2
+    OnClick = btnFindUserClick
+  end
+  object spnEdtUserID: TSpinEdit
+    Left = 56
+    Top = 66
+    Width = 121
+    Height = 22
+    MaxValue = 0
+    MinValue = 0
+    TabOrder = 3
+    Value = 0
+  end
+  object DBGrid1: TDBGrid
+    Left = 183
+    Top = 8
+    Width = 320
+    Height = 120
+    TabOrder = 4
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
   end
   object MatcoMainMenu: TMainMenu
     Left = 600
