@@ -1,7 +1,7 @@
-object frmClient: TfrmClient
+object frmTicket: TfrmTicket
   Left = 0
   Top = 0
-  Caption = 'Client'
+  Caption = 'Ticket'
   ClientHeight = 279
   ClientWidth = 635
   Color = clBtnFace
@@ -22,12 +22,12 @@ object frmClient: TfrmClient
     Height = 13
     Caption = 'Fullname'
   end
-  object lblClient: TLabel
+  object lblTicket: TLabel
     Left = 8
     Top = 72
-    Width = 41
+    Width = 42
     Height = 13
-    Caption = 'Client ID'
+    Caption = 'Ticket ID'
   end
   object create: TButton
     Left = 102
@@ -45,16 +45,16 @@ object frmClient: TfrmClient
     Height = 21
     TabOrder = 1
   end
-  object btnFindClient: TButton
+  object btnFindTicket: TButton
     Left = 102
     Top = 96
     Width = 75
     Height = 25
     Caption = 'Find'
     TabOrder = 2
-    OnClick = btnFindClientClick
+    OnClick = btnFindTicketClick
   end
-  object spnEdtClientID: TSpinEdit
+  object spnEdtTicketID: TSpinEdit
     Left = 56
     Top = 66
     Width = 121
@@ -64,12 +64,11 @@ object frmClient: TfrmClient
     TabOrder = 3
     Value = 0
   end
-  object dbgClient: TDBGrid
+  object DBGrid1: TDBGrid
     Left = 183
     Top = 8
     Width = 320
     Height = 120
-    DataSource = DMMatco.ClientDataSource
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

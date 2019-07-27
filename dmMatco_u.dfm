@@ -61,4 +61,32 @@ object DMMatco: TDMMatco
     Left = 16
     Top = 112
   end
+  object tblProject: TADOTable
+    Active = True
+    Connection = MatcoADOConnection
+    CursorType = ctStatic
+    TableDirect = True
+    TableName = 'users'
+    Left = 136
+    Top = 64
+  end
+  object DataSourceProject: TDataSource
+    DataSet = tblProject
+    Left = 136
+    Top = 112
+  end
+  object tblProjectTicket: TADOTable
+    Connection = MatcoADOConnection
+    CursorType = ctStatic
+    LockType = ltReadOnly
+    TableDirect = True
+    TableName = 'project_tickets'
+    Left = 176
+    Top = 64
+  end
+  object DataSourceProjectTicket: TDataSource
+    DataSet = tblProjectTicket
+    Left = 176
+    Top = 112
+  end
 end

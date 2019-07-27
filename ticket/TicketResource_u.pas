@@ -12,9 +12,33 @@ type
   public
     { Public declarations }
     procedure save(ticket: TTicket);
+    function findById(id: integer): TTicket;
   end;
 
 implementation
+
+function TTicketResource.findById(id: integer): TTicket;
+var
+  Ticket: TTicket;
+begin
+  Ticket := TTicket.create;
+  with DMMatco do
+  begin
+    tblTicket.Open;
+    tblTicket.First;
+    while not tblTicket.Eof do
+    begin
+      if tblTicket['id'] = id then
+      begin
+        Ticket.setId(tblProject['id']);
+        Ticket.setTicketNumber(tblProject['description']);
+        result := Ticket;
+      end
+      else
+        tblProject.Next;
+    end;
+  end;
+end;
 
 procedure TTicketResource.save(ticket: TTicket);
 begin

@@ -14,15 +14,13 @@ type
     Description: TLabel;
     create: TButton;
     edtFullname: TEdit;
-    Client1: TMenuItem;
-    Client2: TMenuItem;
+    Home: TMenuItem;
     lblClient: TLabel;
     btnFindClient: TButton;
     spnEdtClientID: TSpinEdit;
     dbgClient: TDBGrid;
     procedure createClick(Sender: TObject);
-    procedure Client1Click(Sender: TObject);
-    procedure Client2Click(Sender: TObject);
+    procedure HomeClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnFindClientClick(Sender: TObject);
   private
@@ -62,16 +60,10 @@ begin
   ClientService := TClientService.create;
 end;
 
-procedure TfrmClient.Client1Click(Sender: TObject);
+procedure TfrmClient.HomeClick(Sender: TObject);
 begin
   frmMatco.Show;
   frmClient.Hide;
-end;
-
-procedure TfrmClient.Client2Click(Sender: TObject);
-begin
-  frmMatco.Hide;
-  frmClient.Show;
 end;
 
 end.

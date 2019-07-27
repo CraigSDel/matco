@@ -14,14 +14,13 @@ type
     Description: TLabel;
     create: TButton;
     edtFullname: TEdit;
-    Project1: TMenuItem;
-    Project2: TMenuItem;
+    Home: TMenuItem;
     lblProject: TLabel;
     btnFindProject: TButton;
     spnEdtProjectID: TSpinEdit;
     DBGrid1: TDBGrid;
     procedure createClick(Sender: TObject);
-    procedure Project1Click(Sender: TObject);
+    procedure HomeClick(Sender: TObject);
     procedure Project2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnFindProjectClick(Sender: TObject);
@@ -62,7 +61,7 @@ begin
   ProjectService := TProjectService.create;
 end;
 
-procedure TfrmProject.Project1Click(Sender: TObject);
+procedure TfrmProject.HomeClick(Sender: TObject);
 begin
   frmMatco.Show;
   frmProject.Hide;

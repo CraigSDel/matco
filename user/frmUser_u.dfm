@@ -62,7 +62,7 @@ object frmUser: TfrmUser
     MaxValue = 0
     MinValue = 1
     TabOrder = 3
-    Value = 1
+    Value = 0
   end
   object DBGrid1: TDBGrid
     Left = 183
@@ -80,17 +80,9 @@ object frmUser: TfrmUser
   object MatcoMainMenu: TMainMenu
     Left = 600
     Top = 240
-    object Client1: TMenuItem
-      Caption = 'Client'
-      OnClick = Client1Click
-    end
-    object User2: TMenuItem
-      Caption = 'User'
-      OnClick = User2Click
-    end
-    object User1: TMenuItem
-      Caption = 'Ticket'
-      OnClick = User1Click
+    object Home: TMenuItem
+      Caption = 'Home'
+      OnClick = HomeClick
     end
   end
 end

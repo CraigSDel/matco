@@ -14,7 +14,11 @@ uses
   client_u in 'client\client_u.pas',
   ClientResource_u in 'client\ClientResource_u.pas',
   ClientService_u in 'client\ClientService_u.pas',
-  frmClient_u in 'client\frmClient_u.pas' {frmClient};
+  frmClient_u in 'client\frmClient_u.pas' {frmClient},
+  frmProject_u in 'project\frmProject_u.pas' {frmProject},
+  project_u in 'project\project_u.pas',
+  ProjectResource_u in 'project\ProjectResource_u.pas',
+  ProjectService_u in 'project\ProjectService_u.pas';
 
 {$R *.res}
 
@@ -25,6 +29,7 @@ begin
   Application.CreateForm(TDMMatco, DMMatco);
   Application.CreateForm(TfrmUser, frmUser);
   Application.CreateForm(TfrmClient, frmClient);
+  Application.CreateForm(TfrmProject, frmProject);
   Application.Run;
 end.
 

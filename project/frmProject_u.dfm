@@ -25,7 +25,7 @@ object frmProject: TfrmProject
   object lblProject: TLabel
     Left = 8
     Top = 72
-    Width = 36
+    Width = 48
     Height = 13
     Caption = 'Project ID'
   end
@@ -62,14 +62,13 @@ object frmProject: TfrmProject
     MaxValue = 0
     MinValue = 1
     TabOrder = 3
-    Value = 0
+    Value = 1
   end
   object DBGrid1: TDBGrid
     Left = 183
     Top = 8
     Width = 320
     Height = 120
-    DataSource = DMMatco.ProjectDataSource
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -80,13 +79,9 @@ object frmProject: TfrmProject
   object MatcoMainMenu: TMainMenu
     Left = 600
     Top = 240
-    object Project1: TMenuItem
-      Caption = 'Ticket'
-      OnClick = Project1Click
-    end
-    object Project2: TMenuItem
-      Caption = 'Project'
-      OnClick = Project2Click
+    object Home: TMenuItem
+      Caption = 'Home'
+      OnClick = HomeClick
     end
   end
 end

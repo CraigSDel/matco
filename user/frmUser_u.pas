@@ -14,19 +14,15 @@ type
     Description: TLabel;
     create: TButton;
     edtFullname: TEdit;
-    User1: TMenuItem;
-    User2: TMenuItem;
     lblUser: TLabel;
     btnFindUser: TButton;
     spnEdtUserID: TSpinEdit;
     DBGrid1: TDBGrid;
-    Client1: TMenuItem;
+    Home: TMenuItem;
     procedure createClick(Sender: TObject);
-    procedure User1Click(Sender: TObject);
-    procedure User2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnFindUserClick(Sender: TObject);
-    procedure Client1Click(Sender: TObject);
+    procedure HomeClick(Sender: TObject);
   private
     userService: TUserService;
     { Private declarations }
@@ -63,23 +59,9 @@ begin
   userService := TUserService.create;
 end;
 
-procedure TfrmUser.User1Click(Sender: TObject);
+procedure TfrmUser.HomeClick(Sender: TObject);
 begin
   frmMatco.Show;
-  frmUser.Hide;
-end;
-
-procedure TfrmUser.User2Click(Sender: TObject);
-begin
-  frmClient.Show;
-  frmMatco.Hide;
-  frmUser.Show;
-end;
-
-procedure TfrmUser.Client1Click(Sender: TObject);
-begin
-  frmClient.Show;
-  frmMatco.Hide;
   frmUser.Hide;
 end;
 end.

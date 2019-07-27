@@ -14,6 +14,10 @@ type
     TicketDataSource: TDataSource;
     tblClient: TADOTable;
     ClientDataSource: TDataSource;
+    tblProject: TADOTable;
+    DataSourceProject: TDataSource;
+    tblProjectTicket: TADOTable;
+    DataSourceProjectTicket: TDataSource;
   private
     { Private declarations }
   public
