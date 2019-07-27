@@ -1,7 +1,7 @@
-object frmUser: TfrmUser
+object frmClient: TfrmClient
   Left = 0
   Top = 0
-  Caption = 'User'
+  Caption = 'Client'
   ClientHeight = 279
   ClientWidth = 635
   Color = clBtnFace
@@ -22,12 +22,12 @@ object frmUser: TfrmUser
     Height = 13
     Caption = 'Fullname'
   end
-  object lblUser: TLabel
+  object lblClient: TLabel
     Left = 8
     Top = 72
-    Width = 36
+    Width = 41
     Height = 13
-    Caption = 'User ID'
+    Caption = 'Client ID'
   end
   object create: TButton
     Left = 102
@@ -45,16 +45,16 @@ object frmUser: TfrmUser
     Height = 21
     TabOrder = 1
   end
-  object btnFindUser: TButton
+  object btnFindClient: TButton
     Left = 102
     Top = 96
     Width = 75
     Height = 25
     Caption = 'Find'
     TabOrder = 2
-    OnClick = btnFindUserClick
+    OnClick = btnFindClientClick
   end
-  object spnEdtUserID: TSpinEdit
+  object spnEdtClientID: TSpinEdit
     Left = 56
     Top = 66
     Width = 121
@@ -64,12 +64,12 @@ object frmUser: TfrmUser
     TabOrder = 3
     Value = 1
   end
-  object DBGrid1: TDBGrid
+  object dbgClient: TDBGrid
     Left = 183
     Top = 8
     Width = 320
     Height = 120
-    DataSource = DMMatco.UserDataSource
+    DataSource = DMMatco.ClientDataSource
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -81,16 +81,12 @@ object frmUser: TfrmUser
     Left = 600
     Top = 240
     object Client1: TMenuItem
-      Caption = 'Client'
+      Caption = 'Ticket'
       OnClick = Client1Click
     end
-    object User2: TMenuItem
-      Caption = 'User'
-      OnClick = User2Click
-    end
-    object User1: TMenuItem
-      Caption = 'Ticket'
-      OnClick = User1Click
+    object Client2: TMenuItem
+      Caption = 'Client'
+      OnClick = Client2Click
     end
   end
 end
