@@ -3,17 +3,19 @@ object DMMatco: TDMMatco
   Height = 289
   Width = 302
   object MatcoADOConnection: TADOConnection
+    Connected = True
     ConnectionString = 
       'Provider=Microsoft.Jet.OLEDB.4.0;User ID=Admin;Data Source=C:\my' +
-      'workspace\personal\github\matco\matco.mdb;Mode=Share Deny None;P' +
-      'ersist Security Info=False;Jet OLEDB:System database="";Jet OLED' +
-      'B:Registry Path="";Jet OLEDB:Database Password="";Jet OLEDB:Engi' +
-      'ne Type=5;Jet OLEDB:Database Locking Mode=1;Jet OLEDB:Global Par' +
-      'tial Bulk Ops=2;Jet OLEDB:Global Bulk Transactions=1;Jet OLEDB:N' +
-      'ew Database Password="";Jet OLEDB:Create System Database=False;J' +
-      'et OLEDB:Encrypt Database=False;Jet OLEDB:Don'#39't Copy Locale on C' +
-      'ompact=False;Jet OLEDB:Compact Without Replica Repair=False;Jet ' +
-      'OLEDB:SFP=False'
+      'workspace\impaq\tasks\it\pat\matco\matco.mdb;Mode=Share Deny Non' +
+      'e;Persist Security Info=False;Jet OLEDB:System database="";Jet O' +
+      'LEDB:Registry Path="";Jet OLEDB:Database Password="";Jet OLEDB:E' +
+      'ngine Type=5;Jet OLEDB:Database Locking Mode=1;Jet OLEDB:Global ' +
+      'Partial Bulk Ops=2;Jet OLEDB:Global Bulk Transactions=1;Jet OLED' +
+      'B:New Database Password="";Jet OLEDB:Create System Database=Fals' +
+      'e;Jet OLEDB:Encrypt Database=False;Jet OLEDB:Don'#39't Copy Locale o' +
+      'n Compact=False;Jet OLEDB:Compact Without Replica Repair=False;J' +
+      'et OLEDB:SFP=False'
+    Mode = cmShareDenyNone
     Provider = 'Microsoft.Jet.OLEDB.4.0'
     Left = 120
     Top = 8
@@ -24,6 +26,7 @@ object DMMatco: TDMMatco
     Top = 64
   end
   object tblTicket: TADOTable
+    Active = True
     Connection = MatcoADOConnection
     CursorType = ctStatic
     TableName = 'ticket'
@@ -31,6 +34,7 @@ object DMMatco: TDMMatco
     Top = 112
   end
   object tblUser: TADOTable
+    Active = True
     Connection = MatcoADOConnection
     CursorType = ctStatic
     TableDirect = True
