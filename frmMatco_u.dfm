@@ -12,6 +12,7 @@ object frmMatco: TfrmMatco
   Font.Style = []
   Menu = MatcoMainMenu
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object MatcoMainMenu: TMainMenu
@@ -19,9 +20,11 @@ object frmMatco: TfrmMatco
     Top = 8
     object User1: TMenuItem
       Caption = 'Ticket'
+      OnClick = User1Click
     end
     object User2: TMenuItem
       Caption = 'User'
+      OnClick = User2Click
     end
   end
 end

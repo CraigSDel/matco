@@ -20,16 +20,16 @@ procedure TTicketResource.save(ticket: TTicket);
 begin
   with DMMatco do
   begin
-    TicketTable.Open;
-    TicketTable.Insert;
-    TicketTable['id'] := ticket.getId;
-    TicketTable['ticket_number'] := ticket.getId;
-    TicketTable['description'] := ticket.getDescription;
-    TicketTable['date_created'] := ticket.getDateCreated;
-    TicketTable['assignee'] := ticket.getAssignee;
-    TicketTable['status'] := ticket.getStatus;
-    TicketTable.Post;
-    TicketTable.Close;
+    tblTicket.Open;
+    tblTicket.Insert;
+    tblTicket['id'] := ticket.getId;
+    tblTicket['ticket_number'] := ticket.getId;
+    tblTicket['description'] := ticket.getDescription;
+    tblTicket['date_created'] := ticket.getDateCreated;
+    tblTicket['assignee'] := ticket.getAssignee;
+    tblTicket['status'] := ticket.getStatus;
+    tblTicket.Post;
+    tblTicket.Close;
   end;
 end;
 
