@@ -22,16 +22,16 @@ object DMMatco: TDMMatco
   end
   object UserDataSource: TDataSource
     DataSet = tblUser
-    Left = 72
-    Top = 64
+    Left = 96
+    Top = 112
   end
   object tblTicket: TADOTable
     Active = True
     Connection = MatcoADOConnection
     CursorType = ctStatic
     TableName = 'ticket'
-    Left = 176
-    Top = 112
+    Left = 56
+    Top = 64
   end
   object tblUser: TADOTable
     Active = True
@@ -39,12 +39,26 @@ object DMMatco: TDMMatco
     CursorType = ctStatic
     TableDirect = True
     TableName = 'users'
-    Left = 72
-    Top = 112
+    Left = 96
+    Top = 64
   end
   object TicketDataSource: TDataSource
     DataSet = tblTicket
-    Left = 176
+    Left = 56
+    Top = 112
+  end
+  object tblClient: TADOTable
+    Active = True
+    Connection = MatcoADOConnection
+    CursorType = ctStatic
+    TableDirect = True
+    TableName = 'client'
+    Left = 16
     Top = 64
+  end
+  object ClientDataSource: TDataSource
+    DataSet = tblClient
+    Left = 16
+    Top = 112
   end
 end
