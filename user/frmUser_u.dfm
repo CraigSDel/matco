@@ -69,6 +69,7 @@ object frmUser: TfrmUser
     Top = 8
     Width = 320
     Height = 120
+    DataSource = DMMatco.UserDataSource
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
