@@ -52,7 +52,6 @@ begin
     tblClient['phone_number'] := client.getPhoneNumber;
     tblClient['email'] := client.getEmail;
     tblClient.Post;
-    tblClient.Close;
   end;
 end;
 
@@ -68,7 +67,6 @@ begin
     tblClient['phone_number'] := client.getPhoneNumber;
     tblClient['email'] := client.getEmail;
     tblClient.Post;
-    tblClient.Close;
   end;
 
 end;

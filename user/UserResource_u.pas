@@ -49,7 +49,6 @@ begin
     tblUser.Insert;
     tblUser['full_name'] := user.getFullname;
     tblUser.Post;
-    tblUser.Close;
   end;
 end;
 
@@ -62,7 +61,6 @@ begin
     tblUser['id'] := user.getId;
     tblUser['full_name'] := user.getFullname;
     tblUser.Post;
-    tblUser.Close;
   end;
 
 end;

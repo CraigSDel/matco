@@ -64,11 +64,12 @@ object frmProject: TfrmProject
     TabOrder = 3
     Value = 1
   end
-  object DBGrid1: TDBGrid
+  object DBGridProject: TDBGrid
     Left = 183
     Top = 8
-    Width = 320
-    Height = 120
+    Width = 370
+    Height = 161
+    DataSource = DMMatco.DataSourceProject
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

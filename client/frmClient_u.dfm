@@ -62,13 +62,14 @@ object frmClient: TfrmClient
     MaxValue = 0
     MinValue = 1
     TabOrder = 3
-    Value = 0
+    Value = 1
   end
   object dbgClient: TDBGrid
+    AlignWithMargins = True
     Left = 183
     Top = 8
-    Width = 320
-    Height = 120
+    Width = 426
+    Height = 193
     DataSource = DMMatco.ClientDataSource
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET

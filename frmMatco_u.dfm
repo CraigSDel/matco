@@ -18,17 +18,29 @@ object frmMatco: TfrmMatco
   object MatcoMainMenu: TMainMenu
     Left = 8
     Top = 8
-    object Client1: TMenuItem
+    object Home: TMenuItem
+      Caption = 'Home'
+      OnClick = HomeClick
+    end
+    object Client: TMenuItem
       Caption = 'Client'
-      OnClick = Client1Click
+      OnClick = ClientClick
     end
-    object User1: TMenuItem
+    object Project: TMenuItem
+      Caption = 'Project'
+      OnClick = ProjectClick
+    end
+    object ProjectTicket: TMenuItem
+      Caption = 'ProjectTicket'
+      OnClick = ProjectTicketClick
+    end
+    object Ticket: TMenuItem
       Caption = 'Ticket'
-      OnClick = User1Click
+      OnClick = TicketClick
     end
-    object User2: TMenuItem
+    object User: TMenuItem
       Caption = 'User'
-      OnClick = User2Click
+      OnClick = UserClick
     end
   end
 end

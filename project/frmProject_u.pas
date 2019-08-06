@@ -18,7 +18,7 @@ type
     lblProject: TLabel;
     btnFindProject: TButton;
     spnEdtProjectID: TSpinEdit;
-    DBGrid1: TDBGrid;
+    DBGridProject: TDBGrid;
     procedure createClick(Sender: TObject);
     procedure HomeClick(Sender: TObject);
     procedure Project2Click(Sender: TObject);
