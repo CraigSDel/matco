@@ -62,9 +62,9 @@ object frmUser: TfrmUser
     MaxValue = 0
     MinValue = 1
     TabOrder = 3
-    Value = 0
+    Value = 1
   end
-  object DBGrid1: TDBGrid
+  object DBGridUser: TDBGrid
     Left = 183
     Top = 8
     Width = 320
@@ -76,6 +76,17 @@ object frmUser: TfrmUser
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'id'
+        Visible = False
+      end
+      item
+        Expanded = False
+        FieldName = 'full_name'
+        Visible = True
+      end>
   end
   object MatcoMainMenu: TMainMenu
     Left = 600

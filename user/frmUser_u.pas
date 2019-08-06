@@ -17,7 +17,7 @@ type
     lblUser: TLabel;
     btnFindUser: TButton;
     spnEdtUserID: TSpinEdit;
-    DBGrid1: TDBGrid;
+    DBGridUser: TDBGrid;
     Home: TMenuItem;
     procedure createClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
