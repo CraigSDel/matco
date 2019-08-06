@@ -108,9 +108,6 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="ticket\Ticket_u.pas"/>
-        <DCCReference Include="ticket\TicketService_u.pas"/>
-        <DCCReference Include="ticket\TicketResource_u.pas"/>
         <DCCReference Include="user\UserResource_u.pas"/>
         <DCCReference Include="user\UserService_u.pas"/>
         <DCCReference Include="frmMatco_u.pas">
@@ -121,7 +118,7 @@
             <Form>frmUser</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="user\user_u.pas"/>
+        <DCCReference Include="user\User_u.pas"/>
         <DCCReference Include="client\client_u.pas"/>
         <DCCReference Include="client\ClientResource_u.pas"/>
         <DCCReference Include="client\ClientService_u.pas"/>
@@ -129,6 +126,13 @@
             <Form>frmClient</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="project_ticket\frmProjectTicket_u.pas">
+            <Form>frmProjectTicket</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="project_ticket\ProjectTicket_u.pas"/>
+        <DCCReference Include="project_ticket\ProjectTicketResource_u.pas"/>
+        <DCCReference Include="project_ticket\ProjectTicketService_u.pas"/>
         <DCCReference Include="project\frmProject_u.pas">
             <Form>frmProject</Form>
             <FormType>dfm</FormType>
@@ -136,6 +140,13 @@
         <DCCReference Include="project\project_u.pas"/>
         <DCCReference Include="project\ProjectResource_u.pas"/>
         <DCCReference Include="project\ProjectService_u.pas"/>
+        <DCCReference Include="ticket\frmTicket_u.pas">
+            <Form>frmTicket</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ticket\Ticket_u.pas"/>
+        <DCCReference Include="ticket\TicketResource_u.pas"/>
+        <DCCReference Include="ticket\TicketService_u.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

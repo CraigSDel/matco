@@ -49,7 +49,6 @@ begin
     tblProject.Insert;
     tblProject['full_name'] := Project.getFullname;
     tblProject.Post;
-    tblProject.Close;
   end;
 end;
 
@@ -62,7 +61,6 @@ begin
     tblProject['id'] := Project.getId;
     tblProject['full_name'] := Project.getFullname;
     tblProject.Post;
-    tblProject.Close;
   end;
 
 end;

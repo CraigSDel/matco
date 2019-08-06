@@ -49,7 +49,6 @@ begin
     tblProjectTicket['project_id'] := ProjectTicket.getProjectId;
     tblProjectTicket['ticket_id'] := ProjectTicket.getTicketId;
     tblProjectTicket.Post;
-    tblProjectTicket.Close;
   end;
 end;
 

@@ -53,7 +53,6 @@ begin
     tblTicket['assignee'] := ticket.getAssignee;
     tblTicket['status'] := ticket.getStatus;
     tblTicket.Post;
-    tblTicket.Close;
   end;
 end;
 
