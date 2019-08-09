@@ -2,7 +2,7 @@ object frmClient: TfrmClient
   Left = 0
   Top = 0
   Caption = 'Client'
-  ClientHeight = 279
+  ClientHeight = 299
   ClientWidth = 635
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -10,80 +10,107 @@ object frmClient: TfrmClient
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  Menu = MatcoMainMenu
   OldCreateOrder = False
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Description: TLabel
     Left = 8
-    Top = 8
-    Width = 42
+    Top = 43
+    Width = 27
     Height = 13
-    Caption = 'Fullname'
+    Caption = 'Name'
   end
-  object lblClient: TLabel
+  object Client: TLabel
     Left = 8
-    Top = 72
-    Width = 41
+    Top = 8
+    Width = 11
     Height = 13
-    Caption = 'Client ID'
+    Caption = 'ID'
   end
-  object create: TButton
+  object lblContactPerson: TLabel
+    Left = 8
+    Top = 70
+    Width = 74
+    Height = 13
+    Caption = 'Contact Person'
+  end
+  object lblEmail: TLabel
+    Left = 8
+    Top = 97
+    Width = 24
+    Height = 13
+    Caption = 'Email'
+  end
+  object lblPhoneNumber: TLabel
+    Left = 8
+    Top = 124
+    Width = 70
+    Height = 13
+    Caption = 'Phone Number'
+  end
+  object DBTextClientID: TDBText
     Left = 102
-    Top = 35
+    Top = 8
+    Width = 156
+    Height = 17
+    DataField = 'id'
+    DataSource = DMMatco.ClientDataSource
+  end
+  object BitBtnSave: TBitBtn
+    Left = 102
+    Top = 156
     Width = 75
     Height = 25
-    Caption = 'Create'
+    Kind = bkOK
+    NumGlyphs = 2
     TabOrder = 0
-    OnClick = createClick
+    OnClick = BitBtnSaveClick
   end
-  object edtFullname: TEdit
-    Left = 56
-    Top = 8
-    Width = 121
-    Height = 21
-    TabOrder = 1
-  end
-  object btnFindClient: TButton
-    Left = 102
-    Top = 96
+  object BitBtnCancel: TBitBtn
+    Left = 183
+    Top = 156
     Width = 75
     Height = 25
-    Caption = 'Find'
+    Kind = bkCancel
+    NumGlyphs = 2
+    TabOrder = 1
+    OnClick = BitBtnCancelClick
+  end
+  object DBEditName: TDBEdit
+    Left = 102
+    Top = 40
+    Width = 156
+    Height = 21
+    DataField = 'client_name'
+    DataSource = DMMatco.ClientDataSource
     TabOrder = 2
-    OnClick = btnFindClientClick
   end
-  object spnEdtClientID: TSpinEdit
-    Left = 56
-    Top = 66
-    Width = 121
-    Height = 22
-    MaxValue = 0
-    MinValue = 1
+  object DBEditContactPerson: TDBEdit
+    Left = 102
+    Top = 67
+    Width = 156
+    Height = 21
+    DataField = 'contact_person'
+    DataSource = DMMatco.ClientDataSource
     TabOrder = 3
-    Value = 1
   end
-  object dbgClient: TDBGrid
-    AlignWithMargins = True
-    Left = 183
-    Top = 8
-    Width = 426
-    Height = 193
+  object DBEditEmail: TDBEdit
+    Left = 102
+    Top = 94
+    Width = 156
+    Height = 21
+    DataField = 'email'
     DataSource = DMMatco.ClientDataSource
     TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
   end
-  object MatcoMainMenu: TMainMenu
-    Left = 600
-    Top = 240
-    object Home: TMenuItem
-      Caption = 'Home'
-      OnClick = HomeClick
-    end
+  object DBEditPhoneNumber: TDBEdit
+    Left = 102
+    Top = 121
+    Width = 156
+    Height = 21
+    DataField = 'phone_number'
+    DataSource = DMMatco.ClientDataSource
+    TabOrder = 5
   end
 end

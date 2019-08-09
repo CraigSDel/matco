@@ -66,7 +66,7 @@ object DMMatco: TDMMatco
     Connection = MatcoADOConnection
     CursorType = ctStatic
     TableDirect = True
-    TableName = 'users'
+    TableName = 'project'
     Left = 136
     Top = 64
   end
@@ -99,17 +99,6 @@ object DMMatco: TDMMatco
     SQL.Strings = (
       'SELECT * FROM Client')
     Left = 16
-    Top = 168
-  end
-  object ADOQuery1: TADOQuery
-    Active = True
-    Connection = MatcoADOConnection
-    CursorType = ctStatic
-    DataSource = ClientDataSource
-    Parameters = <>
-    SQL.Strings = (
-      'SELECT * FROM Client')
-    Left = 56
     Top = 168
   end
 end

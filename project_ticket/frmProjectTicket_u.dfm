@@ -62,20 +62,7 @@ object frmProjectTicket: TfrmProjectTicket
     MaxValue = 0
     MinValue = 1
     TabOrder = 3
-    Value = 0
-  end
-  object DBGridProjectTicket: TDBGrid
-    Left = 183
-    Top = 8
-    Width = 320
-    Height = 120
-    DataSource = DMMatco.DataSourceProjectTicket
-    TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
+    Value = 1
   end
   object MatcoMainMenu: TMainMenu
     Left = 600

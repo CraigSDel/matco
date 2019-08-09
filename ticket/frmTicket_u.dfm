@@ -74,20 +74,7 @@ object frmTicket: TfrmTicket
     MaxValue = 0
     MinValue = 1
     TabOrder = 2
-    Value = 0
-  end
-  object DBGridTicket: TDBGrid
-    Left = 8
-    Top = 8
-    Width = 619
-    Height = 120
-    DataSource = DMMatco.TicketDataSource
-    TabOrder = 3
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
+    Value = 1
   end
   object btnFindTicket: TButton
     Left = 542
@@ -95,7 +82,7 @@ object frmTicket: TfrmTicket
     Width = 75
     Height = 25
     Caption = 'Find'
-    TabOrder = 4
+    TabOrder = 3
     OnClick = btnFindTicketClick
   end
   object cmbAssignee: TComboBox
@@ -103,7 +90,7 @@ object frmTicket: TfrmTicket
     Top = 200
     Width = 145
     Height = 21
-    TabOrder = 5
+    TabOrder = 4
     Text = 'Assignee'
   end
   object edtDescription: TEdit
@@ -111,15 +98,28 @@ object frmTicket: TfrmTicket
     Top = 173
     Width = 145
     Height = 21
-    TabOrder = 6
+    TabOrder = 5
   end
   object cmbStatus: TComboBox
     Left = 96
     Top = 227
     Width = 145
     Height = 21
-    TabOrder = 7
+    TabOrder = 6
     Text = 'Status'
+  end
+  object DBGridTicket: TDBGrid
+    Left = 8
+    Top = 8
+    Width = 619
+    Height = 120
+    DataSource = DMMatco.TicketDataSource
+    TabOrder = 7
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
   end
   object MatcoMainMenu: TMainMenu
     Left = 728

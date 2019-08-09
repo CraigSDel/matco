@@ -6,31 +6,51 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, Data.DB, Vcl.Menus, User_u, UserService_u, frmUser_u,
-  frmClient_u, frmProject_u, frmProjectTicket_u, frmTicket_u, Vcl.ComCtrls;
+  frmClient_u, frmProject_u, frmProjectTicket_u, frmTicket_u, Vcl.ComCtrls,
+  Vcl.Buttons, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, dmMatco_u;
 
 type
   TfrmMatco = class(TForm)
+    Matco: TPageControl;
+    ProejctTicket: TTabSheet;
+    Client: TTabSheet;
+    dbgClient: TDBGrid;
+    DBGridProjectTicket: TDBGrid;
+    Panel2: TPanel;
+    BitBtnInsertClient: TBitBtn;
+    BitBtnEditClient: TBitBtn;
+    BitBtnDeleteClient: TBitBtn;
+    Panel1: TPanel;
+    BitBtnInsertProjectTicket: TBitBtn;
+    BitBtnEditProjectTicket: TBitBtn;
+    BitBtnDeleteProjectTicket: TBitBtn;
+    Project: TTabSheet;
+    TabSheetTicket: TTabSheet;
+    User: TTabSheet;
+    DBGrid1: TDBGrid;
+    Panel3: TPanel;
+    BitBtnInsertUser: TBitBtn;
+    BitBtnEditUser: TBitBtn;
+    BitBtnDeleteUser: TBitBtn;
+    Panel4: TPanel;
+    BitBtnInsertProject: TBitBtn;
+    BitBtnEditProject: TBitBtn;
+    BitBtnDeleteProject: TBitBtn;
+    Panel5: TPanel;
+    BitBtnInsertTicket: TBitBtn;
+    BitBtnEditTicket: TBitBtn;
+    BitBtnDeleteTicket: TBitBtn;
     MatcoMainMenu: TMainMenu;
-    Ticket: TMenuItem;
-    User: TMenuItem;
-    Client: TMenuItem;
-    ProjectTicket: TMenuItem;
-    Project: TMenuItem;
     Home: TMenuItem;
-    PageControl1: TPageControl;
-    TabSheet1: TTabSheet;
-    TabSheet2: TTabSheet;
-    procedure TicketClick(Sender: TObject);
-    procedure UserClick(Sender: TObject);
+    DBGrid3: TDBGrid;
+    DBGrid2: TDBGrid;
     procedure FormCreate(Sender: TObject);
-    procedure ClientClick(Sender: TObject);
-    procedure ProjectTicketClick(Sender: TObject);
-    procedure ProjectClick(Sender: TObject);
-    procedure HomeClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BitBtnInsertClientClick(Sender: TObject);
+    procedure BitBtnEditClientClick(Sender: TObject);
+    procedure BitBtnDeleteClientClick(Sender: TObject);
   private
     userService: TUserService;
-    procedure ChangeScreen(screenName: integer);
     { Private declarations }
   public
     { Public declarations }
@@ -43,31 +63,25 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmMatco.ChangeScreen(screenName: integer);
+procedure TfrmMatco.BitBtnEditClientClick(Sender: TObject);
 begin
-  frmClient.Hide;
-  frmProject.Hide;
-  frmProjectTicket.Hide;
-  frmTicket.Hide;
-  frmUser.Hide;
-  frmMatco.Hide;
+  DMMatco.tblClient.Edit;
+  frmClient := TfrmClient.Create(owner);
+  frmClient.ShowModal;
+end;
 
-  Case screenName of
-    0:
-      frmClient.Show;
-    1:
-      frmProject.Show;
-    2:
-      frmProjectTicket.Show;
-    3:
-      frmTicket.Show;
-    4:
-      frmUser.Show;
-    5:
-      frmMatco.Show;
-  else
-    frmMatco.Show;
-  end;
+procedure TfrmMatco.BitBtnDeleteClientClick(Sender: TObject);
+begin
+  DMMatco.tblClient.Delete;
+  frmClient := TfrmClient.Create(owner);
+  frmProjectTicket.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnInsertClientClick(Sender: TObject);
+begin
+  DMMatco.tblClient.Insert;
+  frmClient := TfrmClient.Create(owner);
+  frmClient.ShowModal;
 end;
 
 procedure TfrmMatco.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -77,37 +91,7 @@ end;
 
 procedure TfrmMatco.FormCreate(Sender: TObject);
 begin
-  userService := TUserService.create;
-end;
-
-procedure TfrmMatco.ClientClick(Sender: TObject);
-begin
-  ChangeScreen(0);
-end;
-
-procedure TfrmMatco.ProjectClick(Sender: TObject);
-begin
-  ChangeScreen(1);
-end;
-
-procedure TfrmMatco.ProjectTicketClick(Sender: TObject);
-begin
-  ChangeScreen(2);
-end;
-
-procedure TfrmMatco.TicketClick(Sender: TObject);
-begin
-  ChangeScreen(3);
-end;
-
-procedure TfrmMatco.UserClick(Sender: TObject);
-begin
-  ChangeScreen(4);
-end;
-
-procedure TfrmMatco.HomeClick(Sender: TObject);
-begin
-  ChangeScreen(5);
+  userService := TUserService.Create;
 end;
 
 end.

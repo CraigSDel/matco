@@ -2,7 +2,7 @@ object frmProject: TfrmProject
   Left = 0
   Top = 0
   Caption = 'Project'
-  ClientHeight = 279
+  ClientHeight = 299
   ClientWidth = 635
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -10,79 +10,75 @@ object frmProject: TfrmProject
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  Menu = MatcoMainMenu
   OldCreateOrder = False
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Description: TLabel
+  object CleintID: TLabel
+    Left = 8
+    Top = 43
+    Width = 40
+    Height = 13
+    Caption = 'Client Id'
+  end
+  object Client: TLabel
     Left = 8
     Top = 8
-    Width = 42
+    Width = 11
     Height = 13
-    Caption = 'Fullname'
+    Caption = 'ID'
   end
-  object lblProject: TLabel
-    Left = 8
-    Top = 72
-    Width = 48
-    Height = 13
-    Caption = 'Project ID'
-  end
-  object create: TButton
+  object TDBText
     Left = 102
-    Top = 35
-    Width = 75
-    Height = 25
-    Caption = 'Create'
-    TabOrder = 0
-    OnClick = createClick
-  end
-  object edtFullname: TEdit
-    Left = 56
     Top = 8
-    Width = 121
-    Height = 21
-    TabOrder = 1
-  end
-  object btnFindProject: TButton
-    Left = 102
-    Top = 96
-    Width = 75
-    Height = 25
-    Caption = 'Find'
-    TabOrder = 2
-    OnClick = btnFindProjectClick
-  end
-  object spnEdtProjectID: TSpinEdit
-    Left = 56
-    Top = 66
-    Width = 121
-    Height = 22
-    MaxValue = 0
-    MinValue = 1
-    TabOrder = 3
-    Value = 1
-  end
-  object DBGridProject: TDBGrid
-    Left = 183
-    Top = 8
-    Width = 370
-    Height = 161
+    Width = 156
+    Height = 17
+    DataField = 'project_name'
     DataSource = DMMatco.DataSourceProject
-    TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
   end
-  object MatcoMainMenu: TMainMenu
-    Left = 600
-    Top = 240
-    object Home: TMenuItem
-      Caption = 'Home'
-      OnClick = HomeClick
-    end
+  object Label1: TLabel
+    Left = 8
+    Top = 67
+    Width = 27
+    Height = 13
+    Caption = 'Name'
+  end
+  object BitBtnSave: TBitBtn
+    Left = 102
+    Top = 91
+    Width = 75
+    Height = 25
+    Kind = bkOK
+    NumGlyphs = 2
+    TabOrder = 0
+    OnClick = BitBtnSaveClick
+  end
+  object BitBtnCancel: TBitBtn
+    Left = 183
+    Top = 91
+    Width = 75
+    Height = 25
+    Kind = bkCancel
+    NumGlyphs = 2
+    TabOrder = 1
+    OnClick = BitBtnCancelClick
+  end
+  object TDBEdit
+    Left = 102
+    Top = 37
+    Width = 156
+    Height = 21
+    DataField = 'id'
+    DataSource = DMMatco.DataSourceProject
+    TabOrder = 2
+  end
+  object TDBEdit
+    Left = 102
+    Top = 64
+    Width = 156
+    Height = 21
+    DataField = 'project_name'
+    DataSource = DMMatco.DataSourceProject
+    TabOrder = 3
   end
 end

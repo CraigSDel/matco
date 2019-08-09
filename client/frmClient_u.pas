@@ -6,23 +6,25 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, Data.DB, Vcl.Menus, Client_u, ClientService_u, Vcl.Samples.Spin,
-  Vcl.Grids, Vcl.DBGrids, dmMatco_u;
+  Vcl.Grids, Vcl.DBGrids, dmMatco_u, Vcl.Buttons, Vcl.DBCtrls, Vcl.Mask;
 
 type
     TfrmClient = class(TForm)
-    MatcoMainMenu: TMainMenu;
     Description: TLabel;
-    create: TButton;
-    edtFullname: TEdit;
-    Home: TMenuItem;
-    lblClient: TLabel;
-    btnFindClient: TButton;
-    spnEdtClientID: TSpinEdit;
-    dbgClient: TDBGrid;
-    procedure createClick(Sender: TObject);
-    procedure HomeClick(Sender: TObject);
+    BitBtnSave: TBitBtn;
+    BitBtnCancel: TBitBtn;
+    DBEditName: TDBEdit;
+    Client: TLabel;
+    lblContactPerson: TLabel;
+    DBEditContactPerson: TDBEdit;
+    lblEmail: TLabel;
+    DBEditEmail: TDBEdit;
+    lblPhoneNumber: TLabel;
+    DBEditPhoneNumber: TDBEdit;
+    DBTextClientID: TDBText;
     procedure FormCreate(Sender: TObject);
-    procedure btnFindClientClick(Sender: TObject);
+    procedure BitBtnSaveClick(Sender: TObject);
+    procedure BitBtnCancelClick(Sender: TObject);
   private
     ClientService: TClientService;
     { Private declarations }
@@ -32,38 +34,26 @@ type
 
 var
   frmClient: TfrmClient;
+  is_edit_client: boolean;
 
 implementation
 
 {$R *.dfm}
 uses frmMatco_u;
 
-procedure TfrmClient.btnFindClientClick(Sender: TObject);
-var
-  Client: TClient;
+procedure TfrmClient.BitBtnSaveClick(Sender: TObject);
 begin
-  Client := ClientService.findById(spnEdtClientID.Value);
+   DMMatco.tblClient.Post;
 end;
 
-procedure TfrmClient.createClick(Sender: TObject);
-var
-  Client: TClient;
+procedure TfrmClient.BitBtnCancelClick(Sender: TObject);
 begin
-  Client := TClient.create;
-  Client.setClientName(edtFullname.Text);
-  ClientService.save(Client);
+   DMMatco.tblClient.Cancel;
 end;
 
 procedure TfrmClient.FormCreate(Sender: TObject);
 begin
-
   ClientService := TClientService.create;
-end;
-
-procedure TfrmClient.HomeClick(Sender: TObject);
-begin
-  frmMatco.Show;
-  frmClient.Hide;
 end;
 
 end.

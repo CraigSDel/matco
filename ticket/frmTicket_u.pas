@@ -16,7 +16,6 @@ type
     Home: TMenuItem;
     lblTicket: TLabel;
     spnEdtTicketID: TSpinEdit;
-    DBGridTicket: TDBGrid;
     Number: TLabel;
     btnFindTicket: TButton;
     Description: TLabel;
@@ -25,6 +24,7 @@ type
     Label1: TLabel;
     cmbStatus: TComboBox;
     Label2: TLabel;
+    DBGridTicket: TDBGrid;
     procedure createClick(Sender: TObject);
     procedure HomeClick(Sender: TObject);
     procedure Ticket2Click(Sender: TObject);
