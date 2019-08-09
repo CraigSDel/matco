@@ -9,11 +9,13 @@ type
   TUserResource = class
   private
     { Private declarations }
+    TUserArray := array of TUser;
   public
     { Public declarations }
     procedure save(user: TUser);
     procedure update(user: TUser);
     function findById(id: integer): TUser;
+    function getUsers(): TUserArray;
   end;
 
 implementation
@@ -39,6 +41,22 @@ begin
         tblUser.Next;
     end;
   end;
+end;
+
+function TUserResource.getUsers: TUserArray;
+var
+  i : integer;
+begin
+   i := 1; //index variable into the array
+   with DMMatco do
+   begin
+      tblUser.Open;
+      tblUser.;
+     while tblUser.Eof do
+     begin
+       ShowMessage( 'here');
+     end;
+   end;
 end;
 
 procedure TUserResource.save(user: TUser);

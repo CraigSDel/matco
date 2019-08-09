@@ -2,8 +2,8 @@ object frmTicket: TfrmTicket
   Left = 0
   Top = 0
   Caption = 'Ticket'
-  ClientHeight = 279
-  ClientWidth = 635
+  ClientHeight = 370
+  ClientWidth = 758
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,70 +15,114 @@ object frmTicket: TfrmTicket
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Description: TLabel
-    Left = 8
-    Top = 8
-    Width = 42
-    Height = 13
-    Caption = 'Fullname'
-  end
   object lblTicket: TLabel
-    Left = 8
-    Top = 72
+    Left = 432
+    Top = 144
     Width = 42
     Height = 13
     Caption = 'Ticket ID'
   end
+  object Number: TLabel
+    Left = 8
+    Top = 144
+    Width = 37
+    Height = 13
+    Caption = 'Number'
+  end
+  object Description: TLabel
+    Left = 8
+    Top = 174
+    Width = 53
+    Height = 13
+    Caption = 'Description'
+  end
+  object Label1: TLabel
+    Left = 8
+    Top = 203
+    Width = 43
+    Height = 13
+    Caption = 'Assignee'
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 230
+    Width = 31
+    Height = 13
+    Caption = 'Status'
+  end
   object create: TButton
-    Left = 102
-    Top = 35
+    Left = 166
+    Top = 254
     Width = 75
     Height = 25
     Caption = 'Create'
     TabOrder = 0
     OnClick = createClick
   end
-  object edtFullname: TEdit
-    Left = 56
-    Top = 8
-    Width = 121
+  object edtNumber: TEdit
+    Left = 96
+    Top = 146
+    Width = 145
     Height = 21
     TabOrder = 1
   end
-  object btnFindTicket: TButton
-    Left = 102
-    Top = 96
-    Width = 75
-    Height = 25
-    Caption = 'Find'
-    TabOrder = 2
-    OnClick = btnFindTicketClick
-  end
   object spnEdtTicketID: TSpinEdit
-    Left = 56
-    Top = 66
+    Left = 496
+    Top = 141
     Width = 121
     Height = 22
     MaxValue = 0
     MinValue = 1
-    TabOrder = 3
+    TabOrder = 2
     Value = 0
   end
-  object DBGrid1: TDBGrid
-    Left = 183
+  object DBGridTicket: TDBGrid
+    Left = 8
     Top = 8
-    Width = 320
+    Width = 619
     Height = 120
-    TabOrder = 4
+    DataSource = DMMatco.TicketDataSource
+    TabOrder = 3
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
   end
+  object btnFindTicket: TButton
+    Left = 542
+    Top = 169
+    Width = 75
+    Height = 25
+    Caption = 'Find'
+    TabOrder = 4
+    OnClick = btnFindTicketClick
+  end
+  object cmbAssignee: TComboBox
+    Left = 96
+    Top = 200
+    Width = 145
+    Height = 21
+    TabOrder = 5
+    Text = 'Assignee'
+  end
+  object edtDescription: TEdit
+    Left = 96
+    Top = 173
+    Width = 145
+    Height = 21
+    TabOrder = 6
+  end
+  object cmbStatus: TComboBox
+    Left = 96
+    Top = 227
+    Width = 145
+    Height = 21
+    TabOrder = 7
+    Text = 'Status'
+  end
   object MatcoMainMenu: TMainMenu
-    Left = 600
-    Top = 240
+    Left = 728
     object Home: TMenuItem
       Caption = 'Home'
       OnClick = HomeClick

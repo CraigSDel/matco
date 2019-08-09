@@ -12,6 +12,7 @@ type
   public
     { Public declarations }
     procedure save(ticket: TTicket);
+    procedure update(ticket: TTicket);
     function findById(id: integer): TTicket;
   end;
 
@@ -46,7 +47,6 @@ begin
   begin
     tblTicket.Open;
     tblTicket.Insert;
-    tblTicket['id'] := ticket.getId;
     tblTicket['ticket_number'] := ticket.getId;
     tblTicket['description'] := ticket.getDescription;
     tblTicket['date_created'] := ticket.getDateCreated;
@@ -54,6 +54,23 @@ begin
     tblTicket['status'] := ticket.getStatus;
     tblTicket.Post;
   end;
+end;
+
+procedure TTicketResource.update(ticket: TTicket);
+begin
+  with DMMatco do
+  begin
+    tblTicket.Open;
+    tblTicket.Insert;
+    tblTicket['id'] := ticket.getId;
+    tblTicket['ticket_number'] := ticket.getId;
+    tblTicket['description'] := ticket.getDescription;
+    tblTicket['date_created'] := ticket.getDateCreated;
+    tblTicket['assignee'] := ticket.getAssignee;
+    tblTicket['status'] := ticket.getStatus;
+    tblTicket.UpdateRecord;
+  end;
+
 end;
 
 end.

@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, Data.DB, Vcl.Menus, User_u, UserService_u, frmUser_u,
-  frmClient_u, frmProject_u, frmProjectTicket_u, frmTicket_u;
+  frmClient_u, frmProject_u, frmProjectTicket_u, frmTicket_u, Vcl.ComCtrls;
 
 type
   TfrmMatco = class(TForm)
@@ -17,6 +17,9 @@ type
     ProjectTicket: TMenuItem;
     Project: TMenuItem;
     Home: TMenuItem;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
     procedure TicketClick(Sender: TObject);
     procedure UserClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -24,6 +27,7 @@ type
     procedure ProjectTicketClick(Sender: TObject);
     procedure ProjectClick(Sender: TObject);
     procedure HomeClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     userService: TUserService;
     procedure ChangeScreen(screenName: integer);
@@ -64,6 +68,11 @@ begin
   else
     frmMatco.Show;
   end;
+end;
+
+procedure TfrmMatco.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Application.Terminate;
 end;
 
 procedure TfrmMatco.FormCreate(Sender: TObject);

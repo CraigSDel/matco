@@ -13,7 +13,7 @@ type
       description: string;
       dateCreated: TDateTime;
       assignee: integer;
-      status: integer;
+      status: string;
     { Private declarations }
   public
     // ID
@@ -32,8 +32,8 @@ type
     function getAssignee():integer;
     procedure setAssignee(pAssignee:integer);
     // Status
-    function getStatus():integer;
-    procedure setStatus(pstatus:integer);
+    function getStatus():string;
+    procedure setStatus(pstatus:string);
     { Public declarations }
   end;
 
@@ -66,9 +66,9 @@ implementation
       result := ticketNumber;
     end;
 
-    procedure TTicket.setDescription(pdescription: string);
+    procedure TTicket.setDescription(pDescription: string);
     begin
-      description := pdescription;
+      description := pDescription;
     end;
 
     // DateCreated
@@ -94,12 +94,12 @@ implementation
     end;
 
     // Status
-    function TTicket.getStatus: integer;
+    function TTicket.getStatus: string;
     begin
       result := status;
     end;
 
-    procedure TTicket.setStatus(pStatus: integer);
+    procedure TTicket.setStatus(pStatus: string);
     begin
       status := pStatus;
     end;

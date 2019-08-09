@@ -11,14 +11,20 @@ uses
 type
     TfrmTicket = class(TForm)
     MatcoMainMenu: TMainMenu;
-    Description: TLabel;
     create: TButton;
-    edtFullname: TEdit;
+    edtNumber: TEdit;
     Home: TMenuItem;
     lblTicket: TLabel;
-    btnFindTicket: TButton;
     spnEdtTicketID: TSpinEdit;
-    DBGrid1: TDBGrid;
+    DBGridTicket: TDBGrid;
+    Number: TLabel;
+    btnFindTicket: TButton;
+    Description: TLabel;
+    cmbAssignee: TComboBox;
+    edtDescription: TEdit;
+    Label1: TLabel;
+    cmbStatus: TComboBox;
+    Label2: TLabel;
     procedure createClick(Sender: TObject);
     procedure HomeClick(Sender: TObject);
     procedure Ticket2Click(Sender: TObject);
@@ -26,6 +32,7 @@ type
     procedure btnFindTicketClick(Sender: TObject);
   private
     TicketService: TTicketService;
+    Status : array[0..2] of string;
     { Private declarations }
   public
     { Public declarations }
@@ -51,14 +58,22 @@ var
   Ticket: TTicket;
 begin
   Ticket := TTicket.create;
-  Ticket.setDescription(edtFullname.Text);
+  Ticket.setDescription(edtDescription.Text);
+  Ticket.setTicketNumber(edtNumber.Text);
   TicketService.save(Ticket);
 end;
 
 procedure TfrmTicket.FormCreate(Sender: TObject);
+var
+  i: integer;
 begin
-
   TicketService := TTicketService.create;
+  Status[0] := 'TODO';
+  Status[1] := 'In Progress';
+  Status[2] := 'Done';
+
+  for i := 0 to Length(Status) -1 do
+     cmbStatus.Items.Add(Status[i]);
 end;
 
 procedure TfrmTicket.HomeClick(Sender: TObject);
