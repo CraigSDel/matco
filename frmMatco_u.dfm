@@ -20,7 +20,7 @@ object frmMatco: TfrmMatco
     Top = 3
     Width = 633
     Height = 442
-    ActivePage = Project
+    ActivePage = ProjectTicket
     Align = alClient
     TabOrder = 0
     object ProjectTicket: TTabSheet
@@ -33,7 +33,7 @@ object frmMatco: TfrmMatco
         Width = 619
         Height = 367
         Align = alClient
-        DataSource = DMMatco.DataSourceProjectTicket
+        DataSource = DMMatco.DataSourceProjectTicketQuery
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText

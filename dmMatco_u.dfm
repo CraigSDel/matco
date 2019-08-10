@@ -96,8 +96,17 @@ object DMMatco: TDMMatco
     DataSource = ClientDataSource
     Parameters = <>
     SQL.Strings = (
-      'SELECT * FROM Client')
-    Left = 16
+      'SELECT project.project_name, ticket.ticket_number'
+      
+        'FROM ticket INNER JOIN (project INNER JOIN project_tickets ON pr' +
+        'oject.id = project_tickets.project_id) ON ticket.id = project_ti' +
+        'ckets.ticket_id;')
+    Left = 64
+    Top = 168
+  end
+  object DataSourceProjectTicketQuery: TDataSource
+    DataSet = ADOQueryClient
+    Left = 176
     Top = 168
   end
 end
