@@ -112,12 +112,11 @@
             <Form>frmMatco</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="user\frmUser_u.pas">
-            <Form>frmUser</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="user\User_u.pas"/>
         <DCCReference Include="client\client_u.pas"/>
+        <DCCReference Include="project_ticket\ProjectTicket_u.pas"/>
+        <DCCReference Include="project\project_u.pas"/>
+        <DCCReference Include="ticket\Ticket_u.pas"/>
         <DCCReference Include="client\frmClient_u.pas">
             <Form>frmClient</Form>
             <FormType>dfm</FormType>
@@ -126,17 +125,18 @@
             <Form>frmProjectTicket</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="project_ticket\ProjectTicket_u.pas"/>
         <DCCReference Include="project\frmProject_u.pas">
             <Form>frmProject</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="project\project_u.pas"/>
         <DCCReference Include="ticket\frmTicket_u.pas">
             <Form>frmTicket</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ticket\Ticket_u.pas"/>
+        <DCCReference Include="user\frmUser_u.pas">
+            <Form>frmUser</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
