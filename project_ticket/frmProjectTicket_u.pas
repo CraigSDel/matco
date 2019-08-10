@@ -14,9 +14,8 @@ type
     BitBtn2: TBitBtn;
     lblProjectTicketID: TLabel;
     lblClient: TLabel;
-    DBLookupComboBox1: TDBLookupComboBox;
-    DBLookupComboBox2: TDBLookupComboBox;
-    DBLookupListBox1: TDBLookupListBox;
+    DBLookupComboBoxProjectID: TDBLookupComboBox;
+    DBLookupComboBoxTicketID: TDBLookupComboBox;
     procedure BitBtnProjectTicketInsertClick(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
   private

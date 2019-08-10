@@ -20,7 +20,7 @@ object frmMatco: TfrmMatco
     Top = 3
     Width = 633
     Height = 442
-    ActivePage = TabSheetTicket
+    ActivePage = Project
     Align = alClient
     TabOrder = 0
     object ProjectTicket: TTabSheet

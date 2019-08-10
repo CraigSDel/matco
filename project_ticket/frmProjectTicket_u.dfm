@@ -47,7 +47,7 @@ object frmProjectTicket: TfrmProjectTicket
     TabOrder = 1
     OnClick = BitBtn2Click
   end
-  object DBLookupComboBox1: TDBLookupComboBox
+  object DBLookupComboBoxProjectID: TDBLookupComboBox
     Left = 119
     Top = 37
     Width = 156
@@ -55,11 +55,11 @@ object frmProjectTicket: TfrmProjectTicket
     DataField = 'project_id'
     DataSource = DMMatco.DataSourceProjectTicket
     KeyField = 'id'
-    ListField = 'id'
+    ListField = 'project_name'
     ListSource = DMMatco.DataSourceProject
     TabOrder = 2
   end
-  object DBLookupComboBox2: TDBLookupComboBox
+  object DBLookupComboBoxTicketID: TDBLookupComboBox
     Left = 119
     Top = 8
     Width = 156
@@ -67,15 +67,8 @@ object frmProjectTicket: TfrmProjectTicket
     DataField = 'ticket_id'
     DataSource = DMMatco.DataSourceProjectTicket
     KeyField = 'id'
-    ListField = 'description'
+    ListField = 'ticket_number'
     ListSource = DMMatco.TicketDataSource
     TabOrder = 3
-  end
-  object DBLookupListBox1: TDBLookupListBox
-    Left = 296
-    Top = 8
-    Width = 121
-    Height = 95
-    TabOrder = 4
   end
 end
