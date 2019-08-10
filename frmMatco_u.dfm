@@ -12,7 +12,6 @@ object frmMatco: TfrmMatco
   Font.Style = []
   Menu = MatcoMainMenu
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Matco: TPageControl
@@ -21,13 +20,13 @@ object frmMatco: TfrmMatco
     Top = 3
     Width = 633
     Height = 442
-    ActivePage = Project
+    ActivePage = TabSheetTicket
     Align = alClient
     TabOrder = 0
-    object ProejctTicket: TTabSheet
+    object ProjectTicket: TTabSheet
       Caption = 'Project Ticket'
       ImageIndex = 1
-      object DBGridProjectTicket: TDBGrid
+      object dbgProjectTicket: TDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
@@ -50,29 +49,32 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 0
-        object BitBtnInsertProjectTicket: TBitBtn
+        object BitBtnProjectTicketInsert: TBitBtn
           Left = 163
           Top = 0
           Width = 75
           Height = 25
           Caption = 'Insert'
           TabOrder = 0
+          OnClick = BitBtnProjectTicketInsertClick
         end
-        object BitBtnEditProjectTicket: TBitBtn
+        object BitBtnProjectTicketEdit: TBitBtn
           Left = 244
           Top = 0
           Width = 75
           Height = 25
           Caption = 'Edit'
           TabOrder = 1
+          OnClick = BitBtnProjectTicketEditClick
         end
-        object BitBtnDeleteProjectTicket: TBitBtn
+        object BitBtnProjectTicketDelete: TBitBtn
           Left = 325
           Top = 0
           Width = 75
           Height = 25
           Caption = 'Delete'
           TabOrder = 2
+          OnClick = BitBtnProjectTicketDeleteClick
         end
       end
     end
@@ -101,39 +103,39 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 1
-        object BitBtnInsertClient: TBitBtn
-          Left = 163
+        object BitBtnClientInsert: TBitBtn
+          Left = 166
           Top = 0
           Width = 75
           Height = 25
           Caption = 'Insert'
           TabOrder = 0
-          OnClick = BitBtnInsertClientClick
+          OnClick = BitBtnClientInsertClick
         end
-        object BitBtnEditClient: TBitBtn
-          Left = 244
-          Top = 0
-          Width = 75
-          Height = 25
-          Caption = 'Edit'
-          TabOrder = 1
-          OnClick = BitBtnEditClientClick
-        end
-        object BitBtnDeleteClient: TBitBtn
-          Left = 325
+        object BitBtnClientDelete: TBitBtn
+          Left = 328
           Top = 0
           Width = 75
           Height = 25
           Caption = 'Delete'
+          TabOrder = 1
+          OnClick = BitBtnClientDeleteClick
+        end
+        object BitBtnClientEdit: TBitBtn
+          Left = 247
+          Top = 0
+          Width = 75
+          Height = 25
+          Caption = 'Edit'
           TabOrder = 2
-          OnClick = BitBtnDeleteClientClick
+          OnClick = BitBtnClientEditClick
         end
       end
     end
     object Project: TTabSheet
       Caption = 'Project'
       ImageIndex = 2
-      object DBGrid1: TDBGrid
+      object DBGridProject: TDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
@@ -156,39 +158,38 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 1
-        object BitBtnInsertProject: TBitBtn
-          Left = 163
+        object BitBtnProjectDelete: TBitBtn
+          Left = 330
           Top = 0
           Width = 75
           Height = 25
-          Caption = 'Insert'
+          Caption = 'Delete'
           TabOrder = 0
-          OnClick = BitBtnInsertClientClick
+          OnClick = BitBtnProjectDeleteClick
         end
-        object BitBtnEditProject: TBitBtn
-          Left = 244
+        object BitBtnProjectEdit: TBitBtn
+          Left = 249
           Top = 0
           Width = 75
           Height = 25
           Caption = 'Edit'
           TabOrder = 1
-          OnClick = BitBtnEditClientClick
+          OnClick = BitBtnProjectEditClick
         end
-        object BitBtnDeleteProject: TBitBtn
-          Left = 325
+        object BitBtnProjectInsert: TBitBtn
+          Left = 168
           Top = 0
           Width = 75
           Height = 25
-          Caption = 'Delete'
+          Caption = 'Insert'
           TabOrder = 2
-          OnClick = BitBtnDeleteClientClick
+          OnClick = BitBtnProjectInsertClick
         end
       end
     end
     object TabSheetTicket: TTabSheet
       Caption = 'Ticket'
       ImageIndex = 3
-      ExplicitLeft = 0
       object Panel5: TPanel
         AlignWithMargins = True
         Left = 3
@@ -197,32 +198,32 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 0
-        object BitBtnInsertTicket: TBitBtn
-          Left = 163
-          Top = 0
-          Width = 75
-          Height = 25
-          Caption = 'Insert'
-          TabOrder = 0
-          OnClick = BitBtnInsertClientClick
-        end
-        object BitBtnEditTicket: TBitBtn
+        object BitBtnTicketEdit: TBitBtn
           Left = 244
           Top = 0
           Width = 75
           Height = 25
           Caption = 'Edit'
-          TabOrder = 1
-          OnClick = BitBtnEditClientClick
+          TabOrder = 0
+          OnClick = BitBtnTicketEditClick
         end
-        object BitBtnDeleteTicket: TBitBtn
+        object BitBtnTicketDelete: TBitBtn
           Left = 325
           Top = 0
           Width = 75
           Height = 25
           Caption = 'Delete'
+          TabOrder = 1
+          OnClick = BitBtnTicketDeleteClick
+        end
+        object BitBtnTicketInsert: TBitBtn
+          Left = 163
+          Top = 0
+          Width = 75
+          Height = 25
+          Caption = 'Insert'
           TabOrder = 2
-          OnClick = BitBtnDeleteClientClick
+          OnClick = BitBtnTicketInsertClick
         end
       end
       object DBGrid2: TDBGrid
@@ -252,32 +253,32 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 0
-        object BitBtnInsertUser: TBitBtn
-          Left = 163
+        object BitBtnUserInsert: TBitBtn
+          Left = 165
           Top = 0
           Width = 75
           Height = 25
           Caption = 'Insert'
           TabOrder = 0
-          OnClick = BitBtnInsertClientClick
+          OnClick = BitBtnUserInsertClick
         end
-        object BitBtnEditUser: TBitBtn
-          Left = 244
-          Top = 0
-          Width = 75
-          Height = 25
-          Caption = 'Edit'
-          TabOrder = 1
-          OnClick = BitBtnEditClientClick
-        end
-        object BitBtnDeleteUser: TBitBtn
-          Left = 325
+        object BitBtnUserDelete: TBitBtn
+          Left = 327
           Top = 0
           Width = 75
           Height = 25
           Caption = 'Delete'
+          TabOrder = 1
+          OnClick = BitBtnUserDeleteClick
+        end
+        object BitBtnUserEdit: TBitBtn
+          Left = 246
+          Top = 0
+          Width = 75
+          Height = 25
+          Caption = 'Edit'
           TabOrder = 2
-          OnClick = BitBtnDeleteClientClick
+          OnClick = BitBtnUserEditClick
         end
       end
       object DBGrid3: TDBGrid

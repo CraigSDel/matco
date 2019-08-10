@@ -11,74 +11,71 @@ object frmProject: TfrmProject
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object CleintID: TLabel
-    Left = 8
-    Top = 43
-    Width = 40
-    Height = 13
-    Caption = 'Client Id'
+  object DBTextProjectID: TDBText
+    Left = 104
+    Top = 8
+    Width = 156
+    Height = 17
+    DataField = 'id'
+    DataSource = DMMatco.DataSourceProject
   end
-  object Client: TLabel
+  object projectID: TLabel
     Left = 8
     Top = 8
     Width = 11
     Height = 13
     Caption = 'ID'
   end
-  object TDBText
-    Left = 102
-    Top = 8
+  object Label2: TLabel
+    Left = 8
+    Top = 34
+    Width = 41
+    Height = 13
+    Caption = 'Client ID'
+  end
+  object Label3: TLabel
+    Left = 8
+    Top = 61
+    Width = 64
+    Height = 13
+    Caption = 'Project Name'
+  end
+  object DBEdit1: TDBEdit
+    Left = 104
+    Top = 31
     Width = 156
-    Height = 17
+    Height = 21
+    DataField = 'client_id'
+    DataSource = DMMatco.DataSourceProject
+    TabOrder = 0
+  end
+  object DBEditProjectName: TDBEdit
+    Left = 104
+    Top = 58
+    Width = 156
+    Height = 21
     DataField = 'project_name'
     DataSource = DMMatco.DataSourceProject
+    TabOrder = 1
   end
-  object Label1: TLabel
-    Left = 8
-    Top = 67
-    Width = 27
-    Height = 13
-    Caption = 'Name'
-  end
-  object BitBtnSave: TBitBtn
-    Left = 102
-    Top = 91
+  object BitBtnProjectOk: TBitBtn
+    Left = 104
+    Top = 85
     Width = 75
     Height = 25
     Kind = bkOK
     NumGlyphs = 2
-    TabOrder = 0
-    OnClick = BitBtnSaveClick
+    TabOrder = 2
   end
-  object BitBtnCancel: TBitBtn
-    Left = 183
-    Top = 91
+  object BitBtnProjectCancel: TBitBtn
+    Left = 185
+    Top = 85
     Width = 75
     Height = 25
     Kind = bkCancel
     NumGlyphs = 2
-    TabOrder = 1
-    OnClick = BitBtnCancelClick
-  end
-  object TDBEdit
-    Left = 102
-    Top = 37
-    Width = 156
-    Height = 21
-    DataField = 'id'
-    DataSource = DMMatco.DataSourceProject
-    TabOrder = 2
-  end
-  object TDBEdit
-    Left = 102
-    Top = 64
-    Width = 156
-    Height = 21
-    DataField = 'project_name'
-    DataSource = DMMatco.DataSourceProject
     TabOrder = 3
   end
 end

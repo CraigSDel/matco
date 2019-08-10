@@ -11,7 +11,6 @@ object frmClient: TfrmClient
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Description: TLabel
@@ -50,7 +49,7 @@ object frmClient: TfrmClient
     Caption = 'Phone Number'
   end
   object DBTextClientID: TDBText
-    Left = 102
+    Left = 104
     Top = 8
     Width = 156
     Height = 17
@@ -58,8 +57,8 @@ object frmClient: TfrmClient
     DataSource = DMMatco.ClientDataSource
   end
   object BitBtnSave: TBitBtn
-    Left = 102
-    Top = 156
+    Left = 104
+    Top = 148
     Width = 75
     Height = 25
     Kind = bkOK
@@ -68,8 +67,8 @@ object frmClient: TfrmClient
     OnClick = BitBtnSaveClick
   end
   object BitBtnCancel: TBitBtn
-    Left = 183
-    Top = 156
+    Left = 185
+    Top = 148
     Width = 75
     Height = 25
     Kind = bkCancel
@@ -78,7 +77,7 @@ object frmClient: TfrmClient
     OnClick = BitBtnCancelClick
   end
   object DBEditName: TDBEdit
-    Left = 102
+    Left = 104
     Top = 40
     Width = 156
     Height = 21
@@ -87,7 +86,7 @@ object frmClient: TfrmClient
     TabOrder = 2
   end
   object DBEditContactPerson: TDBEdit
-    Left = 102
+    Left = 104
     Top = 67
     Width = 156
     Height = 21
@@ -96,7 +95,7 @@ object frmClient: TfrmClient
     TabOrder = 3
   end
   object DBEditEmail: TDBEdit
-    Left = 102
+    Left = 104
     Top = 94
     Width = 156
     Height = 21
@@ -105,7 +104,7 @@ object frmClient: TfrmClient
     TabOrder = 4
   end
   object DBEditPhoneNumber: TDBEdit
-    Left = 102
+    Left = 104
     Top = 121
     Width = 156
     Height = 21

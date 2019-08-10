@@ -5,52 +5,61 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  Vcl.StdCtrls, Data.DB, Vcl.Menus, User_u, UserService_u, frmUser_u,
-  frmClient_u, frmProject_u, frmProjectTicket_u, frmTicket_u, Vcl.ComCtrls,
-  Vcl.Buttons, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, dmMatco_u;
+  Vcl.StdCtrls, Data.DB, Vcl.Menus, Vcl.ComCtrls,
+  Vcl.Buttons, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids;
 
 type
   TfrmMatco = class(TForm)
     Matco: TPageControl;
-    ProejctTicket: TTabSheet;
+    ProjectTicket: TTabSheet;
     Client: TTabSheet;
     dbgClient: TDBGrid;
-    DBGridProjectTicket: TDBGrid;
+    dbgProjectTicket: TDBGrid;
     Panel2: TPanel;
-    BitBtnInsertClient: TBitBtn;
-    BitBtnEditClient: TBitBtn;
-    BitBtnDeleteClient: TBitBtn;
     Panel1: TPanel;
-    BitBtnInsertProjectTicket: TBitBtn;
-    BitBtnEditProjectTicket: TBitBtn;
-    BitBtnDeleteProjectTicket: TBitBtn;
     Project: TTabSheet;
     TabSheetTicket: TTabSheet;
     User: TTabSheet;
-    DBGrid1: TDBGrid;
+    DBGridProject: TDBGrid;
     Panel3: TPanel;
-    BitBtnInsertUser: TBitBtn;
-    BitBtnEditUser: TBitBtn;
-    BitBtnDeleteUser: TBitBtn;
     Panel4: TPanel;
-    BitBtnInsertProject: TBitBtn;
-    BitBtnEditProject: TBitBtn;
-    BitBtnDeleteProject: TBitBtn;
     Panel5: TPanel;
-    BitBtnInsertTicket: TBitBtn;
-    BitBtnEditTicket: TBitBtn;
-    BitBtnDeleteTicket: TBitBtn;
     MatcoMainMenu: TMainMenu;
     Home: TMenuItem;
     DBGrid3: TDBGrid;
     DBGrid2: TDBGrid;
-    procedure FormCreate(Sender: TObject);
+    BitBtnProjectTicketInsert: TBitBtn;
+    BitBtnProjectTicketEdit: TBitBtn;
+    BitBtnProjectTicketDelete: TBitBtn;
+    BitBtnUserInsert: TBitBtn;
+    BitBtnTicketEdit: TBitBtn;
+    BitBtnClientInsert: TBitBtn;
+    BitBtnClientEdit: TBitBtn;
+    BitBtnClientDelete: TBitBtn;
+    BitBtnTicketInsert: TBitBtn;
+    BitBtnTicketDelete: TBitBtn;
+    BitBtnProjectDelete: TBitBtn;
+    BitBtnUserEdit: TBitBtn;
+    BitBtnUserDelete: TBitBtn;
+    BitBtnProjectEdit: TBitBtn;
+    BitBtnProjectInsert: TBitBtn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure BitBtnInsertClientClick(Sender: TObject);
-    procedure BitBtnEditClientClick(Sender: TObject);
-    procedure BitBtnDeleteClientClick(Sender: TObject);
+    procedure BitBtnProjectTicketInsertClick(Sender: TObject);
+    procedure BitBtnProjectTicketEditClick(Sender: TObject);
+    procedure BitBtnProjectTicketDeleteClick(Sender: TObject);
+    procedure BitBtnClientInsertClick(Sender: TObject);
+    procedure BitBtnClientEditClick(Sender: TObject);
+    procedure BitBtnClientDeleteClick(Sender: TObject);
+    procedure BitBtnProjectDeleteClick(Sender: TObject);
+    procedure BitBtnProjectInsertClick(Sender: TObject);
+    procedure BitBtnProjectEditClick(Sender: TObject);
+    procedure BitBtnTicketInsertClick(Sender: TObject);
+    procedure BitBtnTicketEditClick(Sender: TObject);
+    procedure BitBtnTicketDeleteClick(Sender: TObject);
+    procedure BitBtnUserInsertClick(Sender: TObject);
+    procedure BitBtnUserEditClick(Sender: TObject);
+    procedure BitBtnUserDeleteClick(Sender: TObject);
   private
-    userService: TUserService;
     { Private declarations }
   public
     { Public declarations }
@@ -63,35 +72,119 @@ implementation
 
 {$R *.dfm}
 
-procedure TfrmMatco.BitBtnEditClientClick(Sender: TObject);
+uses dmMatco_u, frmClient_u, frmProjectTicket_u, frmProject_u, frmTicket_u,
+  frmUser_u;
+//Project Ticket
+procedure TfrmMatco.BitBtnProjectTicketDeleteClick(Sender: TObject);
+begin
+  DMMatco.tblProjectTicket.Delete;
+  frmProjectTicket := TfrmProjectTicket.Create(owner);
+  frmProjectTicket.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnProjectTicketEditClick(Sender: TObject);
+begin
+  DMMatco.tblProjectTicket.Edit;
+  frmProjectTicket := TfrmProjectTicket.Create(owner);
+  frmProjectTicket.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnProjectTicketInsertClick(Sender: TObject);
+begin
+  DMMatco.tblProjectTicket.Insert;
+  frmProjectTicket := TfrmProjectTicket.Create(owner);
+  frmProjectTicket.ShowModal;
+end;
+// Ticket
+procedure TfrmMatco.BitBtnTicketDeleteClick(Sender: TObject);
+begin
+  DMMatco.tblTicket.Delete;
+  frmTicket := TfrmTicket.Create(owner);
+  frmTicket.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnTicketEditClick(Sender: TObject);
+begin
+  DMMatco.tblClient.Edit;
+  frmTicket := TfrmTicket.Create(owner);
+  frmTicket.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnTicketInsertClick(Sender: TObject);
+begin
+  DMMatco.tblTicket.Insert;
+  frmTicket := TfrmTicket.Create(owner);
+  frmTicket.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnUserDeleteClick(Sender: TObject);
+begin
+  DMMatco.tblUser.Delete;
+  frmUser := TfrmUser.Create(owner);
+  frmUser.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnUserEditClick(Sender: TObject);
+begin
+  DMMatco.tblUser.Edit;
+  frmUser := TfrmUser.Create(owner);
+  frmUser.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnUserInsertClick(Sender: TObject);
+begin
+  DMMatco.tblUser.Insert;
+  frmUser := TfrmUser.Create(owner);
+  frmUser.ShowModal;
+end;
+
+// Client
+procedure TfrmMatco.BitBtnClientEditClick(Sender: TObject);
 begin
   DMMatco.tblClient.Edit;
   frmClient := TfrmClient.Create(owner);
   frmClient.ShowModal;
 end;
 
-procedure TfrmMatco.BitBtnDeleteClientClick(Sender: TObject);
+procedure TfrmMatco.BitBtnClientDeleteClick(Sender: TObject);
 begin
   DMMatco.tblClient.Delete;
   frmClient := TfrmClient.Create(owner);
-  frmProjectTicket.ShowModal;
+  frmClient.ShowModal;
 end;
 
-procedure TfrmMatco.BitBtnInsertClientClick(Sender: TObject);
+procedure TfrmMatco.BitBtnClientInsertClick(Sender: TObject);
 begin
   DMMatco.tblClient.Insert;
   frmClient := TfrmClient.Create(owner);
   frmClient.ShowModal;
 end;
 
+//Project
+procedure TfrmMatco.BitBtnProjectDeleteClick(Sender: TObject);
+begin
+  DMMatco.tblClient.Delete;
+  frmProject := TfrmProject.Create(owner);
+  frmProject.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnProjectEditClick(Sender: TObject);
+begin
+  DMMatco.tblProject.Edit;
+  frmProject := TfrmProject.Create(owner);
+  frmProject.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnProjectInsertClick(Sender: TObject);
+begin
+  DMMatco.tblClient.Insert;
+  frmProject := TfrmProject.Create(owner);
+  frmProject.ShowModal;
+end;
+
 procedure TfrmMatco.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Application.Terminate;
-end;
-
-procedure TfrmMatco.FormCreate(Sender: TObject);
-begin
-  userService := TUserService.Create;
 end;
 
 end.

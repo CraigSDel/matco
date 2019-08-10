@@ -5,26 +5,21 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  Vcl.StdCtrls, Data.DB, Vcl.Menus, ProjectTicket_u, ProjectTicketService_u, Vcl.Samples.Spin,
-  Vcl.Grids, Vcl.DBGrids, dmMatco_u;
+  Vcl.StdCtrls, Data.DB, Vcl.Menus, ProjectTicket_u, Vcl.Samples.Spin,
+  Vcl.Grids, Vcl.DBGrids, dmMatco_u, Vcl.DBCtrls, Vcl.Buttons;
 
 type
-    TfrmProjectTicket = class(TForm)
-    MatcoMainMenu: TMainMenu;
-    Description: TLabel;
-    create: TButton;
-    edtFullname: TEdit;
-    Home: TMenuItem;
-    lblProjectTicket: TLabel;
-    btnFindProjectTicket: TButton;
-    spnEdtProjectTicketID: TSpinEdit;
-    procedure createClick(Sender: TObject);
-    procedure HomeClick(Sender: TObject);
-    procedure ProjectTicket2Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
-    procedure btnFindProjectTicketClick(Sender: TObject);
+  TfrmProjectTicket = class(TForm)
+    BitBtnProjectTicketInsert: TBitBtn;
+    BitBtn2: TBitBtn;
+    lblProjectTicketID: TLabel;
+    lblClient: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
+    DBLookupComboBox2: TDBLookupComboBox;
+    DBLookupListBox1: TDBLookupListBox;
+    procedure BitBtnProjectTicketInsertClick(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
   private
-    ProjectTicketService: TProjectTicketService;
     { Private declarations }
   public
     { Public declarations }
@@ -36,40 +31,15 @@ var
 implementation
 
 {$R *.dfm}
-uses frmMatco_u;
 
-procedure TfrmProjectTicket.btnFindProjectTicketClick(Sender: TObject);
-var
-  ProjectTicket: TProjectTicket;
+procedure TfrmProjectTicket.BitBtnProjectTicketInsertClick(Sender: TObject);
 begin
-  ProjectTicket := ProjectTicketService.findById(spnEdtProjectTicketID.Value);
+   DMMatco.tblProjectTicket.Post;
 end;
 
-procedure TfrmProjectTicket.createClick(Sender: TObject);
-var
-  ProjectTicket: TProjectTicket;
+procedure TfrmProjectTicket.BitBtn2Click(Sender: TObject);
 begin
-  ProjectTicket := TProjectTicket.create;
-  //ProjectTicket.getProjectId(edtFullname.Text);
-  ProjectTicketService.save(ProjectTicket);
-end;
-
-procedure TfrmProjectTicket.FormCreate(Sender: TObject);
-begin
-
-  ProjectTicketService := TProjectTicketService.create;
-end;
-
-procedure TfrmProjectTicket.HomeClick(Sender: TObject);
-begin
-  frmMatco.Show;
-  frmProjectTicket.Hide;
-end;
-
-procedure TfrmProjectTicket.ProjectTicket2Click(Sender: TObject);
-begin
-  frmMatco.Hide;
-  frmProjectTicket.Show;
+   DMMatco.tblProjectTicket.Cancel;
 end;
 
 end.

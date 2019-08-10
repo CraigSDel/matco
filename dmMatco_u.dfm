@@ -79,7 +79,6 @@ object DMMatco: TDMMatco
     Active = True
     Connection = MatcoADOConnection
     CursorType = ctStatic
-    LockType = ltReadOnly
     TableDirect = True
     TableName = 'project_tickets'
     Left = 176

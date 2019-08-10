@@ -2,7 +2,7 @@ object frmProjectTicket: TfrmProjectTicket
   Left = 0
   Top = 0
   Caption = 'ProjectTicket'
-  ClientHeight = 279
+  ClientHeight = 299
   ClientWidth = 635
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -10,66 +10,72 @@ object frmProjectTicket: TfrmProjectTicket
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  Menu = MatcoMainMenu
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Description: TLabel
+  object lblProjectTicketID: TLabel
+    Left = 8
+    Top = 45
+    Width = 64
+    Height = 13
+    Caption = 'Project Name'
+  end
+  object lblClient: TLabel
     Left = 8
     Top = 8
-    Width = 42
+    Width = 28
     Height = 13
-    Caption = 'Fullname'
+    Caption = 'Ticket'
   end
-  object lblProjectTicket: TLabel
-    Left = 8
-    Top = 72
-    Width = 76
-    Height = 13
-    Caption = 'ProjectTicket ID'
-  end
-  object create: TButton
-    Left = 102
-    Top = 35
+  object BitBtnProjectTicketInsert: TBitBtn
+    Left = 119
+    Top = 64
     Width = 75
     Height = 25
-    Caption = 'Create'
+    Kind = bkOK
+    NumGlyphs = 2
     TabOrder = 0
-    OnClick = createClick
+    OnClick = BitBtnProjectTicketInsertClick
   end
-  object edtFullname: TEdit
-    Left = 56
-    Top = 8
-    Width = 121
-    Height = 21
-    TabOrder = 1
-  end
-  object btnFindProjectTicket: TButton
-    Left = 102
-    Top = 96
+  object BitBtn2: TBitBtn
+    Left = 200
+    Top = 64
     Width = 75
     Height = 25
-    Caption = 'Find'
+    Kind = bkCancel
+    NumGlyphs = 2
+    TabOrder = 1
+    OnClick = BitBtn2Click
+  end
+  object DBLookupComboBox1: TDBLookupComboBox
+    Left = 119
+    Top = 37
+    Width = 156
+    Height = 21
+    DataField = 'project_id'
+    DataSource = DMMatco.DataSourceProjectTicket
+    KeyField = 'id'
+    ListField = 'id'
+    ListSource = DMMatco.DataSourceProject
     TabOrder = 2
-    OnClick = btnFindProjectTicketClick
   end
-  object spnEdtProjectTicketID: TSpinEdit
-    Left = 56
-    Top = 66
-    Width = 121
-    Height = 22
-    MaxValue = 0
-    MinValue = 1
+  object DBLookupComboBox2: TDBLookupComboBox
+    Left = 119
+    Top = 8
+    Width = 156
+    Height = 21
+    DataField = 'ticket_id'
+    DataSource = DMMatco.DataSourceProjectTicket
+    KeyField = 'id'
+    ListField = 'description'
+    ListSource = DMMatco.TicketDataSource
     TabOrder = 3
-    Value = 1
   end
-  object MatcoMainMenu: TMainMenu
-    Left = 600
-    Top = 240
-    object Home: TMenuItem
-      Caption = 'Home'
-      OnClick = HomeClick
-    end
+  object DBLookupListBox1: TDBLookupListBox
+    Left = 296
+    Top = 8
+    Width = 121
+    Height = 95
+    TabOrder = 4
   end
 end
