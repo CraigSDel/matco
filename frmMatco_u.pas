@@ -27,7 +27,7 @@ type
     MatcoMainMenu: TMainMenu;
     Home: TMenuItem;
     DBGrid3: TDBGrid;
-    DBGrid2: TDBGrid;
+    DBGridTicket: TDBGrid;
     BitBtnProjectTicketInsert: TBitBtn;
     BitBtnProjectTicketEdit: TBitBtn;
     BitBtnProjectTicketDelete: TBitBtn;
@@ -55,6 +55,8 @@ type
     Label2: TLabel;
     BitBtnProjectTicketSearch: TBitBtn;
     BitBtnSum: TBitBtn;
+    cmbStatus: TComboBox;
+    BitBtnSearchByStatus: TBitBtn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtnProjectTicketInsertClick(Sender: TObject);
     procedure BitBtnProjectTicketEditClick(Sender: TObject);
@@ -75,6 +77,7 @@ type
     procedure BitBtnNotesSaveClick(Sender: TObject);
     procedure BitBtnProjectTicketSearchClick(Sender: TObject);
     procedure BitBtnSumClick(Sender: TObject);
+    procedure BitBtnSearchByStatusClick(Sender: TObject);
   private
     myFile: TextFile;
     text: string;
@@ -155,6 +158,23 @@ begin
     sQuery := sQuery + ' ORDER BY project.project_name, ticket.ticket_number;';
     MatcoQuery(sQuery);
   end;
+end;
+
+procedure TfrmMatco.BitBtnSearchByStatusClick(Sender: TObject);
+var
+  sQuery: string;
+begin
+    if (cmbStatus.ItemIndex <> -1) AND (edtProjectName.GetTextLen > 0) then
+    begin
+      sQuery := 'SELECT project.project_name, ticket.ticket_number, Sum(ticket.id) AS NumberOfTickets';
+      sQuery := sQuery + ' FROM status INNER JOIN (ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id) ON status.ID = ticket.status';
+      sQuery := sQuery + ' WHERE (((status.description)="'+ cmbStatus.text +'") AND ((project.project_name)="'+ edtProjectName.text +'"))';
+      sQuery := sQuery + ' GROUP BY project.project_name, ticket.ticket_number';
+      sQuery := sQuery + ' ORDER BY project.project_name, ticket.ticket_number;';
+      MatcoQuery(sQuery);
+    end
+    else
+      ShowMessage('Please enter a project name and select a status');
 end;
 
 procedure TfrmMatco.BitBtnSumClick(Sender: TObject);
@@ -268,17 +288,24 @@ begin
 end;
 
 procedure TfrmMatco.FormCreate(Sender: TObject);
+const
+  Status: array[0..2] of string = ('Todo', 'In Progress', 'Done');
+var
+  i: integer;
 begin
   reNotes.Lines.Append(NotesRead('notes.txt'));
   reHelp.Lines.Append(NotesRead('help.txt'));
+
+  for i := 0 to Length(Status) -1 do
+    cmbStatus.Items.Add(Status[i]);
 end;
 
 procedure TfrmMatco.MatcoQuery(sQuery: string);
 begin
-    DMMatco.ADOQueryMatco.SQL.Clear;
-    DMMatco.ADOQueryMatco.SQL.Add(sQuery);
-    DMMatco.ADOQueryMatco.ExecSQL;
-    DMMatco.ADOQueryMatco.Active:= True;
+    DMMatco.ADOQueryProjectTicket.SQL.Clear;
+    DMMatco.ADOQueryProjectTicket.SQL.Add(sQuery);
+    DMMatco.ADOQueryProjectTicket.ExecSQL;
+    DMMatco.ADOQueryProjectTicket.Active:= True;
 end;
 
 function TfrmMatco.NotesRead(sName: string): string;

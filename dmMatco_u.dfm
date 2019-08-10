@@ -1,7 +1,7 @@
 object DMMatco: TDMMatco
   OldCreateOrder = False
-  Height = 289
-  Width = 302
+  Height = 491
+  Width = 567
   object MatcoADOConnection: TADOConnection
     Connected = True
     ConnectionString = 
@@ -101,13 +101,13 @@ object DMMatco: TDMMatco
         'FROM ticket INNER JOIN (project INNER JOIN project_tickets ON pr' +
         'oject.id = project_tickets.project_id) ON ticket.id = project_ti' +
         'ckets.ticket_id;')
-    Left = 48
-    Top = 192
+    Left = 56
+    Top = 216
   end
-  object DataSourceProjectTicketQuery: TDataSource
+  object DataSourceQueryProjectTicket: TDataSource
     DataSet = ADOQueryProjectTicket
-    Left = 256
-    Top = 112
+    Left = 56
+    Top = 272
   end
   object tblStatus: TADOTable
     Active = True
@@ -134,7 +134,12 @@ object DMMatco: TDMMatco
       
         'FROM users INNER JOIN (status INNER JOIN ticket ON status.ID = t' +
         'icket.status) ON users.id = ticket.assignee;')
-    Left = 168
-    Top = 184
+    Left = 240
+    Top = 232
+  end
+  object DataSourceQueryTicket: TDataSource
+    DataSet = ADOQueryTicket
+    Left = 232
+    Top = 312
   end
 end

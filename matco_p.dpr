@@ -13,8 +13,7 @@ uses
   frmProjectTicket_u in 'project_ticket\frmProjectTicket_u.pas' {frmProjectTicket},
   frmProject_u in 'project\frmProject_u.pas' {frmProject},
   frmTicket_u in 'ticket\frmTicket_u.pas' {frmTicket},
-  frmUser_u in 'user\frmUser_u.pas' {frmUser},
-  frmHelp_u in 'frmHelp_u.pas' {frmHelp};
+  frmUser_u in 'user\frmUser_u.pas' {frmUser};
 
 {$R *.res}
 
@@ -25,7 +24,6 @@ begin
   Application.CreateForm(TDMMatco, DMMatco);
   Application.CreateForm(TfrmClient, frmClient);
   Application.CreateForm(TfrmProject, frmProject);
-  Application.CreateForm(TfrmHelp, frmHelp);
   Application.Run;
 end.
 

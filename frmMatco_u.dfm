@@ -38,7 +38,7 @@ object frmMatco: TfrmMatco
         Width = 692
         Height = 391
         Align = alClient
-        DataSource = DMMatco.DataSourceProjectTicketQuery
+        DataSource = DMMatco.DataSourceQueryProjectTicket
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -129,6 +129,15 @@ object frmMatco: TfrmMatco
           TabOrder = 6
           OnClick = BitBtnSumClick
         end
+      end
+      object BitBtnSearchByStatus: TBitBtn
+        Left = 464
+        Top = 462
+        Width = 114
+        Height = 25
+        Caption = 'Search By Status'
+        TabOrder = 2
+        OnClick = BitBtnSearchByStatusClick
       end
     end
     object Client: TTabSheet
@@ -291,14 +300,14 @@ object frmMatco: TfrmMatco
           OnClick = BitBtnTicketInsertClick
         end
       end
-      object DBGrid2: TDBGrid
+      object DBGridTicket: TDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
         Width = 692
         Height = 450
         Align = alClient
-        DataSource = DMMatco.TicketDataSource
+        DataSource = DMMatco.DataSourceQueryTicket
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -439,6 +448,13 @@ object frmMatco: TfrmMatco
         ExplicitHeight = 408
       end
     end
+  end
+  object cmbStatus: TComboBox
+    Left = 440
+    Top = 433
+    Width = 145
+    Height = 21
+    TabOrder = 1
   end
   object MatcoMainMenu: TMainMenu
     Left = 592
