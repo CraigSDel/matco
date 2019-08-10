@@ -89,10 +89,11 @@ object DMMatco: TDMMatco
     Left = 176
     Top = 112
   end
-  object ADOQueryMatco: TADOQuery
+  object ADOQueryProjectTicket: TADOQuery
+    Active = True
     Connection = MatcoADOConnection
     CursorType = ctStatic
-    DataSource = ClientDataSource
+    DataSource = DataSourceProjectTicket
     Parameters = <>
     SQL.Strings = (
       'SELECT project.project_name, ticket.ticket_number'
@@ -100,12 +101,40 @@ object DMMatco: TDMMatco
         'FROM ticket INNER JOIN (project INNER JOIN project_tickets ON pr' +
         'oject.id = project_tickets.project_id) ON ticket.id = project_ti' +
         'ckets.ticket_id;')
-    Left = 40
-    Top = 168
+    Left = 48
+    Top = 192
   end
   object DataSourceProjectTicketQuery: TDataSource
-    DataSet = ADOQueryMatco
-    Left = 176
-    Top = 168
+    DataSet = ADOQueryProjectTicket
+    Left = 256
+    Top = 112
+  end
+  object tblStatus: TADOTable
+    Active = True
+    Connection = MatcoADOConnection
+    CursorType = ctStatic
+    TableName = 'status'
+    Left = 216
+    Top = 64
+  end
+  object DataSourceStatus: TDataSource
+    DataSet = tblStatus
+    Left = 216
+    Top = 112
+  end
+  object ADOQueryTicket: TADOQuery
+    Active = True
+    Connection = MatcoADOConnection
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      
+        'SELECT ticket.id, ticket.ticket_number, ticket.description, tick' +
+        'et.date_created, users.full_name, ticket.status'
+      
+        'FROM users INNER JOIN (status INNER JOIN ticket ON status.ID = t' +
+        'icket.status) ON users.id = ticket.assignee;')
+    Left = 168
+    Top = 184
   end
 end

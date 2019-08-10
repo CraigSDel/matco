@@ -18,8 +18,11 @@ type
     DataSourceProject: TDataSource;
     tblProjectTicket: TADOTable;
     DataSourceProjectTicket: TDataSource;
-    ADOQueryMatco: TADOQuery;
+    ADOQueryProjectTicket: TADOQuery;
     DataSourceProjectTicketQuery: TDataSource;
+    tblStatus: TADOTable;
+    DataSourceStatus: TDataSource;
+    ADOQueryTicket: TADOQuery;
   private
     { Private declarations }
   public

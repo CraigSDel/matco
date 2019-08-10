@@ -22,6 +22,8 @@ type
     lblAssignee: TLabel;
     BitBtnTicketOk: TBitBtn;
     BitBtnTicketCancel: TBitBtn;
+    DBLookupComboBoxStatus: TDBLookupComboBox;
+    lblStatus: TLabel;
   private
     { Private declarations }
   public

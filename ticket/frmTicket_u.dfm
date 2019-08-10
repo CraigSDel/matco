@@ -44,7 +44,7 @@ object frmTicket: TfrmTicket
   end
   object lblDateCreated: TLabel
     Left = 8
-    Top = 129
+    Top = 148
     Width = 65
     Height = 13
     Caption = 'Date Created'
@@ -54,6 +54,13 @@ object frmTicket: TfrmTicket
     Top = 102
     Width = 43
     Height = 13
+    Caption = 'Assignee'
+  end
+  object lblStatus: TLabel
+    Left = 8
+    Top = 131
+    Width = 43
+    Height = 11
     Caption = 'Assignee'
   end
   object DBEditTicketDescription: TDBEdit
@@ -88,7 +95,7 @@ object frmTicket: TfrmTicket
   end
   object DBEdit1: TDBEdit
     Left = 96
-    Top = 121
+    Top = 145
     Width = 169
     Height = 21
     DataField = 'description'
@@ -97,7 +104,7 @@ object frmTicket: TfrmTicket
   end
   object BitBtnTicketOk: TBitBtn
     Left = 96
-    Top = 148
+    Top = 172
     Width = 75
     Height = 25
     Kind = bkOK
@@ -106,11 +113,23 @@ object frmTicket: TfrmTicket
   end
   object BitBtnTicketCancel: TBitBtn
     Left = 190
-    Top = 148
+    Top = 172
     Width = 75
     Height = 25
     Kind = bkCancel
     NumGlyphs = 2
     TabOrder = 5
+  end
+  object DBLookupComboBoxStatus: TDBLookupComboBox
+    Left = 96
+    Top = 121
+    Width = 169
+    Height = 21
+    DataField = 'status'
+    DataSource = DMMatco.TicketDataSource
+    KeyField = 'ID'
+    ListField = 'description'
+    ListSource = DMMatco.DataSourceStatus
+    TabOrder = 6
   end
 end
