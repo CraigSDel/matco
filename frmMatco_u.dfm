@@ -100,25 +100,34 @@ object frmMatco: TfrmMatco
         object edtProjectName: TEdit
           Left = 176
           Top = 8
-          Width = 121
+          Width = 225
           Height = 21
           TabOrder = 3
         end
         object edtTicketNumber: TEdit
           Left = 176
           Top = 35
-          Width = 121
+          Width = 225
           Height = 21
           TabOrder = 4
         end
         object BitBtnProjectTicketSearch: TBitBtn
-          Left = 222
+          Left = 176
           Top = 62
-          Width = 75
+          Width = 105
           Height = 25
           Caption = 'Search'
           TabOrder = 5
           OnClick = BitBtnProjectTicketSearchClick
+        end
+        object BitBtnSum: TBitBtn
+          Left = 287
+          Top = 62
+          Width = 114
+          Height = 25
+          Caption = 'Number of Tickets'
+          TabOrder = 6
+          OnClick = BitBtnSumClick
         end
       end
     end

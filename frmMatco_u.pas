@@ -54,6 +54,7 @@ type
     edtTicketNumber: TEdit;
     Label2: TLabel;
     BitBtnProjectTicketSearch: TBitBtn;
+    BitBtnSum: TBitBtn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtnProjectTicketInsertClick(Sender: TObject);
     procedure BitBtnProjectTicketEditClick(Sender: TObject);
@@ -73,11 +74,13 @@ type
     procedure FormCreate(Sender: TObject);
     procedure BitBtnNotesSaveClick(Sender: TObject);
     procedure BitBtnProjectTicketSearchClick(Sender: TObject);
+    procedure BitBtnSumClick(Sender: TObject);
   private
     myFile: TextFile;
     text: string;
     function NotesRead(sName: string): string;
     procedure NotesSave(sName: string);
+    procedure MatcoQuery(sQuery: string);
     { Private declarations }
   public
     { Public declarations }
@@ -119,52 +122,51 @@ procedure TfrmMatco.BitBtnProjectTicketSearchClick(Sender: TObject);
 var
   sQuery: string;
 begin
-
   if (edtTicketNumber.GetTextLen = 0) AND (edtProjectName.GetTextLen > 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number';
     sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
-    sQuery := sQuery + ' WHERE (((project.project_name) LIKE "' + edtProjectName.text + '"))';
+    sQuery := sQuery + ' WHERE (((project.project_name) LIKE "%' + edtProjectName.text + '%"))';
     sQuery := sQuery + ' ORDER BY ticket.ticket_number, project.project_name;';
-    DMMatco.ADOQueryMatco.SQL.Clear;
-    DMMatco.ADOQueryMatco.SQL.Add(sQuery);
-    DMMatco.ADOQueryMatco.ExecSQL;
-    DMMatco.ADOQueryMatco.Active:= True;
+     MatcoQuery(sQuery);
   end;
 
   if (edtTicketNumber.GetTextLen > 0) AND (edtProjectName.GetTextLen = 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number';
     sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
-    sQuery := sQuery + ' WHERE (((ticket.ticket_number) LIKE "' + edtTicketNumber.text + '"))';
+    sQuery := sQuery + ' WHERE (((ticket.ticket_number) LIKE "%' + edtTicketNumber.text + '%"))';
     sQuery := sQuery + ' ORDER BY ticket.ticket_number, project.project_name;';
-    DMMatco.ADOQueryMatco.SQL.Clear;
-    DMMatco.ADOQueryMatco.SQL.Add(sQuery);
-    DMMatco.ADOQueryMatco.ExecSQL;
-    DMMatco.ADOQueryMatco.Active:= True;
+     MatcoQuery(sQuery);
   end;
 
   if (edtTicketNumber.GetTextLen = 0) AND (edtProjectName.GetTextLen = 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number';
     sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id;';
-    DMMatco.ADOQueryMatco.SQL.Clear;
-    DMMatco.ADOQueryMatco.SQL.Add(sQuery);
-    DMMatco.ADOQueryMatco.ExecSQL;
-    DMMatco.ADOQueryMatco.Active:= True;
+     MatcoQuery(sQuery);
   end;
 
   if (edtTicketNumber.GetTextLen > 0) AND (edtProjectName.GetTextLen > 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number';
     sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
-    sQuery := sQuery + ' WHERE (((ticket.ticket_number) LIKE "' + edtTicketNumber.text + '") AND ((project.project_name) LIKE "' + edtProjectName.text + '"))';
+    sQuery := sQuery + ' WHERE (((ticket.ticket_number) LIKE "%' + edtTicketNumber.text + '%") AND ((project.project_name) LIKE "%' + edtProjectName.text + '%"))';
     sQuery := sQuery + ' ORDER BY project.project_name, ticket.ticket_number;';
-    DMMatco.ADOQueryMatco.SQL.Clear;
-    DMMatco.ADOQueryMatco.SQL.Add(sQuery);
-    DMMatco.ADOQueryMatco.ExecSQL;
-    DMMatco.ADOQueryMatco.Active:= True;
+    MatcoQuery(sQuery);
   end;
+end;
+
+procedure TfrmMatco.BitBtnSumClick(Sender: TObject);
+var
+  sQuery: string;
+begin
+    sQuery := 'SELECT project.project_name, Sum(project_tickets.project_id) AS NumberOfTickets ';
+    sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
+    sQuery := sQuery + ' WHERE (((project.project_name)="' + edtProjectName.text + '"))';
+    sQuery := sQuery + ' GROUP BY project.project_name';
+    sQuery := sQuery + ' ORDER BY Sum(project_tickets.project_id)';
+    MatcoQuery(sQuery);
 end;
 
 // Ticket
@@ -269,6 +271,14 @@ procedure TfrmMatco.FormCreate(Sender: TObject);
 begin
   reNotes.Lines.Append(NotesRead('notes.txt'));
   reHelp.Lines.Append(NotesRead('help.txt'));
+end;
+
+procedure TfrmMatco.MatcoQuery(sQuery: string);
+begin
+    DMMatco.ADOQueryMatco.SQL.Clear;
+    DMMatco.ADOQueryMatco.SQL.Add(sQuery);
+    DMMatco.ADOQueryMatco.ExecSQL;
+    DMMatco.ADOQueryMatco.Active:= True;
 end;
 
 function TfrmMatco.NotesRead(sName: string): string;
