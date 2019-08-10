@@ -49,6 +49,11 @@ type
     BitBtnNotesSave: TBitBtn;
     Help: TTabSheet;
     reHelp: TRichEdit;
+    edtProjectName: TEdit;
+    Label1: TLabel;
+    edtTicketNumber: TEdit;
+    Label2: TLabel;
+    BitBtnProjectTicketSearch: TBitBtn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtnProjectTicketInsertClick(Sender: TObject);
     procedure BitBtnProjectTicketEditClick(Sender: TObject);
@@ -67,11 +72,12 @@ type
     procedure BitBtnUserDeleteClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BitBtnNotesSaveClick(Sender: TObject);
+    procedure BitBtnProjectTicketSearchClick(Sender: TObject);
   private
     myFile: TextFile;
     text: string;
-    function NotesRead(sName:string): string;
-    procedure NotesSave(sName:string);
+    function NotesRead(sName: string): string;
+    procedure NotesSave(sName: string);
     { Private declarations }
   public
     { Public declarations }
@@ -107,6 +113,58 @@ begin
   DMMatco.tblProjectTicket.Insert;
   frmProjectTicket := TfrmProjectTicket.Create(owner);
   frmProjectTicket.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnProjectTicketSearchClick(Sender: TObject);
+var
+  sQuery: string;
+begin
+
+  if (edtTicketNumber.GetTextLen = 0) AND (edtProjectName.GetTextLen > 0) then
+  begin
+    sQuery := 'SELECT project.project_name, ticket.ticket_number';
+    sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
+    sQuery := sQuery + ' WHERE (((project.project_name) LIKE "' + edtProjectName.text + '"))';
+    sQuery := sQuery + ' ORDER BY ticket.ticket_number, project.project_name;';
+    DMMatco.ADOQueryMatco.SQL.Clear;
+    DMMatco.ADOQueryMatco.SQL.Add(sQuery);
+    DMMatco.ADOQueryMatco.ExecSQL;
+    DMMatco.ADOQueryMatco.Active:= True;
+  end;
+
+  if (edtTicketNumber.GetTextLen > 0) AND (edtProjectName.GetTextLen = 0) then
+  begin
+    sQuery := 'SELECT project.project_name, ticket.ticket_number';
+    sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
+    sQuery := sQuery + ' WHERE (((ticket.ticket_number) LIKE "' + edtTicketNumber.text + '"))';
+    sQuery := sQuery + ' ORDER BY ticket.ticket_number, project.project_name;';
+    DMMatco.ADOQueryMatco.SQL.Clear;
+    DMMatco.ADOQueryMatco.SQL.Add(sQuery);
+    DMMatco.ADOQueryMatco.ExecSQL;
+    DMMatco.ADOQueryMatco.Active:= True;
+  end;
+
+  if (edtTicketNumber.GetTextLen = 0) AND (edtProjectName.GetTextLen = 0) then
+  begin
+    sQuery := 'SELECT project.project_name, ticket.ticket_number';
+    sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id;';
+    DMMatco.ADOQueryMatco.SQL.Clear;
+    DMMatco.ADOQueryMatco.SQL.Add(sQuery);
+    DMMatco.ADOQueryMatco.ExecSQL;
+    DMMatco.ADOQueryMatco.Active:= True;
+  end;
+
+  if (edtTicketNumber.GetTextLen > 0) AND (edtProjectName.GetTextLen > 0) then
+  begin
+    sQuery := 'SELECT project.project_name, ticket.ticket_number';
+    sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
+    sQuery := sQuery + ' WHERE (((ticket.ticket_number) LIKE "' + edtTicketNumber.text + '") AND ((project.project_name) LIKE "' + edtProjectName.text + '"))';
+    sQuery := sQuery + ' ORDER BY project.project_name, ticket.ticket_number;';
+    DMMatco.ADOQueryMatco.SQL.Clear;
+    DMMatco.ADOQueryMatco.SQL.Add(sQuery);
+    DMMatco.ADOQueryMatco.ExecSQL;
+    DMMatco.ADOQueryMatco.Active:= True;
+  end;
 end;
 
 // Ticket
@@ -213,7 +271,7 @@ begin
   reHelp.Lines.Append(NotesRead('help.txt'));
 end;
 
-function TfrmMatco.NotesRead(sName:string): string;
+function TfrmMatco.NotesRead(sName: string): string;
 var
   sNotes, sLine: String;
   tNotes: TextFile;
@@ -237,7 +295,7 @@ begin
   end;
 end;
 
-procedure TfrmMatco.NotesSave(sName:string);
+procedure TfrmMatco.NotesSave(sName: string);
 var
   sNotes: String;
   tNotes: TextFile;

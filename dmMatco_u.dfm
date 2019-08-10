@@ -89,8 +89,7 @@ object DMMatco: TDMMatco
     Left = 176
     Top = 112
   end
-  object ADOQueryClient: TADOQuery
-    Active = True
+  object ADOQueryMatco: TADOQuery
     Connection = MatcoADOConnection
     CursorType = ctStatic
     DataSource = ClientDataSource
@@ -101,11 +100,11 @@ object DMMatco: TDMMatco
         'FROM ticket INNER JOIN (project INNER JOIN project_tickets ON pr' +
         'oject.id = project_tickets.project_id) ON ticket.id = project_ti' +
         'ckets.ticket_id;')
-    Left = 64
+    Left = 40
     Top = 168
   end
   object DataSourceProjectTicketQuery: TDataSource
-    DataSet = ADOQueryClient
+    DataSet = ADOQueryMatco
     Left = 176
     Top = 168
   end
