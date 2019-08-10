@@ -47,6 +47,8 @@ type
     reNotes: TRichEdit;
     Panel6: TPanel;
     BitBtnNotesSave: TBitBtn;
+    Help: TTabSheet;
+    reHelp: TRichEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtnProjectTicketInsertClick(Sender: TObject);
     procedure BitBtnProjectTicketEditClick(Sender: TObject);
@@ -68,8 +70,8 @@ type
   private
     myFile: TextFile;
     text: string;
-    procedure NotesRead();
-    procedure NotesSave();
+    function NotesRead(sName:string): string;
+    procedure NotesSave(sName:string);
     { Private declarations }
   public
     { Public declarations }
@@ -160,8 +162,8 @@ end;
 
 procedure TfrmMatco.BitBtnNotesSaveClick(Sender: TObject);
 begin
-  NotesSave;
-  NotesRead;
+  NotesSave('notes.txt');
+  reNotes.Lines.Append(NotesRead('notes.txt'));
 end;
 
 procedure TfrmMatco.BitBtnClientDeleteClick(Sender: TObject);
@@ -207,15 +209,16 @@ end;
 
 procedure TfrmMatco.FormCreate(Sender: TObject);
 begin
-  NotesRead;
+  reNotes.Lines.Append(NotesRead('notes.txt'));
+  reHelp.Lines.Append(NotesRead('help.txt'));
 end;
 
-procedure TfrmMatco.NotesRead;
+function TfrmMatco.NotesRead(sName:string): string;
 var
-  sNotes: String;
+  sNotes, sLine: String;
   tNotes: TextFile;
 begin
-  AssignFile(tNotes, 'notes.txt');
+  AssignFile(tNotes, sName);
   try
     Reset(tNotes);
   except
@@ -225,21 +228,22 @@ begin
   try
     while not EoF(tNotes) do
     begin
-      Readln(tNotes, sNotes);
-      reNotes.Lines.Append(sNotes);
+      Readln(tNotes, sLine);
+      sNotes := sNotes + sLine;
     end;
   finally
+    Result := sNotes;
     CloseFile(tNotes);
   end;
 end;
 
-procedure TfrmMatco.NotesSave;
+procedure TfrmMatco.NotesSave(sName:string);
 var
   sNotes: String;
   tNotes: TextFile;
 begin
   reNotes.PlainText := True;
-  reNotes.Lines.SaveToFile('notes.txt');
+  reNotes.Lines.SaveToFile(sName);
   reNotes.PlainText := False;
   reNotes.Lines.Clear;
 end;

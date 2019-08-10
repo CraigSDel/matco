@@ -21,7 +21,7 @@ object frmMatco: TfrmMatco
     Top = 3
     Width = 633
     Height = 442
-    ActivePage = Notes
+    ActivePage = Help
     Align = alClient
     TabOrder = 0
     object ProjectTicket: TTabSheet
@@ -314,9 +314,6 @@ object frmMatco: TfrmMatco
         Font.Height = -11
         Font.Name = 'Tahoma'
         Font.Style = []
-        Lines.Strings = (
-          'Could not load notes'
-          '')
         ParentFont = False
         TabOrder = 0
         Zoom = 100
@@ -343,6 +340,28 @@ object frmMatco: TfrmMatco
           TabOrder = 0
           OnClick = BitBtnNotesSaveClick
         end
+      end
+    end
+    object Help: TTabSheet
+      Caption = 'Help'
+      ImageIndex = 6
+      object reHelp: TRichEdit
+        AlignWithMargins = True
+        Left = 3
+        Top = 3
+        Width = 619
+        Height = 408
+        Align = alClient
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        Zoom = 100
+        ExplicitLeft = 6
+        ExplicitTop = 6
       end
     end
   end
