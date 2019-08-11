@@ -421,6 +421,7 @@ end;
 procedure TfrmMatco.Refresh1Click(Sender: TObject);
 begin
  refreshDataSets;
+ ShowMessage('Refreshed');
 end;
 
 procedure TfrmMatco.refreshDataSets;
