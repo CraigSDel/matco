@@ -424,17 +424,6 @@ procedure TfrmMatco.refreshDataSets;
 begin
   with DMMatco do
   begin
-    MatcoADOConnection.Connected := False;
-    MatcoADOConnection.Connected := True;
-    // Update Datasources
-    ClientDataSource.DataSet.Refresh;
-    ProjectDataSource.DataSet.Refresh;
-    ProjectTicketDataSource.DataSet.Refresh;
-    TicketDataSource.DataSet.Refresh;
-    StatusDataSource.DataSet.Refresh;
-    UserDataSource.DataSet.Refresh;
-    QueryProjectTicketDataSource.DataSet.Refresh;
-    QueryTicketDataSource.DataSet.Refresh;
     // Open the tables
     tblClient.Open;
     tblProject.Open;

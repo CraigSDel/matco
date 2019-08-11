@@ -2,8 +2,8 @@ object frmMatco: TfrmMatco
   Left = 0
   Top = 0
   Caption = 'Matco'
-  ClientHeight = 531
-  ClientWidth = 712
+  ClientHeight = 738
+  ClientWidth = 879
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,22 +19,24 @@ object frmMatco: TfrmMatco
     AlignWithMargins = True
     Left = 3
     Top = 3
-    Width = 706
-    Height = 525
+    Width = 873
+    Height = 732
     ActivePage = ProjectTicket
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = -2
+    ExplicitWidth = 706
+    ExplicitHeight = 525
     object ProjectTicket: TTabSheet
       Caption = 'Project Ticket'
       ImageIndex = 1
+      ExplicitWidth = 698
+      ExplicitHeight = 497
       object dbgProjectTicket: TDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 692
-        Height = 391
+        Width = 859
+        Height = 598
         Align = alClient
         DataSource = DMMatco.QueryProjectTicketDataSource
         TabOrder = 1
@@ -47,11 +49,13 @@ object frmMatco: TfrmMatco
       object Panel1: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 400
-        Width = 692
+        Top = 607
+        Width = 859
         Height = 94
         Align = alBottom
         TabOrder = 0
+        ExplicitTop = 400
+        ExplicitWidth = 692
         object Label1: TLabel
           Left = 96
           Top = 9
@@ -142,27 +146,29 @@ object frmMatco: TfrmMatco
           Height = 21
           TabOrder = 7
         end
-      end
-      object BitBtnSearchByStatus: TBitBtn
-        Left = 539
-        Top = 462
-        Width = 145
-        Height = 25
-        Caption = 'S&earch By Status'
-        Kind = bkRetry
-        NumGlyphs = 2
-        TabOrder = 2
-        OnClick = BitBtnSearchByStatusClick
+        object BitBtnSearchByStatus: TBitBtn
+          Left = 536
+          Top = 53
+          Width = 145
+          Height = 25
+          Caption = 'S&earch By Status'
+          Kind = bkRetry
+          NumGlyphs = 2
+          TabOrder = 8
+          OnClick = BitBtnSearchByStatusClick
+        end
       end
     end
     object Client: TTabSheet
       Caption = 'Client'
+      ExplicitWidth = 889
+      ExplicitHeight = 606
       object dbgClient: TDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 692
-        Height = 450
+        Width = 859
+        Height = 657
         Align = alClient
         DataSource = DMMatco.ClientDataSource
         TabOrder = 0
@@ -175,11 +181,13 @@ object frmMatco: TfrmMatco
       object Panel2: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 459
-        Width = 692
+        Top = 666
+        Width = 859
         Height = 35
         Align = alBottom
         TabOrder = 1
+        ExplicitTop = 568
+        ExplicitWidth = 883
         object BitBtnClientInsert: TBitBtn
           Left = 182
           Top = 0
@@ -218,12 +226,14 @@ object frmMatco: TfrmMatco
     object Project: TTabSheet
       Caption = 'Project'
       ImageIndex = 2
+      ExplicitWidth = 889
+      ExplicitHeight = 606
       object dbgProject: TDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 692
-        Height = 450
+        Width = 859
+        Height = 657
         Align = alClient
         DataSource = DMMatco.ProjectDataSource
         TabOrder = 0
@@ -236,11 +246,13 @@ object frmMatco: TfrmMatco
       object Panel4: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 459
-        Width = 692
+        Top = 666
+        Width = 859
         Height = 35
         Align = alBottom
         TabOrder = 1
+        ExplicitTop = 568
+        ExplicitWidth = 883
         object BitBtnProjectDelete: TBitBtn
           Left = 362
           Top = 0
@@ -279,14 +291,18 @@ object frmMatco: TfrmMatco
     object TabSheetTicket: TTabSheet
       Caption = 'Ticket'
       ImageIndex = 3
+      ExplicitWidth = 889
+      ExplicitHeight = 606
       object Panel5: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 459
-        Width = 692
+        Top = 666
+        Width = 859
         Height = 35
         Align = alBottom
         TabOrder = 0
+        ExplicitTop = 568
+        ExplicitWidth = 883
         object BitBtnTicketEdit: TBitBtn
           Left = 287
           Top = 0
@@ -325,8 +341,8 @@ object frmMatco: TfrmMatco
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 692
-        Height = 450
+        Width = 859
+        Height = 657
         Align = alClient
         DataSource = DMMatco.QueryTicketDataSource
         TabOrder = 1
@@ -340,14 +356,18 @@ object frmMatco: TfrmMatco
     object User: TTabSheet
       Caption = 'User'
       ImageIndex = 4
+      ExplicitWidth = 889
+      ExplicitHeight = 606
       object Panel3: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 459
-        Width = 692
+        Top = 666
+        Width = 859
         Height = 35
         Align = alBottom
         TabOrder = 0
+        ExplicitTop = 568
+        ExplicitWidth = 883
         object BitBtnUserInsert: TBitBtn
           Left = 230
           Top = 0
@@ -386,8 +406,8 @@ object frmMatco: TfrmMatco
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 692
-        Height = 450
+        Width = 859
+        Height = 657
         Align = alClient
         DataSource = DMMatco.UserDataSource
         TabOrder = 1
@@ -401,12 +421,14 @@ object frmMatco: TfrmMatco
     object Notes: TTabSheet
       Caption = 'Notes'
       ImageIndex = 5
+      ExplicitWidth = 889
+      ExplicitHeight = 606
       object reNotes: TRichEdit
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 692
-        Height = 450
+        Width = 859
+        Height = 657
         Align = alClient
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -417,15 +439,19 @@ object frmMatco: TfrmMatco
         PlainText = True
         TabOrder = 0
         Zoom = 100
+        ExplicitWidth = 883
+        ExplicitHeight = 559
       end
       object Panel6: TPanel
         AlignWithMargins = True
         Left = 3
-        Top = 459
-        Width = 692
+        Top = 666
+        Width = 859
         Height = 35
         Align = alBottom
         TabOrder = 1
+        ExplicitTop = 568
+        ExplicitWidth = 883
         object BitBtnNotesSave: TBitBtn
           Left = 312
           Top = 0
@@ -441,15 +467,19 @@ object frmMatco: TfrmMatco
     object Help: TTabSheet
       Caption = 'Help'
       ImageIndex = 6
+      ExplicitWidth = 889
+      ExplicitHeight = 606
       object MemoHelp: TMemo
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 692
-        Height = 491
+        Width = 859
+        Height = 698
         Align = alClient
         ReadOnly = True
         TabOrder = 0
+        ExplicitWidth = 883
+        ExplicitHeight = 600
       end
     end
   end

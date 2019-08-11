@@ -5,15 +5,15 @@ object DMMatco: TDMMatco
   object MatcoADOConnection: TADOConnection
     Connected = True
     ConnectionString = 
-      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=.\matco.mdb;Mode=Sh' +
-      'are Deny None;Persist Security Info=False;Jet OLEDB:System datab' +
-      'ase="";Jet OLEDB:Registry Path="";Jet OLEDB:Database Password=""' +
-      ';Jet OLEDB:Engine Type=5;Jet OLEDB:Database Locking Mode=1;Jet O' +
-      'LEDB:Global Partial Bulk Ops=2;Jet OLEDB:Global Bulk Transaction' +
-      's=1;Jet OLEDB:New Database Password="";Jet OLEDB:Create System D' +
-      'atabase=False;Jet OLEDB:Encrypt Database=False;Jet OLEDB:Don'#39't C' +
-      'opy Locale on Compact=False;Jet OLEDB:Compact Without Replica Re' +
-      'pair=False;Jet OLEDB:SFP=False'
+      'Provider=Microsoft.Jet.OLEDB.4.0;Data Source=matco.mdb;Mode=Shar' +
+      'e Deny None;Persist Security Info=False;Jet OLEDB:System databas' +
+      'e="";Jet OLEDB:Registry Path="";Jet OLEDB:Database Password="";J' +
+      'et OLEDB:Engine Type=5;Jet OLEDB:Database Locking Mode=1;Jet OLE' +
+      'DB:Global Partial Bulk Ops=2;Jet OLEDB:Global Bulk Transactions=' +
+      '1;Jet OLEDB:New Database Password="";Jet OLEDB:Create System Dat' +
+      'abase=False;Jet OLEDB:Encrypt Database=False;Jet OLEDB:Don'#39't Cop' +
+      'y Locale on Compact=False;Jet OLEDB:Compact Without Replica Repa' +
+      'ir=False;Jet OLEDB:SFP=False'
     LoginPrompt = False
     Mode = cmShareDenyNone
     Provider = 'Microsoft.Jet.OLEDB.4.0'
