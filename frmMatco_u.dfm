@@ -24,6 +24,8 @@ object frmMatco: TfrmMatco
     ActivePage = Notes
     Align = alClient
     TabOrder = 0
+    ExplicitLeft = -2
+    ExplicitTop = -2
     object ProjectTicket: TTabSheet
       Caption = 'Project Ticket'
       ImageIndex = 1
@@ -376,6 +378,7 @@ object frmMatco: TfrmMatco
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
+        PlainText = True
         TabOrder = 0
         Zoom = 100
       end
@@ -401,21 +404,19 @@ object frmMatco: TfrmMatco
     object Help: TTabSheet
       Caption = 'Help'
       ImageIndex = 6
-      object reHelp: TRichEdit
+      object MemoHelp: TMemo
         AlignWithMargins = True
         Left = 3
         Top = 3
         Width = 692
         Height = 491
         Align = alClient
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
+        ReadOnly = True
         TabOrder = 0
-        Zoom = 100
+        ExplicitLeft = 41
+        ExplicitTop = 40
+        ExplicitWidth = 185
+        ExplicitHeight = 89
       end
     end
   end

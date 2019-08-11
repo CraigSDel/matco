@@ -1,1 +1,11 @@
-The most useful help ever.
+Matco Help
+
+In order to add tickets to a project. 
+
+What you will need to is.
+
+1. Ensure that you have added the user.
+2. Added the ticket.
+3. Added the project.
+4. Added the client.
+5. Added the ticket to the project.

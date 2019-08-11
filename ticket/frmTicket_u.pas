@@ -17,7 +17,7 @@ type
     lblTicketDescription: TLabel;
     lblTicketNumber: TLabel;
     DBLookupComboBoxTicketAssignee: TDBLookupComboBox;
-    DBEdit1: TDBEdit;
+    DBEditTicketCreated: TDBEdit;
     lblDateCreated: TLabel;
     lblAssignee: TLabel;
     BitBtnTicketOk: TBitBtn;

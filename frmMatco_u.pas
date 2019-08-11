@@ -48,7 +48,6 @@ type
     Panel6: TPanel;
     BitBtnNotesSave: TBitBtn;
     Help: TTabSheet;
-    reHelp: TRichEdit;
     edtProjectName: TEdit;
     Label1: TLabel;
     edtTicketNumber: TEdit;
@@ -58,6 +57,7 @@ type
     cmbStatus: TComboBox;
     BitBtnSearchByStatus: TBitBtn;
     Refresh1: TMenuItem;
+    MemoHelp: TMemo;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtnProjectTicketInsertClick(Sender: TObject);
     procedure BitBtnProjectTicketEditClick(Sender: TObject);
@@ -79,16 +79,11 @@ type
     procedure BitBtnProjectTicketSearchClick(Sender: TObject);
     procedure BitBtnSumClick(Sender: TObject);
     procedure BitBtnSearchByStatusClick(Sender: TObject);
-    procedure BitBtnClientRefreshClick(Sender: TObject);
-    procedure BitBtnTicketRefreshClick(Sender: TObject);
-    procedure BitBtnProjectRefreshClick(Sender: TObject);
-    procedure BitBtnProjectTicketRefreshClick(Sender: TObject);
-    procedure BitBtnUserRefreshClick(Sender: TObject);
     procedure Refresh1Click(Sender: TObject);
   private
     myFile: TextFile;
     text: string;
-    buttonSelected : Integer;
+    buttonSelected: Integer;
     function NotesRead(sName: string): string;
     procedure NotesSave(sName: string);
     procedure MatcoQuery(sQuery: string);
@@ -111,8 +106,9 @@ uses dmMatco_u, frmClient_u, frmProjectTicket_u, frmProject_u, frmTicket_u,
 // Project Ticket
 procedure TfrmMatco.BitBtnProjectTicketDeleteClick(Sender: TObject);
 begin
- // Show a confirmation dialog
-  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+  // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',
+    mtCustom, mbOKCancel, 0);
 
   // Show the button type selected
   if buttonSelected = mrOK then
@@ -136,12 +132,6 @@ begin
   frmProjectTicket.ShowModal;
 end;
 
-procedure TfrmMatco.BitBtnProjectTicketRefreshClick(Sender: TObject);
-begin
-  refreshDataSets;
-  dbgProjectTicket.DataSource.DataSet.Refresh;
-end;
-
 procedure TfrmMatco.BitBtnProjectTicketSearchClick(Sender: TObject);
 var
   sQuery: string;
@@ -149,33 +139,41 @@ begin
   if (edtTicketNumber.GetTextLen = 0) AND (edtProjectName.GetTextLen > 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number';
-    sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
-    sQuery := sQuery + ' WHERE (((project.project_name) LIKE "%' + edtProjectName.text + '%"))';
+    sQuery := sQuery +
+      ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
+    sQuery := sQuery + ' WHERE (((project.project_name) LIKE "%' +
+      edtProjectName.text + '%"))';
     sQuery := sQuery + ' ORDER BY ticket.ticket_number, project.project_name;';
-     MatcoQuery(sQuery);
+    MatcoQuery(sQuery);
   end;
 
   if (edtTicketNumber.GetTextLen > 0) AND (edtProjectName.GetTextLen = 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number';
-    sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
-    sQuery := sQuery + ' WHERE (((ticket.ticket_number) LIKE "%' + edtTicketNumber.text + '%"))';
+    sQuery := sQuery +
+      ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
+    sQuery := sQuery + ' WHERE (((ticket.ticket_number) LIKE "%' +
+      edtTicketNumber.text + '%"))';
     sQuery := sQuery + ' ORDER BY ticket.ticket_number, project.project_name;';
-     MatcoQuery(sQuery);
+    MatcoQuery(sQuery);
   end;
 
   if (edtTicketNumber.GetTextLen = 0) AND (edtProjectName.GetTextLen = 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number';
-    sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id;';
-     MatcoQuery(sQuery);
+    sQuery := sQuery +
+      ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id;';
+    MatcoQuery(sQuery);
   end;
 
   if (edtTicketNumber.GetTextLen > 0) AND (edtProjectName.GetTextLen > 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number';
-    sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
-    sQuery := sQuery + ' WHERE (((ticket.ticket_number) LIKE "%' + edtTicketNumber.text + '%") AND ((project.project_name) LIKE "%' + edtProjectName.text + '%"))';
+    sQuery := sQuery +
+      ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
+    sQuery := sQuery + ' WHERE (((ticket.ticket_number) LIKE "%' +
+      edtTicketNumber.text + '%") AND ((project.project_name) LIKE "%' +
+      edtProjectName.text + '%"))';
     sQuery := sQuery + ' ORDER BY project.project_name, ticket.ticket_number;';
     MatcoQuery(sQuery);
   end;
@@ -185,42 +183,47 @@ procedure TfrmMatco.BitBtnSearchByStatusClick(Sender: TObject);
 var
   sQuery: string;
 begin
-    if (cmbStatus.ItemIndex <> -1) AND (edtProjectName.GetTextLen > 0) then
-    begin
-      sQuery := 'SELECT project.project_name, ticket.ticket_number, Sum(ticket.id) AS NumberOfTickets';
-      sQuery := sQuery + ' FROM status INNER JOIN (ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id) ON status.ID = ticket.status';
-      sQuery := sQuery + ' WHERE (((status.description)="'+ cmbStatus.text +'") AND ((project.project_name)="'+ edtProjectName.text +'"))';
-      sQuery := sQuery + ' GROUP BY project.project_name, ticket.ticket_number';
-      sQuery := sQuery + ' ORDER BY project.project_name, ticket.ticket_number;';
-      MatcoQuery(sQuery);
-    end
-    else
-      ShowMessage('Please enter a project name and select a status');
+  if (cmbStatus.ItemIndex <> -1) AND (edtProjectName.GetTextLen > 0) then
+  begin
+    sQuery := 'SELECT project.project_name, ticket.ticket_number, Sum(ticket.id) AS NumberOfTickets';
+    sQuery := sQuery +
+      ' FROM status INNER JOIN (ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id) ON status.ID = ticket.status';
+    sQuery := sQuery + ' WHERE (((status.description)="' + cmbStatus.text +
+      '") AND ((project.project_name)="' + edtProjectName.text + '"))';
+    sQuery := sQuery + ' GROUP BY project.project_name, ticket.ticket_number';
+    sQuery := sQuery + ' ORDER BY project.project_name, ticket.ticket_number;';
+    MatcoQuery(sQuery);
+  end
+  else
+    ShowMessage('Please enter a project name and select a status');
 end;
 
 procedure TfrmMatco.BitBtnSumClick(Sender: TObject);
 var
   sQuery: string;
 begin
-    sQuery := 'SELECT project.project_name, Sum(project_tickets.project_id) AS NumberOfTickets ';
-    sQuery := sQuery + ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
-    sQuery := sQuery + ' WHERE (((project.project_name)="' + edtProjectName.text + '"))';
-    sQuery := sQuery + ' GROUP BY project.project_name';
-    sQuery := sQuery + ' ORDER BY Sum(project_tickets.project_id)';
-    MatcoQuery(sQuery);
+  sQuery := 'SELECT project.project_name, Sum(project_tickets.project_id) AS NumberOfTickets ';
+  sQuery := sQuery +
+    ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
+  sQuery := sQuery + ' WHERE (((project.project_name)="' +
+    edtProjectName.text + '"))';
+  sQuery := sQuery + ' GROUP BY project.project_name';
+  sQuery := sQuery + ' ORDER BY Sum(project_tickets.project_id)';
+  MatcoQuery(sQuery);
 end;
 
 // Ticket
 procedure TfrmMatco.BitBtnTicketDeleteClick(Sender: TObject);
 begin
 
- // Show a confirmation dialog
-  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+  // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',
+    mtCustom, mbOKCancel, 0);
 
   // Show the button type selected
   if buttonSelected = mrOK then
   begin
-  DMMatco.tblTicket.Delete;
+    DMMatco.tblTicket.Delete;
     ShowMessage('Deleted');
   end;
 end;
@@ -230,7 +233,6 @@ begin
   DMMatco.tblClient.Edit;
   frmTicket := TfrmTicket.Create(owner);
   frmTicket.ShowModal;
-  dbgTicket.DataSource.DataSet.Refresh;
 end;
 
 procedure TfrmMatco.BitBtnTicketInsertClick(Sender: TObject);
@@ -238,19 +240,13 @@ begin
   DMMatco.tblTicket.Insert;
   frmTicket := TfrmTicket.Create(owner);
   frmTicket.ShowModal;
-  dbgTicket.DataSource.DataSet.Refresh;
-end;
-
-procedure TfrmMatco.BitBtnTicketRefreshClick(Sender: TObject);
-begin
-  refreshDataSets;
-  dbgTicket.DataSource.DataSet.Refresh;
 end;
 
 procedure TfrmMatco.BitBtnUserDeleteClick(Sender: TObject);
 begin
- // Show a confirmation dialog
-  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+  // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',
+    mtCustom, mbOKCancel, 0);
 
   // Show the button type selected
   if buttonSelected = mrOK then
@@ -285,21 +281,16 @@ end;
 
 procedure TfrmMatco.BitBtnNotesSaveClick(Sender: TObject);
 begin
-  NotesSave('notes.txt');
-  reNotes.Lines.Append(NotesRead('notes.txt'));
-end;
-
-procedure TfrmMatco.BitBtnUserRefreshClick(Sender: TObject);
-begin
-  refreshDataSets;
-  dgbUser.DataSource.DataSet.Refresh;
+  NotesSave('notes.rtf');
+  reNotes.Lines.Add(NotesRead('notes.rtf'));
 end;
 
 procedure TfrmMatco.BitBtnClientDeleteClick(Sender: TObject);
 begin
 
- // Show a confirmation dialog
-  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+  // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',
+    mtCustom, mbOKCancel, 0);
 
   // Show the button type selected
   if buttonSelected = mrOK then
@@ -316,18 +307,13 @@ begin
   frmClient.ShowModal;
 end;
 
-procedure TfrmMatco.BitBtnClientRefreshClick(Sender: TObject);
-begin
-  refreshDataSets;
-  dbgClient.DataSource.DataSet.Refresh;
-end;
-
 // Project
 procedure TfrmMatco.BitBtnProjectDeleteClick(Sender: TObject);
 begin
 
- // Show a confirmation dialog
-  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+  // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',
+    mtCustom, mbOKCancel, 0);
 
   // Show the button type selected
   if buttonSelected = mrOK then
@@ -351,12 +337,6 @@ begin
   frmProject.ShowModal;
 end;
 
-procedure TfrmMatco.BitBtnProjectRefreshClick(Sender: TObject);
-begin
-  refreshDataSets;
-  dbgProject.DataSource.DataSet.Refresh;
-end;
-
 procedure TfrmMatco.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Application.Terminate;
@@ -364,23 +344,23 @@ end;
 
 procedure TfrmMatco.FormCreate(Sender: TObject);
 const
-  Status: array[0..2] of string = ('Todo', 'In Progress', 'Done');
+  Status: array [0 .. 2] of string = ('Todo', 'In Progress', 'Done');
 var
-  i: integer;
+  i: Integer;
 begin
-  reNotes.Lines.Append(NotesRead('notes.txt'));
-  reHelp.Lines.Append(NotesRead('help.txt'));
+  reNotes.Lines.Append(NotesRead('notes.rtf'));
+  MemoHelp.Lines.Append(NotesRead('help.txt'));
 
-  for i := 0 to Length(Status) -1 do
+  for i := 0 to Length(Status) - 1 do
     cmbStatus.Items.Add(Status[i]);
 end;
 
 procedure TfrmMatco.MatcoQuery(sQuery: string);
 begin
-    DMMatco.ADOQueryProjectTicket.SQL.Clear;
-    DMMatco.ADOQueryProjectTicket.SQL.Add(sQuery);
-    DMMatco.ADOQueryProjectTicket.ExecSQL;
-    DMMatco.ADOQueryProjectTicket.Active:= True;
+  DMMatco.ADOQueryProjectTicket.SQL.Clear;
+  DMMatco.ADOQueryProjectTicket.SQL.Add(sQuery);
+  DMMatco.ADOQueryProjectTicket.ExecSQL;
+  DMMatco.ADOQueryProjectTicket.Active := True;
 end;
 
 function TfrmMatco.NotesRead(sName: string): string;
@@ -399,7 +379,12 @@ begin
     while not EoF(tNotes) do
     begin
       Readln(tNotes, sLine);
-      sNotes := sNotes + sLine;
+      if Length(sNotes) > 0 then
+        begin
+          sNotes := sNotes + #13#10 + sLine;
+        end
+      else
+        sNotes := sLine;
     end;
   finally
     Result := sNotes;
@@ -420,8 +405,8 @@ end;
 
 procedure TfrmMatco.Refresh1Click(Sender: TObject);
 begin
- refreshDataSets;
- ShowMessage('Refreshed');
+  refreshDataSets;
+  ShowMessage('Refreshed');
 end;
 
 procedure TfrmMatco.refreshDataSets;
@@ -429,15 +414,15 @@ begin
   with DMMatco do
   begin
     // Update Datasources
-    //ClientDataSource.DataSet.Refresh;
-    //ProjectDataSource.DataSet.Refresh;
-    //ProjectTicketDataSource.DataSet.Refresh;
-    //TicketDataSource.DataSet.Refresh;
-    //StatusDataSource.DataSet.Refresh;
-    //UserDataSource.DataSet.Refresh;
-    //QueryProjectTicketDataSource.DataSet.Refresh;
-    //QueryTicketDataSource.DataSet.Refresh;
-    //Update Ado stuff
+    // ClientDataSource.DataSet.Refresh;
+    // ProjectDataSource.DataSet.Refresh;
+    // ProjectTicketDataSource.DataSet.Refresh;
+    // TicketDataSource.DataSet.Refresh;
+    // StatusDataSource.DataSet.Refresh;
+    // UserDataSource.DataSet.Refresh;
+    // QueryProjectTicketDataSource.DataSet.Refresh;
+    // QueryTicketDataSource.DataSet.Refresh;
+    // Update Ado stuff
     tblClient.Requery;
     tblProject.Requery;
     tblProjectTicket.Requery;
