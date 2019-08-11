@@ -136,6 +136,8 @@ procedure TfrmMatco.BitBtnProjectTicketSearchClick(Sender: TObject);
 var
   sQuery: string;
 begin
+
+  // If the user has not entered a ticket number then query on the project name
   if (edtTicketNumber.GetTextLen = 0) AND (edtProjectName.GetTextLen > 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number';
@@ -147,6 +149,7 @@ begin
     MatcoQuery(sQuery);
   end;
 
+  // If the user has not entered a project name then query on the ticket number
   if (edtTicketNumber.GetTextLen > 0) AND (edtProjectName.GetTextLen = 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number';
@@ -158,6 +161,8 @@ begin
     MatcoQuery(sQuery);
   end;
 
+
+  // if the user has not entered a ticket number or a project name select everything
   if (edtTicketNumber.GetTextLen = 0) AND (edtProjectName.GetTextLen = 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number';
@@ -166,6 +171,7 @@ begin
     MatcoQuery(sQuery);
   end;
 
+  // if the user has entered both a ticket number and a project name
   if (edtTicketNumber.GetTextLen > 0) AND (edtProjectName.GetTextLen > 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number';
@@ -183,6 +189,7 @@ procedure TfrmMatco.BitBtnSearchByStatusClick(Sender: TObject);
 var
   sQuery: string;
 begin
+  // Get all the tickets and the sum of tickets in a project with the selected status
   if (cmbStatus.ItemIndex <> -1) AND (edtProjectName.GetTextLen > 0) then
   begin
     sQuery := 'SELECT project.project_name, ticket.ticket_number, Sum(ticket.id) AS NumberOfTickets';
@@ -202,6 +209,7 @@ procedure TfrmMatco.BitBtnSumClick(Sender: TObject);
 var
   sQuery: string;
 begin
+  // Get the sum of tickets in a project
   sQuery := 'SELECT project.project_name, Sum(project_tickets.project_id) AS NumberOfTickets ';
   sQuery := sQuery +
     ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
@@ -287,7 +295,6 @@ end;
 
 procedure TfrmMatco.BitBtnClientDeleteClick(Sender: TObject);
 begin
-
   // Show a confirmation dialog
   buttonSelected := messagedlg('Are you sure you want to complete this action?',
     mtCustom, mbOKCancel, 0);

@@ -21,11 +21,9 @@ object frmMatco: TfrmMatco
     Top = 3
     Width = 706
     Height = 525
-    ActivePage = Notes
+    ActivePage = Help
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = -2
-    ExplicitTop = -2
     object ProjectTicket: TTabSheet
       Caption = 'Project Ticket'
       ImageIndex = 1
@@ -145,6 +143,10 @@ object frmMatco: TfrmMatco
     end
     object Client: TTabSheet
       Caption = 'Client'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object dbgClient: TDBGrid
         AlignWithMargins = True
         Left = 3
@@ -200,6 +202,10 @@ object frmMatco: TfrmMatco
     object Project: TTabSheet
       Caption = 'Project'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object dbgProject: TDBGrid
         AlignWithMargins = True
         Left = 3
@@ -255,6 +261,10 @@ object frmMatco: TfrmMatco
     object TabSheetTicket: TTabSheet
       Caption = 'Ticket'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel5: TPanel
         AlignWithMargins = True
         Left = 3
@@ -310,6 +320,10 @@ object frmMatco: TfrmMatco
     object User: TTabSheet
       Caption = 'User'
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel3: TPanel
         AlignWithMargins = True
         Left = 3
@@ -365,6 +379,10 @@ object frmMatco: TfrmMatco
     object Notes: TTabSheet
       Caption = 'Notes'
       ImageIndex = 5
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object reNotes: TRichEdit
         AlignWithMargins = True
         Left = 3
@@ -413,10 +431,6 @@ object frmMatco: TfrmMatco
         Align = alClient
         ReadOnly = True
         TabOrder = 0
-        ExplicitLeft = 41
-        ExplicitTop = 40
-        ExplicitWidth = 185
-        ExplicitHeight = 89
       end
     end
   end
