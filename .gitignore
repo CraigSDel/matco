@@ -70,7 +70,3 @@ modules/
 
 # database
 *.ldb
-
-//Access Database
-*.mdb
-*.lbd
