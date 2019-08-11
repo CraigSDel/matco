@@ -21,16 +21,12 @@ object frmMatco: TfrmMatco
     Top = 3
     Width = 706
     Height = 525
-    ActivePage = ProjectTicket
+    ActivePage = Notes
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 633
-    ExplicitHeight = 442
     object ProjectTicket: TTabSheet
       Caption = 'Project Ticket'
       ImageIndex = 1
-      ExplicitWidth = 625
-      ExplicitHeight = 414
       object dbgProjectTicket: TDBGrid
         AlignWithMargins = True
         Left = 3
@@ -38,7 +34,7 @@ object frmMatco: TfrmMatco
         Width = 692
         Height = 391
         Align = alClient
-        DataSource = DMMatco.DataSourceQueryProjectTicket
+        DataSource = DMMatco.QueryProjectTicketDataSource
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -54,8 +50,6 @@ object frmMatco: TfrmMatco
         Height = 94
         Align = alBottom
         TabOrder = 0
-        ExplicitLeft = -21
-        ExplicitTop = 406
         object Label1: TLabel
           Left = 96
           Top = 9
@@ -129,9 +123,16 @@ object frmMatco: TfrmMatco
           TabOrder = 6
           OnClick = BitBtnSumClick
         end
+        object cmbStatus: TComboBox
+          Left = 440
+          Top = 9
+          Width = 145
+          Height = 21
+          TabOrder = 7
+        end
       end
       object BitBtnSearchByStatus: TBitBtn
-        Left = 464
+        Left = 474
         Top = 462
         Width = 114
         Height = 25
@@ -142,8 +143,6 @@ object frmMatco: TfrmMatco
     end
     object Client: TTabSheet
       Caption = 'Client'
-      ExplicitWidth = 625
-      ExplicitHeight = 414
       object dbgClient: TDBGrid
         AlignWithMargins = True
         Left = 3
@@ -167,10 +166,8 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 1
-        ExplicitTop = 376
-        ExplicitWidth = 619
         object BitBtnClientInsert: TBitBtn
-          Left = 166
+          Left = 182
           Top = 0
           Width = 75
           Height = 25
@@ -179,7 +176,7 @@ object frmMatco: TfrmMatco
           OnClick = BitBtnClientInsertClick
         end
         object BitBtnClientDelete: TBitBtn
-          Left = 328
+          Left = 344
           Top = 0
           Width = 75
           Height = 25
@@ -188,7 +185,7 @@ object frmMatco: TfrmMatco
           OnClick = BitBtnClientDeleteClick
         end
         object BitBtnClientEdit: TBitBtn
-          Left = 247
+          Left = 263
           Top = 0
           Width = 75
           Height = 25
@@ -201,16 +198,14 @@ object frmMatco: TfrmMatco
     object Project: TTabSheet
       Caption = 'Project'
       ImageIndex = 2
-      ExplicitWidth = 625
-      ExplicitHeight = 414
-      object DBGridProject: TDBGrid
+      object dbgProject: TDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
         Width = 692
         Height = 450
         Align = alClient
-        DataSource = DMMatco.DataSourceProject
+        DataSource = DMMatco.ProjectDataSource
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -226,10 +221,8 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 1
-        ExplicitTop = 376
-        ExplicitWidth = 619
         object BitBtnProjectDelete: TBitBtn
-          Left = 330
+          Left = 362
           Top = 0
           Width = 75
           Height = 25
@@ -238,7 +231,7 @@ object frmMatco: TfrmMatco
           OnClick = BitBtnProjectDeleteClick
         end
         object BitBtnProjectEdit: TBitBtn
-          Left = 249
+          Left = 281
           Top = 0
           Width = 75
           Height = 25
@@ -247,7 +240,7 @@ object frmMatco: TfrmMatco
           OnClick = BitBtnProjectEditClick
         end
         object BitBtnProjectInsert: TBitBtn
-          Left = 168
+          Left = 200
           Top = 0
           Width = 75
           Height = 25
@@ -260,8 +253,6 @@ object frmMatco: TfrmMatco
     object TabSheetTicket: TTabSheet
       Caption = 'Ticket'
       ImageIndex = 3
-      ExplicitWidth = 625
-      ExplicitHeight = 414
       object Panel5: TPanel
         AlignWithMargins = True
         Left = 3
@@ -270,10 +261,8 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 0
-        ExplicitTop = 376
-        ExplicitWidth = 619
         object BitBtnTicketEdit: TBitBtn
-          Left = 244
+          Left = 287
           Top = 0
           Width = 75
           Height = 25
@@ -282,7 +271,7 @@ object frmMatco: TfrmMatco
           OnClick = BitBtnTicketEditClick
         end
         object BitBtnTicketDelete: TBitBtn
-          Left = 325
+          Left = 368
           Top = 0
           Width = 75
           Height = 25
@@ -291,7 +280,7 @@ object frmMatco: TfrmMatco
           OnClick = BitBtnTicketDeleteClick
         end
         object BitBtnTicketInsert: TBitBtn
-          Left = 163
+          Left = 206
           Top = 0
           Width = 75
           Height = 25
@@ -300,14 +289,14 @@ object frmMatco: TfrmMatco
           OnClick = BitBtnTicketInsertClick
         end
       end
-      object DBGridTicket: TDBGrid
+      object dbgTicket: TDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
         Width = 692
         Height = 450
         Align = alClient
-        DataSource = DMMatco.DataSourceQueryTicket
+        DataSource = DMMatco.QueryTicketDataSource
         TabOrder = 1
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -319,8 +308,6 @@ object frmMatco: TfrmMatco
     object User: TTabSheet
       Caption = 'User'
       ImageIndex = 4
-      ExplicitWidth = 625
-      ExplicitHeight = 414
       object Panel3: TPanel
         AlignWithMargins = True
         Left = 3
@@ -329,10 +316,8 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 0
-        ExplicitTop = 376
-        ExplicitWidth = 619
         object BitBtnUserInsert: TBitBtn
-          Left = 165
+          Left = 230
           Top = 0
           Width = 75
           Height = 25
@@ -341,7 +326,7 @@ object frmMatco: TfrmMatco
           OnClick = BitBtnUserInsertClick
         end
         object BitBtnUserDelete: TBitBtn
-          Left = 327
+          Left = 392
           Top = 0
           Width = 75
           Height = 25
@@ -350,7 +335,7 @@ object frmMatco: TfrmMatco
           OnClick = BitBtnUserDeleteClick
         end
         object BitBtnUserEdit: TBitBtn
-          Left = 246
+          Left = 311
           Top = 0
           Width = 75
           Height = 25
@@ -359,7 +344,7 @@ object frmMatco: TfrmMatco
           OnClick = BitBtnUserEditClick
         end
       end
-      object DBGrid3: TDBGrid
+      object dgbUser: TDBGrid
         AlignWithMargins = True
         Left = 3
         Top = 3
@@ -378,9 +363,6 @@ object frmMatco: TfrmMatco
     object Notes: TTabSheet
       Caption = 'Notes'
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitWidth = 625
-      ExplicitHeight = 414
       object reNotes: TRichEdit
         AlignWithMargins = True
         Left = 3
@@ -396,9 +378,6 @@ object frmMatco: TfrmMatco
         ParentFont = False
         TabOrder = 0
         Zoom = 100
-        ExplicitLeft = 16
-        ExplicitWidth = 185
-        ExplicitHeight = 89
       end
       object Panel6: TPanel
         AlignWithMargins = True
@@ -408,11 +387,8 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 1
-        ExplicitLeft = 6
-        ExplicitTop = 379
-        ExplicitWidth = 619
         object BitBtnNotesSave: TBitBtn
-          Left = 280
+          Left = 312
           Top = 0
           Width = 75
           Height = 25
@@ -425,8 +401,6 @@ object frmMatco: TfrmMatco
     object Help: TTabSheet
       Caption = 'Help'
       ImageIndex = 6
-      ExplicitWidth = 625
-      ExplicitHeight = 414
       object reHelp: TRichEdit
         AlignWithMargins = True
         Left = 3
@@ -442,25 +416,18 @@ object frmMatco: TfrmMatco
         ParentFont = False
         TabOrder = 0
         Zoom = 100
-        ExplicitLeft = 6
-        ExplicitTop = 6
-        ExplicitWidth = 619
-        ExplicitHeight = 408
       end
     end
-  end
-  object cmbStatus: TComboBox
-    Left = 440
-    Top = 433
-    Width = 145
-    Height = 21
-    TabOrder = 1
   end
   object MatcoMainMenu: TMainMenu
     Left = 592
     Top = 65528
     object Home: TMenuItem
       Caption = 'Home'
+    end
+    object Refresh1: TMenuItem
+      Caption = 'Refresh'
+      OnClick = Refresh1Click
     end
   end
 end

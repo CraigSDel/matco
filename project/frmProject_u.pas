@@ -11,15 +11,15 @@ uses
 type
     TfrmProject = class(TForm)
     DBTextProjectID: TDBText;
-    DBEdit1: TDBEdit;
     DBEditProjectName: TDBEdit;
     projectID: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     BitBtnProjectOk: TBitBtn;
     BitBtnProjectCancel: TBitBtn;
-    procedure BitBtnSaveClick(Sender: TObject);
-    procedure BitBtnCancelClick(Sender: TObject);
+    DBLookupComboBoxClientId: TDBLookupComboBox;
+    procedure BitBtnProjectOkClick(Sender: TObject);
+    procedure BitBtnProjectCancelClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,14 +34,24 @@ implementation
 {$R *.dfm}
 uses frmMatco_u;
 
-procedure TfrmProject.BitBtnSaveClick(Sender: TObject);
+procedure TfrmProject.BitBtnProjectCancelClick(Sender: TObject);
 begin
-   DMMatco.tblProject.Post;
+     DMMatco.tblProject.Cancel;
 end;
 
-procedure TfrmProject.BitBtnCancelClick(Sender: TObject);
+procedure TfrmProject.BitBtnProjectOkClick(Sender: TObject);
+var
+  buttonSelected : Integer;
 begin
-   DMMatco.tblProject.Cancel;
+  // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+
+  // Show the button type selected
+  if buttonSelected = mrOK then
+  begin
+    DMMatco.tblProject.Post;
+    ShowMessage('Submitted');
+  end;
 end;
 
 end.

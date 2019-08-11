@@ -42,15 +42,6 @@ object frmProject: TfrmProject
     Height = 13
     Caption = 'Project Name'
   end
-  object DBEdit1: TDBEdit
-    Left = 104
-    Top = 31
-    Width = 156
-    Height = 21
-    DataField = 'client_id'
-    DataSource = DMMatco.DataSourceProject
-    TabOrder = 0
-  end
   object DBEditProjectName: TDBEdit
     Left = 104
     Top = 58
@@ -58,7 +49,7 @@ object frmProject: TfrmProject
     Height = 21
     DataField = 'project_name'
     DataSource = DMMatco.DataSourceProject
-    TabOrder = 1
+    TabOrder = 0
   end
   object BitBtnProjectOk: TBitBtn
     Left = 104
@@ -67,7 +58,8 @@ object frmProject: TfrmProject
     Height = 25
     Kind = bkOK
     NumGlyphs = 2
-    TabOrder = 2
+    TabOrder = 1
+    OnClick = BitBtnProjectOkClick
   end
   object BitBtnProjectCancel: TBitBtn
     Left = 185
@@ -76,6 +68,19 @@ object frmProject: TfrmProject
     Height = 25
     Kind = bkCancel
     NumGlyphs = 2
+    TabOrder = 2
+    OnClick = BitBtnProjectCancelClick
+  end
+  object DBLookupComboBoxClientId: TDBLookupComboBox
+    Left = 104
+    Top = 31
+    Width = 156
+    Height = 21
+    DataField = 'client_id'
+    DataSource = DMMatco.DataSourceProject
+    KeyField = 'id'
+    ListField = 'client_name'
+    ListSource = DMMatco.ClientDataSource
     TabOrder = 3
   end
 end

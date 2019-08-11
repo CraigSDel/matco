@@ -15,15 +15,15 @@ type
     tblClient: TADOTable;
     ClientDataSource: TDataSource;
     tblProject: TADOTable;
-    DataSourceProject: TDataSource;
+    ProjectDataSource: TDataSource;
     tblProjectTicket: TADOTable;
-    DataSourceProjectTicket: TDataSource;
+    ProjectTicketDataSource: TDataSource;
     ADOQueryProjectTicket: TADOQuery;
-    DataSourceQueryProjectTicket: TDataSource;
+    QueryProjectTicketDataSource: TDataSource;
     tblStatus: TADOTable;
-    DataSourceStatus: TDataSource;
+    StatusDataSource: TDataSource;
     ADOQueryTicket: TADOQuery;
-    DataSourceQueryTicket: TDataSource;
+    QueryTicketDataSource: TDataSource;
   private
     { Private declarations }
   public

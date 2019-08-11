@@ -15,6 +15,7 @@ object DMMatco: TDMMatco
       'ncrypt Database=False;Jet OLEDB:Don'#39't Copy Locale on Compact=Fal' +
       'se;Jet OLEDB:Compact Without Replica Repair=False;Jet OLEDB:SFP=' +
       'False'
+    LoginPrompt = False
     Mode = cmShareDenyNone
     Provider = 'Microsoft.Jet.OLEDB.4.0'
     Left = 120
@@ -70,7 +71,7 @@ object DMMatco: TDMMatco
     Left = 136
     Top = 64
   end
-  object DataSourceProject: TDataSource
+  object ProjectDataSource: TDataSource
     DataSet = tblProject
     Left = 136
     Top = 112
@@ -84,7 +85,7 @@ object DMMatco: TDMMatco
     Left = 176
     Top = 64
   end
-  object DataSourceProjectTicket: TDataSource
+  object ProjectTicketDataSource: TDataSource
     DataSet = tblProjectTicket
     Left = 176
     Top = 112
@@ -93,7 +94,7 @@ object DMMatco: TDMMatco
     Active = True
     Connection = MatcoADOConnection
     CursorType = ctStatic
-    DataSource = DataSourceProjectTicket
+    DataSource = ProjectTicketDataSource
     Parameters = <>
     SQL.Strings = (
       'SELECT project.project_name, ticket.ticket_number'
@@ -101,13 +102,13 @@ object DMMatco: TDMMatco
         'FROM ticket INNER JOIN (project INNER JOIN project_tickets ON pr' +
         'oject.id = project_tickets.project_id) ON ticket.id = project_ti' +
         'ckets.ticket_id;')
-    Left = 56
-    Top = 216
+    Left = 256
+    Top = 64
   end
-  object DataSourceQueryProjectTicket: TDataSource
+  object QueryProjectTicketDataSource: TDataSource
     DataSet = ADOQueryProjectTicket
-    Left = 56
-    Top = 272
+    Left = 256
+    Top = 112
   end
   object tblStatus: TADOTable
     Active = True
@@ -117,7 +118,7 @@ object DMMatco: TDMMatco
     Left = 216
     Top = 64
   end
-  object DataSourceStatus: TDataSource
+  object StatusDataSource: TDataSource
     DataSet = tblStatus
     Left = 216
     Top = 112
@@ -134,12 +135,12 @@ object DMMatco: TDMMatco
       
         'FROM users INNER JOIN (status INNER JOIN ticket ON status.ID = t' +
         'icket.status) ON users.id = ticket.assignee;')
-    Left = 240
-    Top = 232
+    Left = 288
+    Top = 64
   end
-  object DataSourceQueryTicket: TDataSource
+  object QueryTicketDataSource: TDataSource
     DataSet = ADOQueryTicket
-    Left = 232
-    Top = 312
+    Left = 296
+    Top = 112
   end
 end

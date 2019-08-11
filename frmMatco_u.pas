@@ -20,14 +20,14 @@ type
     Project: TTabSheet;
     TabSheetTicket: TTabSheet;
     User: TTabSheet;
-    DBGridProject: TDBGrid;
+    dbgProject: TDBGrid;
     Panel3: TPanel;
     Panel4: TPanel;
     Panel5: TPanel;
     MatcoMainMenu: TMainMenu;
     Home: TMenuItem;
-    DBGrid3: TDBGrid;
-    DBGridTicket: TDBGrid;
+    dgbUser: TDBGrid;
+    dbgTicket: TDBGrid;
     BitBtnProjectTicketInsert: TBitBtn;
     BitBtnProjectTicketEdit: TBitBtn;
     BitBtnProjectTicketDelete: TBitBtn;
@@ -57,6 +57,7 @@ type
     BitBtnSum: TBitBtn;
     cmbStatus: TComboBox;
     BitBtnSearchByStatus: TBitBtn;
+    Refresh1: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtnProjectTicketInsertClick(Sender: TObject);
     procedure BitBtnProjectTicketEditClick(Sender: TObject);
@@ -78,12 +79,20 @@ type
     procedure BitBtnProjectTicketSearchClick(Sender: TObject);
     procedure BitBtnSumClick(Sender: TObject);
     procedure BitBtnSearchByStatusClick(Sender: TObject);
+    procedure BitBtnClientRefreshClick(Sender: TObject);
+    procedure BitBtnTicketRefreshClick(Sender: TObject);
+    procedure BitBtnProjectRefreshClick(Sender: TObject);
+    procedure BitBtnProjectTicketRefreshClick(Sender: TObject);
+    procedure BitBtnUserRefreshClick(Sender: TObject);
+    procedure Refresh1Click(Sender: TObject);
   private
     myFile: TextFile;
     text: string;
+    buttonSelected : Integer;
     function NotesRead(sName: string): string;
     procedure NotesSave(sName: string);
     procedure MatcoQuery(sQuery: string);
+    procedure refreshDataSets();
     { Private declarations }
   public
     { Public declarations }
@@ -102,9 +111,15 @@ uses dmMatco_u, frmClient_u, frmProjectTicket_u, frmProject_u, frmTicket_u,
 // Project Ticket
 procedure TfrmMatco.BitBtnProjectTicketDeleteClick(Sender: TObject);
 begin
-  DMMatco.tblProjectTicket.Delete;
-  frmProjectTicket := TfrmProjectTicket.Create(owner);
-  frmProjectTicket.ShowModal;
+ // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+
+  // Show the button type selected
+  if buttonSelected = mrOK then
+  begin
+    DMMatco.tblProjectTicket.Delete;
+    ShowMessage('Deleted');
+  end;
 end;
 
 procedure TfrmMatco.BitBtnProjectTicketEditClick(Sender: TObject);
@@ -119,6 +134,12 @@ begin
   DMMatco.tblProjectTicket.Insert;
   frmProjectTicket := TfrmProjectTicket.Create(owner);
   frmProjectTicket.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnProjectTicketRefreshClick(Sender: TObject);
+begin
+  refreshDataSets;
+  dbgProjectTicket.DataSource.DataSet.Refresh;
 end;
 
 procedure TfrmMatco.BitBtnProjectTicketSearchClick(Sender: TObject);
@@ -192,9 +213,16 @@ end;
 // Ticket
 procedure TfrmMatco.BitBtnTicketDeleteClick(Sender: TObject);
 begin
+
+ // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+
+  // Show the button type selected
+  if buttonSelected = mrOK then
+  begin
   DMMatco.tblTicket.Delete;
-  frmTicket := TfrmTicket.Create(owner);
-  frmTicket.ShowModal;
+    ShowMessage('Deleted');
+  end;
 end;
 
 procedure TfrmMatco.BitBtnTicketEditClick(Sender: TObject);
@@ -202,6 +230,7 @@ begin
   DMMatco.tblClient.Edit;
   frmTicket := TfrmTicket.Create(owner);
   frmTicket.ShowModal;
+  dbgTicket.DataSource.DataSet.Refresh;
 end;
 
 procedure TfrmMatco.BitBtnTicketInsertClick(Sender: TObject);
@@ -209,13 +238,27 @@ begin
   DMMatco.tblTicket.Insert;
   frmTicket := TfrmTicket.Create(owner);
   frmTicket.ShowModal;
+  dbgTicket.DataSource.DataSet.Refresh;
+end;
+
+procedure TfrmMatco.BitBtnTicketRefreshClick(Sender: TObject);
+begin
+  refreshDataSets;
+  dbgTicket.DataSource.DataSet.Refresh;
 end;
 
 procedure TfrmMatco.BitBtnUserDeleteClick(Sender: TObject);
 begin
-  DMMatco.tblUser.Delete;
-  frmUser := TfrmUser.Create(owner);
-  frmUser.ShowModal;
+ // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+
+  // Show the button type selected
+  if buttonSelected = mrOK then
+  begin
+    DMMatco.tblUser.Delete;
+    DMMatco.tblTicket.Refresh;
+    ShowMessage('Deleted');
+  end;
 end;
 
 procedure TfrmMatco.BitBtnUserEditClick(Sender: TObject);
@@ -246,11 +289,24 @@ begin
   reNotes.Lines.Append(NotesRead('notes.txt'));
 end;
 
+procedure TfrmMatco.BitBtnUserRefreshClick(Sender: TObject);
+begin
+  refreshDataSets;
+  dgbUser.DataSource.DataSet.Refresh;
+end;
+
 procedure TfrmMatco.BitBtnClientDeleteClick(Sender: TObject);
 begin
-  DMMatco.tblClient.Delete;
-  frmClient := TfrmClient.Create(owner);
-  frmClient.ShowModal;
+
+ // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+
+  // Show the button type selected
+  if buttonSelected = mrOK then
+  begin
+    DMMatco.tblClient.Delete;
+    ShowMessage('Deleted');
+  end;
 end;
 
 procedure TfrmMatco.BitBtnClientInsertClick(Sender: TObject);
@@ -260,12 +316,25 @@ begin
   frmClient.ShowModal;
 end;
 
+procedure TfrmMatco.BitBtnClientRefreshClick(Sender: TObject);
+begin
+  refreshDataSets;
+  dbgClient.DataSource.DataSet.Refresh;
+end;
+
 // Project
 procedure TfrmMatco.BitBtnProjectDeleteClick(Sender: TObject);
 begin
-  DMMatco.tblClient.Delete;
-  frmProject := TfrmProject.Create(owner);
-  frmProject.ShowModal;
+
+ // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+
+  // Show the button type selected
+  if buttonSelected = mrOK then
+  begin
+    DMMatco.tblClient.Delete;
+    ShowMessage('Deleted');
+  end;
 end;
 
 procedure TfrmMatco.BitBtnProjectEditClick(Sender: TObject);
@@ -280,6 +349,12 @@ begin
   DMMatco.tblClient.Insert;
   frmProject := TfrmProject.Create(owner);
   frmProject.ShowModal;
+end;
+
+procedure TfrmMatco.BitBtnProjectRefreshClick(Sender: TObject);
+begin
+  refreshDataSets;
+  dbgProject.DataSource.DataSet.Refresh;
 end;
 
 procedure TfrmMatco.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -341,6 +416,36 @@ begin
   reNotes.Lines.SaveToFile(sName);
   reNotes.PlainText := False;
   reNotes.Lines.Clear;
+end;
+
+procedure TfrmMatco.Refresh1Click(Sender: TObject);
+begin
+ refreshDataSets;
+end;
+
+procedure TfrmMatco.refreshDataSets;
+begin
+  with DMMatco do
+  begin
+    // Update Datasources
+    //ClientDataSource.DataSet.Refresh;
+    //ProjectDataSource.DataSet.Refresh;
+    //ProjectTicketDataSource.DataSet.Refresh;
+    //TicketDataSource.DataSet.Refresh;
+    //StatusDataSource.DataSet.Refresh;
+    //UserDataSource.DataSet.Refresh;
+    //QueryProjectTicketDataSource.DataSet.Refresh;
+    //QueryTicketDataSource.DataSet.Refresh;
+    //Update Ado stuff
+    tblClient.Requery;
+    tblProject.Requery;
+    tblProjectTicket.Requery;
+    tblTicket.Requery;
+    tblStatus.Requery;
+    tblUser.Requery;
+    ADOQueryProjectTicket.Requery;
+    ADOQueryTicket.Requery;
+  end;
 end;
 
 end.

@@ -37,7 +37,7 @@ object frmProjectTicket: TfrmProjectTicket
     TabOrder = 0
     OnClick = BitBtnProjectTicketInsertClick
   end
-  object BitBtn2: TBitBtn
+  object BitBtnProjectTicketCancel: TBitBtn
     Left = 200
     Top = 64
     Width = 75
@@ -45,7 +45,7 @@ object frmProjectTicket: TfrmProjectTicket
     Kind = bkCancel
     NumGlyphs = 2
     TabOrder = 1
-    OnClick = BitBtn2Click
+    OnClick = BitBtnProjectTicketCancelClick
   end
   object DBLookupComboBoxProjectID: TDBLookupComboBox
     Left = 119

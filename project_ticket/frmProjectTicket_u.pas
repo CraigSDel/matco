@@ -11,13 +11,13 @@ uses
 type
   TfrmProjectTicket = class(TForm)
     BitBtnProjectTicketInsert: TBitBtn;
-    BitBtn2: TBitBtn;
+    BitBtnProjectTicketCancel: TBitBtn;
     lblProjectTicketID: TLabel;
     lblClient: TLabel;
     DBLookupComboBoxProjectID: TDBLookupComboBox;
     DBLookupComboBoxTicketID: TDBLookupComboBox;
     procedure BitBtnProjectTicketInsertClick(Sender: TObject);
-    procedure BitBtn2Click(Sender: TObject);
+    procedure BitBtnProjectTicketCancelClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -32,11 +32,21 @@ implementation
 {$R *.dfm}
 
 procedure TfrmProjectTicket.BitBtnProjectTicketInsertClick(Sender: TObject);
+var
+  buttonSelected : Integer;
 begin
-   DMMatco.tblProjectTicket.Post;
+  // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+
+  // Show the button type selected
+  if buttonSelected = mrOK then
+  begin
+    DMMatco.tblProjectTicket.Post;
+    ShowMessage('Submitted');
+  end;
 end;
 
-procedure TfrmProjectTicket.BitBtn2Click(Sender: TObject);
+procedure TfrmProjectTicket.BitBtnProjectTicketCancelClick(Sender: TObject);
 begin
    DMMatco.tblProjectTicket.Cancel;
 end;

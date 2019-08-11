@@ -39,8 +39,18 @@ implementation
 uses frmMatco_u;
 
 procedure TfrmClient.BitBtnSaveClick(Sender: TObject);
+var
+  buttonSelected : Integer;
 begin
-   DMMatco.tblClient.Post;
+  // Show a confirmation dialog
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+
+  // Show the button type selected
+  if buttonSelected = mrOK then
+  begin
+    DMMatco.tblClient.Post;
+    ShowMessage('Submitted');
+  end;
 end;
 
 procedure TfrmClient.BitBtnCancelClick(Sender: TObject);

@@ -60,7 +60,7 @@ object frmTicket: TfrmTicket
     Left = 8
     Top = 131
     Width = 43
-    Height = 11
+    Height = 13
     Caption = 'Assignee'
   end
   object DBEditTicketDescription: TDBEdit
@@ -110,6 +110,7 @@ object frmTicket: TfrmTicket
     Kind = bkOK
     NumGlyphs = 2
     TabOrder = 4
+    OnClick = BitBtnTicketOkClick
   end
   object BitBtnTicketCancel: TBitBtn
     Left = 190
@@ -119,6 +120,7 @@ object frmTicket: TfrmTicket
     Kind = bkCancel
     NumGlyphs = 2
     TabOrder = 5
+    OnClick = BitBtnTicketCancelClick
   end
   object DBLookupComboBoxStatus: TDBLookupComboBox
     Left = 96
