@@ -53,10 +53,10 @@ object frmProjectTicket: TfrmProjectTicket
     Width = 156
     Height = 21
     DataField = 'project_id'
-    DataSource = DMMatco.DataSourceProjectTicket
+    DataSource = DMMatco.ProjectTicketDataSource
     KeyField = 'id'
     ListField = 'project_name'
-    ListSource = DMMatco.DataSourceProject
+    ListSource = DMMatco.ProjectDataSource
     TabOrder = 2
   end
   object DBLookupComboBoxTicketID: TDBLookupComboBox
@@ -65,7 +65,7 @@ object frmProjectTicket: TfrmProjectTicket
     Width = 156
     Height = 21
     DataField = 'ticket_id'
-    DataSource = DMMatco.DataSourceProjectTicket
+    DataSource = DMMatco.ProjectTicketDataSource
     KeyField = 'id'
     ListField = 'ticket_number'
     ListSource = DMMatco.TicketDataSource

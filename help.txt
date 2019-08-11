@@ -1,11 +1,40 @@
 Matco Help
 
-In order to add tickets to a project. 
+Thank you for using our software as we go on this journey together 
+we would love for you to give us feedback in order to improve your 
+experience when using our software.
 
-What you will need to is.
+How to use our software.
 
-1. Ensure that you have added the user.
-2. Added the ticket.
-3. Added the project.
-4. Added the client.
-5. Added the ticket to the project.
+Client 
+	Insert allows you to create a client who you would like a project to.
+	Edit allows you to edit the clients details.
+	Delete allows you to delete an existing client.
+
+Project
+	Insert allows you to create a new project.
+	Edit allows you to edit the project details.
+	Delete allows you to delete an existing project .
+
+Project Ticket
+	Insert allows you to link a ticket to a project	
+	Edit allows you to edit the project ticket details.	
+	Delete allows you to delete an existing project ticket link.						
+	Number of tickets will give you the number of tickets in a project .
+	Search by Status - Allows you to search for all the tickets with a given status in a project	
+	Search -  Allows you to search for a project. Types of searching if you leave the project name and ticket number blank
+			it will retrieve all projects and all the tickets. If you only enter a project name it will retrieve all the tickets 
+			in that project. If you enter a project name and a ticket number you will get just that ticket back.
+
+Ticket
+	Insert allows you to create a ticket
+	Edit allows you to edit the ticket details.
+	Delete allows you to delete an existing ticket
+
+User
+	Insert allows you to create a user who you would like to assign tickets to
+	Edit allows you to edit the users full name
+	Delete allows you to delete an existing user
+	
+Refresh
+	Allows you to refresh all the data after you have altered any data

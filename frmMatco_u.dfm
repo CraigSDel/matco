@@ -21,9 +21,11 @@ object frmMatco: TfrmMatco
     Top = 3
     Width = 706
     Height = 525
-    ActivePage = Help
+    ActivePage = ProjectTicket
     Align = alClient
     TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = -2
     object ProjectTicket: TTabSheet
       Caption = 'Project Ticket'
       ImageIndex = 1
@@ -70,6 +72,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Insert'
+          Kind = bkOK
+          NumGlyphs = 2
           TabOrder = 0
           OnClick = BitBtnProjectTicketInsertClick
         end
@@ -79,6 +83,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Edit'
+          Kind = bkHelp
+          NumGlyphs = 2
           TabOrder = 1
           OnClick = BitBtnProjectTicketEditClick
         end
@@ -88,43 +94,49 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Delete'
+          Kind = bkAbort
+          NumGlyphs = 2
           TabOrder = 2
           OnClick = BitBtnProjectTicketDeleteClick
         end
         object edtProjectName: TEdit
           Left = 176
           Top = 8
-          Width = 225
+          Width = 249
           Height = 21
           TabOrder = 3
         end
         object edtTicketNumber: TEdit
           Left = 176
           Top = 35
-          Width = 225
+          Width = 249
           Height = 21
           TabOrder = 4
         end
         object BitBtnProjectTicketSearch: TBitBtn
           Left = 176
           Top = 62
-          Width = 105
+          Width = 121
           Height = 25
-          Caption = 'Search'
+          Caption = '&Search'
+          Kind = bkRetry
+          NumGlyphs = 2
           TabOrder = 5
           OnClick = BitBtnProjectTicketSearchClick
         end
         object BitBtnSum: TBitBtn
-          Left = 287
+          Left = 303
           Top = 62
-          Width = 114
+          Width = 122
           Height = 25
-          Caption = 'Number of Tickets'
+          Caption = '&Number of Tickets'
+          Kind = bkAll
+          NumGlyphs = 2
           TabOrder = 6
           OnClick = BitBtnSumClick
         end
         object cmbStatus: TComboBox
-          Left = 440
+          Left = 536
           Top = 9
           Width = 145
           Height = 21
@@ -132,21 +144,19 @@ object frmMatco: TfrmMatco
         end
       end
       object BitBtnSearchByStatus: TBitBtn
-        Left = 474
+        Left = 539
         Top = 462
-        Width = 114
+        Width = 145
         Height = 25
-        Caption = 'Search By Status'
+        Caption = 'S&earch By Status'
+        Kind = bkRetry
+        NumGlyphs = 2
         TabOrder = 2
         OnClick = BitBtnSearchByStatusClick
       end
     end
     object Client: TTabSheet
       Caption = 'Client'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object dbgClient: TDBGrid
         AlignWithMargins = True
         Left = 3
@@ -176,6 +186,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Insert'
+          Kind = bkOK
+          NumGlyphs = 2
           TabOrder = 0
           OnClick = BitBtnClientInsertClick
         end
@@ -185,6 +197,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Delete'
+          Kind = bkAbort
+          NumGlyphs = 2
           TabOrder = 1
           OnClick = BitBtnClientDeleteClick
         end
@@ -194,6 +208,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Edit'
+          Kind = bkHelp
+          NumGlyphs = 2
           TabOrder = 2
           OnClick = BitBtnClientEditClick
         end
@@ -202,10 +218,6 @@ object frmMatco: TfrmMatco
     object Project: TTabSheet
       Caption = 'Project'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object dbgProject: TDBGrid
         AlignWithMargins = True
         Left = 3
@@ -235,6 +247,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Delete'
+          Kind = bkAbort
+          NumGlyphs = 2
           TabOrder = 0
           OnClick = BitBtnProjectDeleteClick
         end
@@ -244,6 +258,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Edit'
+          Kind = bkHelp
+          NumGlyphs = 2
           TabOrder = 1
           OnClick = BitBtnProjectEditClick
         end
@@ -253,6 +269,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Insert'
+          Kind = bkOK
+          NumGlyphs = 2
           TabOrder = 2
           OnClick = BitBtnProjectInsertClick
         end
@@ -261,10 +279,6 @@ object frmMatco: TfrmMatco
     object TabSheetTicket: TTabSheet
       Caption = 'Ticket'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel5: TPanel
         AlignWithMargins = True
         Left = 3
@@ -279,6 +293,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Edit'
+          Kind = bkHelp
+          NumGlyphs = 2
           TabOrder = 0
           OnClick = BitBtnTicketEditClick
         end
@@ -288,6 +304,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Delete'
+          Kind = bkAbort
+          NumGlyphs = 2
           TabOrder = 1
           OnClick = BitBtnTicketDeleteClick
         end
@@ -297,6 +315,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Insert'
+          Kind = bkOK
+          NumGlyphs = 2
           TabOrder = 2
           OnClick = BitBtnTicketInsertClick
         end
@@ -320,10 +340,6 @@ object frmMatco: TfrmMatco
     object User: TTabSheet
       Caption = 'User'
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel3: TPanel
         AlignWithMargins = True
         Left = 3
@@ -338,6 +354,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Insert'
+          Kind = bkOK
+          NumGlyphs = 2
           TabOrder = 0
           OnClick = BitBtnUserInsertClick
         end
@@ -347,6 +365,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Delete'
+          Kind = bkAbort
+          NumGlyphs = 2
           TabOrder = 1
           OnClick = BitBtnUserDeleteClick
         end
@@ -356,6 +376,8 @@ object frmMatco: TfrmMatco
           Width = 75
           Height = 25
           Caption = 'Edit'
+          Kind = bkHelp
+          NumGlyphs = 2
           TabOrder = 2
           OnClick = BitBtnUserEditClick
         end
@@ -379,10 +401,6 @@ object frmMatco: TfrmMatco
     object Notes: TTabSheet
       Caption = 'Notes'
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object reNotes: TRichEdit
         AlignWithMargins = True
         Left = 3
@@ -413,7 +431,8 @@ object frmMatco: TfrmMatco
           Top = 0
           Width = 75
           Height = 25
-          Caption = 'Save'
+          Kind = bkOK
+          NumGlyphs = 2
           TabOrder = 0
           OnClick = BitBtnNotesSaveClick
         end

@@ -161,7 +161,6 @@ begin
     MatcoQuery(sQuery);
   end;
 
-
   // if the user has not entered a ticket number or a project name select everything
   if (edtTicketNumber.GetTextLen = 0) AND (edtProjectName.GetTextLen = 0) then
   begin
@@ -192,7 +191,7 @@ begin
   // Get all the tickets and the sum of tickets in a project with the selected status
   if (cmbStatus.ItemIndex <> -1) AND (edtProjectName.GetTextLen > 0) then
   begin
-    sQuery := 'SELECT project.project_name, ticket.ticket_number, Sum(ticket.id) AS NumberOfTickets';
+    sQuery := 'SELECT project.project_name, ticket.ticket_number, COUNT(project_tickets.project_id) AS NumberOfTickets';
     sQuery := sQuery +
       ' FROM status INNER JOIN (ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id) ON status.ID = ticket.status';
     sQuery := sQuery + ' WHERE (((status.description)="' + cmbStatus.text +
@@ -210,14 +209,19 @@ var
   sQuery: string;
 begin
   // Get the sum of tickets in a project
-  sQuery := 'SELECT project.project_name, Sum(project_tickets.project_id) AS NumberOfTickets ';
-  sQuery := sQuery +
-    ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
-  sQuery := sQuery + ' WHERE (((project.project_name)="' +
-    edtProjectName.text + '"))';
-  sQuery := sQuery + ' GROUP BY project.project_name';
-  sQuery := sQuery + ' ORDER BY Sum(project_tickets.project_id)';
-  MatcoQuery(sQuery);
+  if (edtProjectName.GetTextLen > 0) then
+  begin
+    sQuery := 'SELECT project.project_name, COUNT(project_tickets.project_id) AS NumberOfTickets ';
+    sQuery := sQuery +
+      ' FROM ticket INNER JOIN (project INNER JOIN project_tickets ON project.id = project_tickets.project_id) ON ticket.id = project_tickets.ticket_id';
+    sQuery := sQuery + ' WHERE (((project.project_name)="' +
+      edtProjectName.text + '"))';
+    sQuery := sQuery + ' GROUP BY project.project_name';
+    sQuery := sQuery + ' ORDER BY Sum(project_tickets.project_id)';
+    MatcoQuery(sQuery);
+  end
+  else
+    ShowMessage('Please enter a project name!');
 end;
 
 // Ticket
@@ -339,7 +343,7 @@ end;
 
 procedure TfrmMatco.BitBtnProjectInsertClick(Sender: TObject);
 begin
-  DMMatco.tblClient.Insert;
+  DMMatco.tblProject.Insert;
   frmProject := TfrmProject.Create(owner);
   frmProject.ShowModal;
 end;
@@ -387,9 +391,9 @@ begin
     begin
       Readln(tNotes, sLine);
       if Length(sNotes) > 0 then
-        begin
-          sNotes := sNotes + #13#10 + sLine;
-        end
+      begin
+        sNotes := sNotes + #13#10 + sLine;
+      end
       else
         sNotes := sLine;
     end;
@@ -413,23 +417,34 @@ end;
 procedure TfrmMatco.Refresh1Click(Sender: TObject);
 begin
   refreshDataSets;
-  ShowMessage('Refreshed');
+  ShowMessage('Refreshed all the data you are good to go!');
 end;
 
 procedure TfrmMatco.refreshDataSets;
 begin
   with DMMatco do
   begin
+    MatcoADOConnection.Connected := False;
+    MatcoADOConnection.Connected := True;
     // Update Datasources
-    // ClientDataSource.DataSet.Refresh;
-    // ProjectDataSource.DataSet.Refresh;
-    // ProjectTicketDataSource.DataSet.Refresh;
-    // TicketDataSource.DataSet.Refresh;
-    // StatusDataSource.DataSet.Refresh;
-    // UserDataSource.DataSet.Refresh;
-    // QueryProjectTicketDataSource.DataSet.Refresh;
-    // QueryTicketDataSource.DataSet.Refresh;
-    // Update Ado stuff
+    ClientDataSource.DataSet.Refresh;
+    ProjectDataSource.DataSet.Refresh;
+    ProjectTicketDataSource.DataSet.Refresh;
+    TicketDataSource.DataSet.Refresh;
+    StatusDataSource.DataSet.Refresh;
+    UserDataSource.DataSet.Refresh;
+    QueryProjectTicketDataSource.DataSet.Refresh;
+    QueryTicketDataSource.DataSet.Refresh;
+    // Open the tables
+    tblClient.Open;
+    tblProject.Open;
+    tblProjectTicket.Open;
+    tblTicket.Open;
+    tblStatus.Open;
+    tblUser.Open;
+    ADOQueryProjectTicket.Open;
+    ADOQueryTicket.Open;
+    //Update Ado stuff
     tblClient.Requery;
     tblProject.Requery;
     tblProjectTicket.Requery;

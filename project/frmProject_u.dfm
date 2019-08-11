@@ -19,7 +19,7 @@ object frmProject: TfrmProject
     Width = 156
     Height = 17
     DataField = 'id'
-    DataSource = DMMatco.DataSourceProject
+    DataSource = DMMatco.ProjectDataSource
   end
   object projectID: TLabel
     Left = 8
@@ -48,7 +48,7 @@ object frmProject: TfrmProject
     Width = 156
     Height = 21
     DataField = 'project_name'
-    DataSource = DMMatco.DataSourceProject
+    DataSource = DMMatco.ProjectDataSource
     TabOrder = 0
   end
   object BitBtnProjectOk: TBitBtn
@@ -77,7 +77,7 @@ object frmProject: TfrmProject
     Width = 156
     Height = 21
     DataField = 'client_id'
-    DataSource = DMMatco.DataSourceProject
+    DataSource = DMMatco.ProjectDataSource
     KeyField = 'id'
     ListField = 'client_name'
     ListSource = DMMatco.ClientDataSource
