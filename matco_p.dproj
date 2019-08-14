@@ -137,6 +137,7 @@
             <Form>frmUser</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="util_u.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
