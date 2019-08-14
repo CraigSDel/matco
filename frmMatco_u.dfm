@@ -24,13 +24,9 @@ object frmMatco: TfrmMatco
     ActivePage = ProjectTicket
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 706
-    ExplicitHeight = 525
     object ProjectTicket: TTabSheet
       Caption = 'Project Ticket'
       ImageIndex = 1
-      ExplicitWidth = 698
-      ExplicitHeight = 497
       object dbgProjectTicket: TDBGrid
         AlignWithMargins = True
         Left = 3
@@ -54,8 +50,6 @@ object frmMatco: TfrmMatco
         Height = 94
         Align = alBottom
         TabOrder = 0
-        ExplicitTop = 400
-        ExplicitWidth = 692
         object Label1: TLabel
           Left = 96
           Top = 9
@@ -161,6 +155,8 @@ object frmMatco: TfrmMatco
     end
     object Client: TTabSheet
       Caption = 'Client'
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 889
       ExplicitHeight = 606
       object dbgClient: TDBGrid
@@ -226,6 +222,8 @@ object frmMatco: TfrmMatco
     object Project: TTabSheet
       Caption = 'Project'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 889
       ExplicitHeight = 606
       object dbgProject: TDBGrid
@@ -291,6 +289,8 @@ object frmMatco: TfrmMatco
     object TabSheetTicket: TTabSheet
       Caption = 'Ticket'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 889
       ExplicitHeight = 606
       object Panel5: TPanel
@@ -356,6 +356,8 @@ object frmMatco: TfrmMatco
     object User: TTabSheet
       Caption = 'User'
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 889
       ExplicitHeight = 606
       object Panel3: TPanel
@@ -421,8 +423,6 @@ object frmMatco: TfrmMatco
     object Notes: TTabSheet
       Caption = 'Notes'
       ImageIndex = 5
-      ExplicitWidth = 889
-      ExplicitHeight = 606
       object reNotes: TRichEdit
         AlignWithMargins = True
         Left = 3
@@ -439,8 +439,6 @@ object frmMatco: TfrmMatco
         PlainText = True
         TabOrder = 0
         Zoom = 100
-        ExplicitWidth = 883
-        ExplicitHeight = 559
       end
       object Panel6: TPanel
         AlignWithMargins = True
@@ -467,6 +465,8 @@ object frmMatco: TfrmMatco
     object Help: TTabSheet
       Caption = 'Help'
       ImageIndex = 6
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 889
       ExplicitHeight = 606
       object MemoHelp: TMemo

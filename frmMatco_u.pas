@@ -354,16 +354,28 @@ begin
 end;
 
 procedure TfrmMatco.FormCreate(Sender: TObject);
-const
-  Status: array [0 .. 2] of string = ('Todo', 'In Progress', 'Done');
 var
-  i: Integer;
+  arrStatus: array  [1 .. 3] of string;
+  i, j: Integer;
+  temp: string;
 begin
+  arrStatus[1] := 'Todo';
+  arrStatus[2] := 'Done';
+  arrStatus[3] := 'In Progress';
   reNotes.Lines.Append(NotesRead('notes.rtf'));
   MemoHelp.Lines.Append(NotesRead('help.txt'));
 
-  for i := 0 to Length(Status) - 1 do
-    cmbStatus.Items.Add(Status[i]);
+  For i := 1 to Length(arrStatus) - 1 do
+    For j := i + 1 to Length(arrStatus) do
+      if arrStatus[i] > arrStatus[j] then
+      Begin
+        temp := arrStatus[j];
+        arrStatus[j] := arrStatus[i];
+        arrStatus[i] := temp;
+      End;
+
+  for i := 1 to Length(arrStatus) do
+    cmbStatus.Items.Add(arrStatus[i]);
 end;
 
 procedure TfrmMatco.MatcoQuery(sQuery: string);
@@ -433,7 +445,7 @@ begin
     tblUser.Open;
     ADOQueryProjectTicket.Open;
     ADOQueryTicket.Open;
-    //Update Ado stuff
+    // Update Ado stuff
     tblClient.Requery;
     tblProject.Requery;
     tblProjectTicket.Requery;
