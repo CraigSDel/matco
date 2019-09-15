@@ -1,5 +1,7 @@
 unit Ticket_u;
-
+//Craig Stroberg
+//70854
+//The ticket object is a representation of what is needed for a ticket
 interface
 
 uses

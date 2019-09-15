@@ -1,5 +1,8 @@
 unit ProjectTicket_u;
-
+//Craig Stroberg
+//70854
+//The project ticket object is a representation of what is needed for a project
+//ticket
 interface
 
 uses

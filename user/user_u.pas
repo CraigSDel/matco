@@ -1,5 +1,7 @@
 unit User_u;
-
+//Craig Stroberg
+//70854
+//The user object is a representation of what is needed for a user
 interface
 
 uses

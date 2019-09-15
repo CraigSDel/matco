@@ -1,5 +1,7 @@
 unit util_u;
-
+//Craig Stroberg
+//70854
+//Some reuseable functions
 interface
 
 type
