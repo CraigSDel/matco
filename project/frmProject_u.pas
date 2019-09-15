@@ -1,5 +1,7 @@
 unit frmProject_u;
-
+//Craig Stroberg
+//70854
+//Project form allows the user to interact with the data
 interface
 
 uses

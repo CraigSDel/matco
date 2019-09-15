@@ -13,7 +13,8 @@ uses
   frmProjectTicket_u in 'project_ticket\frmProjectTicket_u.pas' {frmProjectTicket},
   frmProject_u in 'project\frmProject_u.pas' {frmProject},
   frmTicket_u in 'ticket\frmTicket_u.pas' {frmTicket},
-  frmUser_u in 'user\frmUser_u.pas' {frmUser};
+  frmUser_u in 'user\frmUser_u.pas' {frmUser},
+  util_u in 'util_u.pas';
 
 {$R *.res}
 
