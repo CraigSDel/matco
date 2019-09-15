@@ -37,4 +37,5 @@ User
 	Delete allows you to delete an existing user
 	
 Refresh
-	Allows you to refresh all the data after you have altered any data
+	If no data appears on start up, press refresh and your data will now appear.
+	Allows you to refresh all the data after you have altered any data.
