@@ -93,15 +93,6 @@ object frmTicket: TfrmTicket
     ListSource = DMMatco.UserDataSource
     TabOrder = 2
   end
-  object DBEditTicketCreatedDate: TDBEdit
-    Left = 96
-    Top = 148
-    Width = 169
-    Height = 21
-    DataField = 'date_created'
-    DataSource = DMMatco.TicketDataSource
-    TabOrder = 3
-  end
   object BitBtnTicketOk: TBitBtn
     Left = 96
     Top = 188
@@ -109,7 +100,7 @@ object frmTicket: TfrmTicket
     Height = 25
     Kind = bkOK
     NumGlyphs = 2
-    TabOrder = 4
+    TabOrder = 3
     OnClick = BitBtnTicketOkClick
   end
   object BitBtnTicketCancel: TBitBtn
@@ -119,7 +110,7 @@ object frmTicket: TfrmTicket
     Height = 25
     Kind = bkCancel
     NumGlyphs = 2
-    TabOrder = 5
+    TabOrder = 4
     OnClick = BitBtnTicketCancelClick
   end
   object DBLookupComboBoxStatus: TDBLookupComboBox
@@ -132,6 +123,15 @@ object frmTicket: TfrmTicket
     KeyField = 'ID'
     ListField = 'description'
     ListSource = DMMatco.StatusDataSource
+    TabOrder = 5
+  end
+  object DBEditTicketCreated: TDBEdit
+    Left = 96
+    Top = 148
+    Width = 169
+    Height = 21
+    DataField = 'date_created'
+    DataSource = DMMatco.TicketDataSource
     TabOrder = 6
   end
 end

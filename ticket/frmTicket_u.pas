@@ -25,6 +25,7 @@ type
     BitBtnTicketCancel: TBitBtn;
     DBLookupComboBoxStatus: TDBLookupComboBox;
     lblStatus: TLabel;
+    DBEditTicketCreated: TDBEdit;
     procedure BitBtnTicketOkClick(Sender: TObject);
     procedure BitBtnTicketCancelClick(Sender: TObject);
   private
@@ -52,24 +53,23 @@ var
    regexpr : TRegEx;
    match   : TMatch;
    group   : TGroup;
-  i           : integer;
+   i       : Integer;
 begin
   // Show a confirmation dialog
 
   regexpr := TRegEx.Create('^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$',[roIgnoreCase,roMultiline]);
-  match := regexpr.Match(DBEditTicketCreatedDate.Text);
+  match := regexpr.Match(DBEditTicketCreated.Text);
   if match.Success then
   begin
-    ShowMessage('No Match Found'); buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
-    // Show the button type selected
+    ShowMessage('No Match Found');
+    buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+    //Show the button type selected
     if buttonSelected = mrOK then
     begin
       DMMatco.tblTicket.Post;
       ShowMessage('Submitted');
-    end;
+   end;
   end;
-
-
 end;
 
 end.
