@@ -58,7 +58,7 @@ begin
   // Show a confirmation dialog
 
   regexpr := TRegEx.Create('^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$',[roIgnoreCase,roMultiline]);
-  match := regexpr.Match(DBEditTicketCreated.Text);
+  match := regexpr.Match(DBEditTicketCreatedDate.Text);
   if match.Success then
   begin
     ShowMessage('No Match Found');
