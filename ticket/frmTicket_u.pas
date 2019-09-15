@@ -1,5 +1,7 @@
 unit frmTicket_u;
-
+//Craig Stroberg
+//70854
+//Ticket form allows the user to interact with the data
 interface
 
 uses
@@ -17,7 +19,6 @@ type
     lblTicketDescription: TLabel;
     lblTicketNumber: TLabel;
     DBLookupComboBoxTicketAssignee: TDBLookupComboBox;
-    DBEditTicketCreatedDate: TDBEdit;
     lblDateCreated: TLabel;
     lblAssignee: TLabel;
     BitBtnTicketOk: TBitBtn;

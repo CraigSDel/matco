@@ -1,5 +1,7 @@
 unit frmMatco_u;
-
+//Craig Stroberg
+//70854
+//This is the main form to allow the user to interact with the data
 interface
 
 uses

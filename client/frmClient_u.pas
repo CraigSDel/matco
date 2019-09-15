@@ -1,5 +1,7 @@
 unit frmClient_u;
-
+//Craig Stroberg
+//70854
+//Client form allows the user to interact with the data
 interface
 
 uses
