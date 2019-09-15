@@ -1,7 +1,8 @@
 unit Client_u;
-//Craig Stroberg
-//70854
-//The client object is a representation of what is needed for a client
+
+// Craig Stroberg
+// 70854
+// The client object is a representation of what is needed for a client
 interface
 
 uses
@@ -55,22 +56,22 @@ end;
 
 procedure TClient.setPhoneNumber(pPhoneNumber: string);
 begin
-   phoneNumber := pPhoneNumber;
+  phoneNumber := pPhoneNumber;
 end;
 
 function TClient.getClientName: string;
 begin
-   result := clientName;
+  result := clientName;
 end;
 
 function TClient.getContactPerson: string;
 begin
-   result :=  contactPerson;
+  result := contactPerson;
 end;
 
 function TClient.getEmail: string;
 begin
-    result := email;
+  result := email;
 end;
 
 procedure TClient.setClientName(pClientName: string);

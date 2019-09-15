@@ -1,7 +1,8 @@
 unit frmProject_u;
-//Craig Stroberg
-//70854
-//Project form allows the user to interact with the data
+
+// Craig Stroberg
+// 70854
+// Project form allows the user to interact with the data
 interface
 
 uses
@@ -11,7 +12,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, dmMatco_u, Vcl.DBCtrls, Vcl.Mask, Vcl.Buttons;
 
 type
-    TfrmProject = class(TForm)
+  TfrmProject = class(TForm)
     DBTextProjectID: TDBText;
     DBEditProjectName: TDBEdit;
     projectID: TLabel;
@@ -34,19 +35,21 @@ var
 implementation
 
 {$R *.dfm}
+
 uses frmMatco_u;
 
 procedure TfrmProject.BitBtnProjectCancelClick(Sender: TObject);
 begin
-     DMMatco.tblProject.Cancel;
+  DMMatco.tblProject.Cancel;
 end;
 
 procedure TfrmProject.BitBtnProjectOkClick(Sender: TObject);
 var
-  buttonSelected : Integer;
+  buttonSelected: Integer;
 begin
   // Show a confirmation dialog
-  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',
+    mtCustom, mbOKCancel, 0);
 
   // Show the button type selected
   if buttonSelected = mrOK then

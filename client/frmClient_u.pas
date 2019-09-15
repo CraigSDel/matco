@@ -1,7 +1,8 @@
 unit frmClient_u;
-//Craig Stroberg
-//70854
-//Client form allows the user to interact with the data
+
+// Craig Stroberg
+// 70854
+// Client form allows the user to interact with the data
 interface
 
 uses
@@ -11,7 +12,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.DBCtrls, Vcl.Mask;
 
 type
-    TfrmClient = class(TForm)
+  TfrmClient = class(TForm)
     Description: TLabel;
     BitBtnSave: TBitBtn;
     BitBtnCancel: TBitBtn;
@@ -38,29 +39,30 @@ var
 implementation
 
 {$R *.dfm}
+
 uses frmMatco_u, util_u, dmMatco_u;
 
 procedure TfrmClient.BitBtnSaveClick(Sender: TObject);
 var
-  buttonSelected : Integer;
+  buttonSelected: Integer;
 begin
   // Show a confirmation dialog
-  if (DBEditName.GetTextLen > 0)
-    and (DBEditContactPerson.GetTextLen > 0)
-    and (DBEditEmail.GetTextLen > 0)
-    and (DBEditPhoneNumber.GetTextLen > 0)
-    and  not (util.isNumber(DBEditName.Text))
-    and  not (util.isNumber(DBEditContactPerson.Text))
-    and (util.isNumber(DBEditPhoneNumber.Text))
-    and (util.isValidEmail(DBEditEmail.Text)) then
+  if (DBEditName.GetTextLen > 0) and (DBEditContactPerson.GetTextLen > 0) and
+    (DBEditEmail.GetTextLen > 0) and (DBEditPhoneNumber.GetTextLen > 0) and
+    not(util.isNumber(DBEditName.Text)) and
+    not(util.isNumber(DBEditContactPerson.Text)) and
+    (util.isNumber(DBEditPhoneNumber.Text)) and
+    (util.isValidEmail(DBEditEmail.Text)) then
   begin
-    buttonSelected := messagedlg('Are you sure you want to complete this action?',mtWarning, mbOKCancel, 0);
+    buttonSelected :=
+      messagedlg('Are you sure you want to complete this action?', mtWarning,
+      mbOKCancel, 0);
     // Show the button type selected
     if buttonSelected = mrOK then
-      begin
-        DMMatco.tblClient.Post;
-        ShowMessage('Submitted');
-      end;
+    begin
+      DMMatco.tblClient.Post;
+      ShowMessage('Submitted');
+    end;
 
     if buttonSelected = mrCancel then
     begin
@@ -70,12 +72,15 @@ begin
   else
   begin
     DMMatco.tblClient.Cancel;
-    MessageDlg('The data entered in is incorrect ensure that the person name does not contatin numbers and that the phone number does not include non numerical characters', mtError, mbOKCancel,0);
+    messagedlg
+      ('The data entered in is incorrect ensure that the person name does not contatin numbers and that the phone number does not include non numerical characters',
+      mtError, mbOKCancel, 0);
   end
 end;
 
 procedure TfrmClient.BitBtnCancelClick(Sender: TObject);
 begin
-   DMMatco.tblClient.Cancel;
+  DMMatco.tblClient.Cancel;
 end;
+
 end.

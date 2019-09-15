@@ -1,17 +1,19 @@
 unit frmTicket_u;
-//Craig Stroberg
-//70854
-//Ticket form allows the user to interact with the data
+
+// Craig Stroberg
+// 70854
+// Ticket form allows the user to interact with the data
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, Data.DB, Vcl.Menus, Ticket_u, Vcl.Samples.Spin,
-  Vcl.Grids, Vcl.DBGrids, dmMatco_u, Vcl.Buttons, Vcl.DBCtrls, Vcl.Mask, System.RegularExpressions;
+  Vcl.Grids, Vcl.DBGrids, dmMatco_u, Vcl.Buttons, Vcl.DBCtrls, Vcl.Mask,
+  System.RegularExpressions;
 
 type
-    TfrmTicket = class(TForm)
+  TfrmTicket = class(TForm)
     DBEditTicketDescription: TDBEdit;
     DBEditTicketNumber: TDBEdit;
     DBTextTicketID: TDBText;
@@ -41,7 +43,6 @@ implementation
 
 {$R *.dfm}
 
-
 procedure TfrmTicket.BitBtnTicketCancelClick(Sender: TObject);
 begin
   DMMatco.tblTicket.Cancel;
@@ -49,26 +50,34 @@ end;
 
 procedure TfrmTicket.BitBtnTicketOkClick(Sender: TObject);
 var
-  buttonSelected : Integer;
-   regexpr : TRegEx;
-   match   : TMatch;
-   group   : TGroup;
-   i       : Integer;
+  buttonSelected: Integer;
+  regexpr: TRegEx;
+  match: TMatch;
+  group: TGroup;
+  i: Integer;
 begin
   // Show a confirmation dialog
 
-  regexpr := TRegEx.Create('^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$',[roIgnoreCase,roMultiline]);
-  match := regexpr.Match(DBEditTicketCreatedDate.Text);
-  if match.Success then
+  regexpr := TRegEx.Create
+    ('^([2][0]\d{2}\/([0]\d|[1][0-2])\/([0-2]\d|[3][0-1]))'+
+    '$|^([2][0]\d{2}\/([0]\d|[1][0-2])\/([0-2]\d|[3][0-1])\s([0-1]\d|[2][0-3])'+
+    '\:[0-5]\d\:[0-5]\d)$',
+    [roIgnoreCase, roMultiline]);
+  match := regexpr.match(DBEditTicketCreatedDate.Text);
+  if match.Success = True then
   begin
-    ShowMessage('No Match Found');
-    buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
-    //Show the button type selected
+    buttonSelected :=
+      messagedlg('Are you sure you want to complete this action?', mtCustom,
+      mbOKCancel, 0);
     if buttonSelected = mrOK then
     begin
       DMMatco.tblTicket.Post;
-      ShowMessage('Submitted');
-   end;
+      ShowMessage('Submitted! Please refresh the data');
+    end
+  end
+  else
+  begin
+    ShowMessage('Date is in the incorrect format yyyy/mm/dd e.g. 2019/03/31');
   end;
 end;
 

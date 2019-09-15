@@ -1,7 +1,8 @@
 unit util_u;
-//Craig Stroberg
-//70854
-//Some reuseable functions
+
+// Craig Stroberg
+// 70854
+// Some reuseable functions
 interface
 
 type
@@ -33,11 +34,12 @@ begin
 end;
 
 function TUtil.isValidEmail(email: string): Boolean;
-//http://www.howtodothings.com/computers/a1169-validating-email-addresses-in-delphi.html
+// http://www.howtodothings.com/computers/a1169-validating-email-addresses-in-delphi.html
 // Returns True if the email address is valid
 const
   // Valid characters in an "atom"
-  atom_chars = [#33 .. #255] - ['(', ')', '<', '>', '@', ',', ';', ':', '\', '/', '"', '.', '[', ']', #127];
+  atom_chars = [#33 .. #255] - ['(', ')', '<', '>', '@', ',', ';', ':', '\',
+    '/', '"', '.', '[', ']', #127];
   // Valid characters in a "quoted-string"
   quoted_string_chars = [#0 .. #255] - ['"', #13, '\'];
   // Valid characters in a subdomain
@@ -46,9 +48,9 @@ const
   subdomain_chars = ['-', '0' .. '9', 'A' .. 'Z', 'a' .. 'z'];
 
 type
-  States = (STATE_BEGIN, STATE_ATOM, STATE_QTEXT, STATE_QCHAR,
-            STATE_QUOTE, STATE_LOCAL_PERIOD, STATE_EXPECTING_SUBDOMAIN,
-            STATE_SUBDOMAIN, STATE_HYPHEN);
+  States = (STATE_BEGIN, STATE_ATOM, STATE_QTEXT, STATE_QCHAR, STATE_QUOTE,
+    STATE_LOCAL_PERIOD, STATE_EXPECTING_SUBDOMAIN, STATE_SUBDOMAIN,
+    STATE_HYPHEN);
 var
   State: States;
   i, n, subdomains: Integer;
@@ -128,7 +130,7 @@ begin
   if i <= n then
     result := False
   else
-      result := (State = STATE_SUBDOMAIN) and (subdomains >= 2);
+    result := (State = STATE_SUBDOMAIN) and (subdomains >= 2);
 end;
 
 end.

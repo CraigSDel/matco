@@ -8,39 +8,41 @@ uses
 type
   TUser = class
   private
-      id:integer;
-      fullname: string;
+    id: integer;
+    fullname: string;
     { Private declarations }
   public
     // ID
-    function getId():integer;
-    procedure setId(pId:integer);
+    function getId(): integer;
+    procedure setId(pId: integer);
     // Fullname
-    function getFullname():string;
-    procedure setFullname(pFullname:string);
+    function getFullname(): string;
+    procedure setFullname(pFullname: string);
     { Public declarations }
   end;
 
 implementation
-    // ID
-    function TUser.getId: integer;
-    begin
-      result := id;
-    end;
 
-    procedure TUser.setId(pId:integer);
-    begin
-      id := pId;
-    end;
+// ID
+function TUser.getId: integer;
+begin
+  result := id;
+end;
 
-    // Fullname
-    function TUser.getFullname: string;
-    begin
-      result := fullname;
-    end;
+procedure TUser.setId(pId: integer);
+begin
+  id := pId;
+end;
 
-    procedure TUser.setFullname(pFullname: string);
-    begin
-      fullname := pFullname;
-    end;
+// Fullname
+function TUser.getFullname: string;
+begin
+  result := fullname;
+end;
+
+procedure TUser.setFullname(pFullname: string);
+begin
+  fullname := pFullname;
+end;
+
 end.

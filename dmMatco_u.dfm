@@ -12,7 +12,7 @@ object DMMatco: TDMMatco
       's=1;Jet OLEDB:New Database Password="";Jet OLEDB:Create System D' +
       'atabase=False;Jet OLEDB:Encrypt Database=False;Jet OLEDB:Don'#39't C' +
       'opy Locale on Compact=False;Jet OLEDB:Compact Without Replica Re' +
-      'pair=False;Jet OLEDB:SFP=False'
+      'pair=False;Jet OLEDB:SFP=False;'
     LoginPrompt = False
     Provider = 'Microsoft.Jet.OLEDB.4.0'
     Left = 120
@@ -26,6 +26,7 @@ object DMMatco: TDMMatco
   object tblTicket: TADOTable
     Connection = MatcoADOConnection
     CursorType = ctStatic
+    TableDirect = True
     TableName = 'ticket'
     Left = 56
     Top = 64

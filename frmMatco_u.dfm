@@ -21,7 +21,7 @@ object frmMatco: TfrmMatco
     Top = 3
     Width = 873
     Height = 732
-    ActivePage = ProjectTicket
+    ActivePage = Project
     Align = alClient
     TabOrder = 0
     object ProjectTicket: TTabSheet
@@ -155,10 +155,6 @@ object frmMatco: TfrmMatco
     end
     object Client: TTabSheet
       Caption = 'Client'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 889
-      ExplicitHeight = 606
       object dbgClient: TDBGrid
         AlignWithMargins = True
         Left = 3
@@ -182,8 +178,6 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 1
-        ExplicitTop = 568
-        ExplicitWidth = 883
         object BitBtnClientInsert: TBitBtn
           Left = 182
           Top = 0
@@ -222,10 +216,6 @@ object frmMatco: TfrmMatco
     object Project: TTabSheet
       Caption = 'Project'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 889
-      ExplicitHeight = 606
       object dbgProject: TDBGrid
         AlignWithMargins = True
         Left = 3
@@ -249,8 +239,6 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 1
-        ExplicitTop = 568
-        ExplicitWidth = 883
         object BitBtnProjectDelete: TBitBtn
           Left = 362
           Top = 0
@@ -289,10 +277,6 @@ object frmMatco: TfrmMatco
     object TabSheetTicket: TTabSheet
       Caption = 'Ticket'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 889
-      ExplicitHeight = 606
       object Panel5: TPanel
         AlignWithMargins = True
         Left = 3
@@ -301,8 +285,6 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 0
-        ExplicitTop = 568
-        ExplicitWidth = 883
         object BitBtnTicketEdit: TBitBtn
           Left = 287
           Top = 0
@@ -356,10 +338,6 @@ object frmMatco: TfrmMatco
     object User: TTabSheet
       Caption = 'User'
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 889
-      ExplicitHeight = 606
       object Panel3: TPanel
         AlignWithMargins = True
         Left = 3
@@ -368,8 +346,6 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 0
-        ExplicitTop = 568
-        ExplicitWidth = 883
         object BitBtnUserInsert: TBitBtn
           Left = 230
           Top = 0
@@ -423,10 +399,6 @@ object frmMatco: TfrmMatco
     object Notes: TTabSheet
       Caption = 'Notes'
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object reNotes: TRichEdit
         AlignWithMargins = True
         Left = 3
@@ -452,8 +424,6 @@ object frmMatco: TfrmMatco
         Height = 35
         Align = alBottom
         TabOrder = 1
-        ExplicitTop = 568
-        ExplicitWidth = 883
         object BitBtnNotesSave: TBitBtn
           Left = 312
           Top = 0
@@ -469,10 +439,6 @@ object frmMatco: TfrmMatco
     object Help: TTabSheet
       Caption = 'Help'
       ImageIndex = 6
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 889
-      ExplicitHeight = 606
       object MemoHelp: TMemo
         AlignWithMargins = True
         Left = 3
@@ -482,8 +448,6 @@ object frmMatco: TfrmMatco
         Align = alClient
         ReadOnly = True
         TabOrder = 0
-        ExplicitWidth = 883
-        ExplicitHeight = 600
       end
     end
   end

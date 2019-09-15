@@ -1,7 +1,8 @@
 unit frmMatco_u;
-//Craig Stroberg
-//70854
-//This is the main form to allow the user to interact with the data
+
+// Craig Stroberg
+// 70854
+// This is the main form to allow the user to interact with the data
 interface
 
 uses
@@ -129,6 +130,7 @@ end;
 
 procedure TfrmMatco.BitBtnProjectTicketInsertClick(Sender: TObject);
 begin
+  DMMatco.tblProjectTicket.CancelUpdates;
   DMMatco.tblProjectTicket.Insert;
   frmProjectTicket := TfrmProjectTicket.Create(owner);
   frmProjectTicket.ShowModal;
@@ -244,7 +246,7 @@ end;
 
 procedure TfrmMatco.BitBtnTicketEditClick(Sender: TObject);
 begin
-  DMMatco.tblClient.Edit;
+  DMMatco.tblTicket.Edit;
   frmTicket := TfrmTicket.Create(owner);
   frmTicket.ShowModal;
 end;
@@ -266,7 +268,6 @@ begin
   if buttonSelected = mrOK then
   begin
     DMMatco.tblUser.Delete;
-    DMMatco.tblTicket.Refresh;
     ShowMessage('Deleted');
   end;
 end;
@@ -331,7 +332,7 @@ begin
   // Show the button type selected
   if buttonSelected = mrOK then
   begin
-    DMMatco.tblClient.Delete;
+    DMMatco.tblProject.Delete;
     ShowMessage('Deleted');
   end;
 end;
@@ -357,7 +358,7 @@ end;
 
 procedure TfrmMatco.FormCreate(Sender: TObject);
 var
-  arrStatus: array  [1 .. 3] of string;
+  arrStatus: array [1 .. 3] of string;
   i, j: Integer;
   temp: string;
 begin

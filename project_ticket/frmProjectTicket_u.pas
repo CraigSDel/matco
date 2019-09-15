@@ -1,7 +1,7 @@
 unit frmProjectTicket_u;
-//Craig Stroberg
-//70854
-//Project Ticket form allows the user to interact with the data
+// Craig Stroberg
+// 70854
+// Project Ticket form allows the user to interact with the data
 
 interface
 
@@ -36,22 +36,33 @@ implementation
 
 procedure TfrmProjectTicket.BitBtnProjectTicketInsertClick(Sender: TObject);
 var
-  buttonSelected : Integer;
+  buttonSelected: Integer;
 begin
   // Show a confirmation dialog
-  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',
+    mtCustom, mbOKCancel, 0);
 
   // Show the button type selected
   if buttonSelected = mrOK then
   begin
-    DMMatco.tblProjectTicket.Post;
-    ShowMessage('Submitted');
+    try
+      DMMatco.tblProjectTicket.Post;
+      ShowMessage('Submitted');
+      DMMatco.tblProjectTicket.Refresh;
+      DMMatco.tblProjectTicket.Requery;
+    except
+      on E: Exception do
+      begin
+        ShowMessage('Ticket is already assigned to a project');
+        DMMatco.tblProjectTicket.CancelUpdates;
+      end;
+    end;
   end;
 end;
 
 procedure TfrmProjectTicket.BitBtnProjectTicketCancelClick(Sender: TObject);
 begin
-   DMMatco.tblProjectTicket.Cancel;
+  DMMatco.tblProjectTicket.Cancel;
 end;
 
 end.

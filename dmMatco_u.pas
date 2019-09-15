@@ -1,14 +1,15 @@
 unit dmMatco_u;
-//Craig Stroberg
-//70854
-//This is the database module user to interact with the data
+
+// Craig Stroberg
+// 70854
+// This is the database module user to interact with the data
 interface
 
 uses
   System.SysUtils, System.Classes, Data.DB, Data.Win.ADODB;
 
 type
-    TDMMatco = class(TDataModule)
+  TDMMatco = class(TDataModule)
     MatcoADOConnection: TADOConnection;
     UserDataSource: TDataSource;
     tblTicket: TADOTable;
@@ -38,7 +39,6 @@ var
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
-
 {$R *.dfm}
 
 end.

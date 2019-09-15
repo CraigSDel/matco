@@ -1,7 +1,8 @@
 unit frmUser_u;
-//Craig Stroberg
-//70854
-//Ticket form allows the user to interact with the data
+
+// Craig Stroberg
+// 70854
+// Ticket form allows the user to interact with the data
 interface
 
 uses
@@ -11,7 +12,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, dmMatco_u, Vcl.Buttons, Vcl.Mask, Vcl.DBCtrls;
 
 type
-    TfrmUser = class(TForm)
+  TfrmUser = class(TForm)
     DBTextUserID: TDBText;
     lblUserID: TLabel;
     DBEditUserFullname: TDBEdit;
@@ -33,18 +34,18 @@ implementation
 
 {$R *.dfm}
 
-
 procedure TfrmUser.BitBtnUserCancelClick(Sender: TObject);
 begin
-   DMMatco.tblUser.Cancel;
+  DMMatco.tblUser.Cancel;
 end;
 
 procedure TfrmUser.BitBtnUserOkClick(Sender: TObject);
 var
-  buttonSelected : Integer;
+  buttonSelected: Integer;
 begin
   // Show a confirmation dialog
-  buttonSelected := messagedlg('Are you sure you want to complete this action?',mtCustom, mbOKCancel, 0);
+  buttonSelected := messagedlg('Are you sure you want to complete this action?',
+    mtCustom, mbOKCancel, 0);
 
   // Show the button type selected
   if buttonSelected = mrOK then
