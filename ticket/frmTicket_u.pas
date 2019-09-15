@@ -25,7 +25,7 @@ type
     BitBtnTicketCancel: TBitBtn;
     DBLookupComboBoxStatus: TDBLookupComboBox;
     lblStatus: TLabel;
-    DBEditTicketCreated: TDBEdit;
+    DBEditTicketCreatedDate: TDBEdit;
     procedure BitBtnTicketOkClick(Sender: TObject);
     procedure BitBtnTicketCancelClick(Sender: TObject);
   private

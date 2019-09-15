@@ -125,7 +125,7 @@ object frmTicket: TfrmTicket
     ListSource = DMMatco.StatusDataSource
     TabOrder = 5
   end
-  object DBEditTicketCreated: TDBEdit
+  object DBEditTicketCreatedDate: TDBEdit
     Left = 96
     Top = 148
     Width = 169
