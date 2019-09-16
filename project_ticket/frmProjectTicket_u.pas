@@ -47,9 +47,7 @@ begin
   begin
     try
       DMMatco.tblProjectTicket.Post;
-      ShowMessage('Submitted');
-      DMMatco.tblProjectTicket.Refresh;
-      DMMatco.tblProjectTicket.Requery;
+      ShowMessage('Saved! Please refresh the data');
     except
       on E: Exception do
       begin

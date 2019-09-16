@@ -71,8 +71,17 @@ begin
       mbOKCancel, 0);
     if buttonSelected = mrOK then
     begin
+
+    try
       DMMatco.tblTicket.Post;
-      ShowMessage('Submitted! Please refresh the data');
+      ShowMessage('Saved! Please refresh the data');
+    except
+      on E: Exception do
+      begin
+        ShowMessage('Unable to save');
+        DMMatco.tblTicket.CancelUpdates;
+      end;
+    end;
     end
   end
   else

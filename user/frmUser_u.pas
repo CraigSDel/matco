@@ -50,8 +50,17 @@ begin
   // Show the button type selected
   if buttonSelected = mrOK then
   begin
-    DMMatco.tblUser.Post;
-    ShowMessage('Submitted');
+
+   try
+      DMMatco.tblUser.Post;
+      ShowMessage('Saved! Please refresh the data');
+    except
+      on E: Exception do
+      begin
+        ShowMessage('Unable to save');
+        DMMatco.tblUser.CancelUpdates;
+      end;
+    end;
   end;
 end;
 
