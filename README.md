@@ -5,4 +5,4 @@ Matco is a project management software solution built as a school project in Del
 
 ## Requirements 
 
-Deplhi and Microsoft Access
+Delphi and Microsoft Access
